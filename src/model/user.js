@@ -4,34 +4,34 @@ const database = require('../config/db');
 
 const user = database.define('user', 
     {
-        IDUser: {
+        idUser: {
             type: Sequelize.INTEGER,
             autoIncrement: true,
             allowNull : false,
             primaryKey: true
         },
 
-        Name: {
+        name: {
             type: Sequelize.STRING(100),
             allowNull: false
         },
-        BirthDate: {
+        birthDate: {
             type: Sequelize.DATE,
             allowNull: false
         },
-        Email: {
+        email: {
             type: Sequelize.STRING(128),
             allowNull: false
         },
-        ProfilePhoto: {
+        profilePhoto: {
             type: Sequelize.STRING(255),
             allowNull: false
         },
-        Admin:  {
+        admin:  {
             type: Sequelize.BOOLEAN,
             allowNull: false
         },
-        Ative: { 
+        ative: { 
             type: Sequelize.BOOLEAN,
             allowNull: false
         }

@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
 const database = require('../config/db');
-const user = require('../model/user')
+const user = require('./user')
 // const { type } = require('os');
 
 const post = database.define('post', 

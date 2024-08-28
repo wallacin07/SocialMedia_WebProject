@@ -2,14 +2,14 @@ const sequelize = require('sequelize');
 
 const database = new sequelize (
 
-    'Database',
-    'User   ',
-    'Password',
+    'Kangoroo',         //DATABASE
+    'Admin',            //USER
+    'admin',         //PASSWORDD
 
     {
-    host: '',
-    port: '',
-    dialect: '' 
+    host: 'localhost',
+    port: 1433,
+    dialect: 'mssql' 
     }
 );
 

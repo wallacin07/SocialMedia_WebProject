@@ -1,15 +1,17 @@
-const routes = require('./routes')
 const express = require('express');
-
+const routes = require('./routes');
+const port = 3000
 const app = express();
 
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({extended: true}));
+
 
 app.use(express.static('public'));
 
-app.set('view', './src/view');
+
+app.set('views', './src/views');
 app.set('view engine', 'ejs');
 
 app.use(routes);
 
-app.listen(5000, () => console.log('access: http://localhost:5000'))
+app.listen(port, () => console.log(`Acesse: http://localhost:${port}/`));

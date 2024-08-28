@@ -3,12 +3,12 @@ const database = require('../config/db');
 const user = require('./user')
 // const { type } = require('os');
 
-const post = database.define('post', 
+const post = database.define('post',
     {
         idPost: {
             type: Sequelize.INTEGER,
             autoIncrement: true,
-            allowNull : false,
+            allowNull: false,
             primaryKey: true
         },
 
@@ -28,15 +28,15 @@ const post = database.define('post',
             type: Sequelize.STRING(60),
             allowNull: true
         },
-        postDate:  {
+        postDate: {
             type: Sequelize.DATE,
             allowNull: false
         }
     });
 
-    post.belongsTo(user, {
-        constraint: true, //Garantir integridade referencial
-        foreignKey: 'idUser'
-        });
+post.belongsTo(user, {
+    constraint: true, //Garantir integridade referencial
+    foreignKey: 'idUser'
+});
 
-    module.exports = post;
+module.exports = post;

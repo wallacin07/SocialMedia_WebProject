@@ -4,12 +4,12 @@ const user = require('./user')
 const post = require('./post')
 // const { type } = require('os');
 
-const comment = database.define('comment', 
+const comment = database.define('comment',
     {
         idComment: {
             type: Sequelize.INTEGER,
             autoIncrement: true,
-            allowNull : false,
+            allowNull: false,
             primaryKey: true
         },
 
@@ -17,19 +17,19 @@ const comment = database.define('comment',
             type: Sequelize.STRING(100),
             allowNull: true
         },
-        commentDate:  {
+        commentDate: {
             type: Sequelize.DATE,
             allowNull: false
         }
     });
 
-    comment.belongsTo(post, {
-        constraint: true, //Garantir integridade referencial
-        foreignKey: 'idPost'
-        });
-    comment.belongsTo(user, {
-            constraint: true, //Garantir integridade referencial
-            foreignKey: 'idUser'
-            });
+comment.belongsTo(post, {
+    constraint: true, //Garantir integridade referencial
+    foreignKey: 'idPost'
+});
+comment.belongsTo(user, {
+    constraint: true, //Garantir integridade referencial
+    foreignKey: 'idUser'
+});
 
-    module.exports = comment;
+module.exports = comment;

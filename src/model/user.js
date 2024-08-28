@@ -37,4 +37,6 @@ const user = database.define('user',
         }
     });
 
+    
+
     module.exports = user;

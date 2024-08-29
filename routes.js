@@ -10,7 +10,7 @@ const register = require('./src/controller/register');
 route.get('/', login.PagInitGet);
 route.post('/login', login.login);
 
-route.get('/getHome/:id_user', home.getHome);
+route.get('/getHome', home.getHome);
 
 
 route.post('/registerUser', multer(config).single('foto') ,register.registerUser)

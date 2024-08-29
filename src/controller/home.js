@@ -31,7 +31,7 @@ module.exports = {
             attributes: ['idReaction','description']
         })
 
-        res.render('../views/home', {users:'0',comments:'0',posts:'0',reactions:'0'});
+        res.render('../views/home', {users,comments:'0',posts,reactions:'0'});
     }
 
    

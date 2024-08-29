@@ -1,0 +1,13 @@
+.gradient {
+    background: linear-gradient(90deg, rgba(252,18,18,1) 0%, rgba(124,40,166,1) 25%, rgba(17,70,182,1) 46%, rgba(14,180,175,1) 68%, rgba(17,164,11,1) 80%, rgba(36,219,29,1) 93%);
+    color: black;
+    background-clip: text;
+    -webkit-background-clip: text;
+  
+    /* Adicionado: */
+    -webkit-text-fill-color: transparent;
+  }
+
+  body{
+    height: 100vh;
+  }

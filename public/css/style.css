@@ -1,0 +1,13 @@
+.div-image > input
+{
+    display: none;
+}
+
+#formulario{
+    align-items: center;
+}
+
+
+body {
+    background-color: black;
+}

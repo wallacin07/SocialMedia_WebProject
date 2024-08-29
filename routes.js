@@ -8,6 +8,9 @@ const config = require('./src/config/multer');
 const register = require('./src/controller/register');
 // Iniciando as rotas
 route.get('/', login.PagInitGet);
+route.post('/login', login.login);
+
+route.get('/getHome/:id_user', home.getHome);
 
 
 route.post('/registerUser', multer(config).single('foto') ,register.registerUser)

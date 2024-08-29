@@ -1,0 +1,29 @@
+26/08/2024
+
+- Criação das Estruturas
+- Criação Inicial da Modelagem
+- Configurações do node(Instalação)
+- Configuração de rotas e banco de dados
+- Configuração do Express(server)
+- Criação de telas no Figma
+
+
+27/08/2024
+
+- Finalização da modelagem Física
+- Criação inicial do banco de dados
+
+
+28/08/2024
+
+- Finalização dos bancos de dados
+- Post da pagina de cadastro/login
+- Criação do controller da home e pagina de login
+
+
+29/08/2024
+
+- Post Cadastro.
+- Post Login.
+- Get home.
+- Post de Publicação.

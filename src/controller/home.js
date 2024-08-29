@@ -24,18 +24,18 @@ module.exports = {
         })
         const follows = await follow.findAll({
             raw: true,
-            attributes: ['followerId','followedId','active']
+            attributes: ['idFollower','idFollowed','active']
         })
         const reactions = await reaction.findAll({
             raw: true,
             attributes: ['idReaction','description']
         })
 
-        res.render('../view/home', {users:'0',comments:'0',posts:'0',reactions:'0'});
-    },
+        res.render('../views/home', {users:'0',comments:'0',posts:'0',reactions:'0'});
+    }
 
    
-    }
+}
 
 
     

@@ -1,0 +1,22 @@
+:root {
+    --PurpleDark: #6f2dbd;
+    --PurpleMid: #a663cc;
+    --PurpleLight: #b298dc;
+    --BlueDark: #b8d0eb;
+    --BlueLight: #b9faf8;
+    --textColor: black;
+    --white: white;
+    --textGrey: #535353;
+    --shadow: rgba(0, 0, 0, 0.384);
+}
+
+.dark {
+    --PurpleDark: #2e1350;
+    --PurpleMid: #481f5f;
+    --PurpleLight: #452874;
+    --BlueDark: #275589;
+    --BlueLight: #0caaa5;
+    --textColor: white;
+    --textGrey: #807f7f;
+    --shadow: rgba(0, 0, 0, 0.486);
+}

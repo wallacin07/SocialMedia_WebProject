@@ -11,6 +11,7 @@ route.get('/', login.PagInitGet);
 route.post('/login', login.login);
 
 route.get('/getHome/:id_user', home.getHome);
+route.get('/toogleRegister', register.PagRegisterGet);
 
 
 route.post('/registerUser', multer(config).single('foto') ,register.registerUser)

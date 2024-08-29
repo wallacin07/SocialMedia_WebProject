@@ -12,7 +12,7 @@ module.exports = {
         const password = req.body.password;
         
         try{
-            const id_user = await user.findAll(
+            const id_user = await user.findOne(
                 {
                     where: {
                         [Sequelize.Op.and]: [
@@ -25,11 +25,11 @@ module.exports = {
                 
             if(id_user.length == 0){
                 console.log('nao achou');
-                console.log(id_user);
+                console.log(id_user.idUser);
             }
             else{
                 console.log('achou');
-                console.log(id_user);
+                console.log(id_user.idUser);
                 res.redirect('/getHome/' + id_user);
             }
 

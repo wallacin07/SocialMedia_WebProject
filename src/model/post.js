@@ -20,10 +20,6 @@ const post = database.define('post',
             type: Sequelize.DATE,
             allowNull: true
         },
-        email: {
-            type: Sequelize.STRING(128),
-            allowNull: false
-        },
         hashtag: {
             type: Sequelize.STRING(60),
             allowNull: true

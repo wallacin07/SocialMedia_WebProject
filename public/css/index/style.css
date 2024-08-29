@@ -1,0 +1,92 @@
+:root {
+    --PurpleDark: #6f2dbd;
+    --PurpleMid: #a663cc;
+    --PurpleLight: #b298dc;
+    --BlueDark: #b8d0eb;
+    --BlueLight: #b9faf8;
+    --textColor: black;
+    --white: white;
+    --textGrey: #535353;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--PurpleDark);
+    color: var(--textColor);
+}
+
+main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 85%;
+    max-width: 1500px;
+}
+
+label {
+    margin-right: 5%;
+    font-size: 1.2rem;
+    border: none;
+    
+}
+a {
+    text-decoration: none;
+}
+
+input::placeholder {
+    color: var(--textGrey);
+}
+
+.dark {
+    --PurpleDark: #2e1350;
+    --PurpleMid: #481f5f;
+    --PurpleLight: #452874;
+    --BlueDark: #275589;
+    --BlueLight: #0caaa5;
+    --textColor: white;
+    --textGrey: #C0C0C0;
+}
+
+.rect {
+    max-width: 45%;
+    padding: 20px;
+    padding-top: 3rem;
+    background-color: var(--BlueDark);
+    height: 800px;
+    text-align: center;
+}
+
+.title {
+    margin-bottom: 3rem;
+    
+}
+
+.input {
+    max-width: 90%;
+    width: 800px;
+    background-color: var(--PurpleMid);
+}
+
+.group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2.5rem;
+}
+
+.btnRegister {
+    background-color: var(--PurpleDark);
+    color: var(--white);
+    margin-top: 5rem;
+}
+
+#logo {
+    max-width: 40%;
+    width: 650px;
+    height: auto;
+}

@@ -2,43 +2,69 @@
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/home/style.css">
         <title>Kangoroo</title>
     </head>
 
     <body>
-        
-        <body>
-        
-            <header>
+            
+        <header>
+                <nav class="navbar navbar-expand-lg navbar-light bg-light shadow justify-content-space-between">
+                    <div>
+                      <a><h4 class="navbar-brand">Bosch <Strong class="gradient" >Engineering</Strong> Technical School | Controle de alunos</h4></a>
+                    </div>
+                      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Alterna navegação">
+                        <span class="navbar-toggler-icon"></span>
+                      </button>
+                      <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarNavAltMarkup">
+                        <div class="navbar-nav" >
+                          <button type="button" class="navbar-text btn btn-link" data-toggle="modal" data-target="#aluno" style="cursor: pointer;text-decoration: none;">Aluno </button>
+                          <button type="button" class="navbar-text btn btn-link" data-toggle="modal" data-target="#testModal" style="cursor: pointer;text-decoration: none;">Sala</button>
+                          <!-- <a class="navbar-text" style="cursor: pointer; text-decoration: none;" href="CadastroAluno.html"><h6>Aluno |</h6></a>
+                          <a  class="navbar-text ml-3" style="cursor: pointer; text-decoration: none" href="CadastroSala.html"><h6>Sala</h6></a> -->
+                        </div>
+                    </div>
+                    </nav>
     
             </header>
     
             <main>
-                <section>
-                    <button>storys q abre um modal com a imagem fofa</button>
-                    <button>storys q abre um modal com a imagem fofa</button>
-                    <button>storys q abre um modal com a imagem fofa</button>
-                    <button>storys q abre um modal com a imagem fofa</button>
-                </section>
-                <section>
-                    <img src="" alt="Imagem fofa da pessoa que postou">
-                    <h3><b>Nome fofo da pessoa que postou</b></h3>
-                    <img src="" alt="Publicação linda da pessoa">
-                    <button>Botão de reações</button>
-                    <button>Botão de comentários</button>
-                    <button>Botão de enviar</button>
-                    <h6><b>Nome da pessoa</b> descrição da foto</h6>
-                    <button>Botão de ver comentários</button>
-                </section>
+
+                <% for (let i=0; i<posts.length; i++) { %>
+                    <div>
+                        <div class="post-top">
+                            <% for (let i=0; i<users.length; i++) { %>
+                                <h4 value='<%= users[i].idUser %>' <%= posts[i].idUser === users[i].idUser %>> <%=
+                                users[i].name %> </h4>
+                                <% } %>
+                        </div>
+                        <div class="post-Body">
+                            <img src="img/postImg/<%= posts.img %>" alt="" class="post-img">
+                            <div class="post-description">
+                                <h4><%=  posts[i].description   %></h4>
+                            </div>
+                        </div>
+                        <div class="post-footer">
+                            <h5><%=  posts[i].postDate  %></h5>
+                        </div>
+                    </div>
+                  <% } %>
+
+
+
+
+
             </main>
     
             <footer>
-                <button>Botão de ir pra pag inicial</button>
-                <button>Botão de ir pra tela de pesquisar</button>
-                <button>Botão de abrir os chats</button>
-                <button>Botão de abrir perfil</button>
+
             </footer>
 
     </body>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
 </html>

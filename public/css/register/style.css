@@ -10,16 +10,6 @@
     --shadow: rgba(0, 0, 0, 0.384);
 }
 
-.dark {
-    --PurpleDark: #2e1350;
-    --PurpleMid: #481f5f;
-    --PurpleLight: #452874;
-    --BlueDark: #275589;
-    --BlueLight: #0caaa5;
-    --textColor: white;
-    --textGrey: #807f7f;
-    --shadow: rgba(0, 0, 0, 0.486);
-} */
 
 body {
     margin: 0;
@@ -56,41 +46,30 @@ input::placeholder {
     color: var(--textGrey);
 }
 
-input[type="file"] {
-    display: none;
+.dark {
+    --PurpleDark: #2e1350;
+    --PurpleMid: #481f5f;
+    --PurpleLight: #452874;
+    --BlueDark: #275589;
+    --BlueLight: #0caaa5;
+    --textColor: white;
+    --textGrey: #C0C0C0;
 }
-
-.centralize {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.img {
-    max-width: 90%;
-    width: 200px;
-    cursor: pointer;
-    border-radius: 50%;
-    height: 179px;
-    margin-bottom: 1.5rem;
-}
-
 
 .rect {
     max-width: 45%;
     padding: 20px;
-    padding-top: 1.5rem;
+    padding-top: 3rem;
     background-color: var(--BlueDark);
-    max-height: 90%;
+    height: 800px;
     text-align: center;
     border-radius: 10px;
     box-shadow: 0px 0px 15px 10px var(--shadow);
 }
 
 .title {
-    margin-top: 2rem;
     margin-bottom: 3rem;
-    font-size: 40px;
+    
 }
 
 .input {
@@ -115,26 +94,12 @@ input[type="file"] {
     color: var(--white);
     margin-top: 1rem;
     max-width: 30%;
-    width: 300px;
-    font-size: 140%;
-    border-radius: 8px;
-    margin-bottom: 1rem;
-    padding: 5px;
-    cursor: pointer;
+    width: 700px;
+    font-size: 25px;
 }
 
 #logo {
     max-width: 40%;
     width: 650px;
     height: auto;
-}
-
-.botoesinhos a {
-    display: block;
-    margin-bottom: 1rem;
-    color: var(--PurpleDark);
-}
-
-#redirectRegister {
-    margin-bottom: 12rem;
 }

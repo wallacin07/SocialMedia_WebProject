@@ -46,19 +46,4 @@ const user = database.define('user',
         }
     });
 
-user.belongsToMany(user, {
-    as: 'follower',  // Alias para diferenciar o relacionamento
-    through: 'follows',  // Tabela de junção
-    foreignKey: 'followerId',  // FK para o usuário que é seguido
-    otherKey: 'followedId'  // FK para o usuário que segue
-});
-
-user.belongsToMany(user, {
-    as: 'followed',  // Alias para o outro lado do relacionamento
-    through: 'follows',
-    foreignKey: 'followedId',  // FK para o usuário que segue
-    otherKey: 'followerId'  // FK para o usuário que é seguido
-});
-
-
 module.exports = user;

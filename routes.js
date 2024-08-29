@@ -4,5 +4,6 @@ const route = express.Router();
 const login = require('./src/controller/login');
 const home = require('./src/controller/home');
 // Iniciando as rotas
-route.get('/', login.init);
+route.get('/', login.PagInitGet);
+
 module.exports = route;

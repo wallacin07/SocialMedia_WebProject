@@ -4,7 +4,8 @@
   "description": "Final Web project made in Html, css, js, Bootstrap, Node.js, Express.js and SQLServer, all in the MVC (Model–view–controller) design pattern.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",   
+     "start": "nodemon server.js"
   },
   "keywords": [],
   "author": "",

@@ -2,8 +2,8 @@ const user = require('../model/user')
 
 
 module.exports = {
-    async init(req, res){
-    res.render('../views/teste');
+    async PagInitGet(req, res){
+    res.render('../views/index');
     },
 
     async login(req,res){

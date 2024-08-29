@@ -1,17 +1,20 @@
 :root {
-    --lightPurpleDark: #6f2dbd;
-    --lightPurpleMid: #a663cc;
-    --lightPurpleLight: #b298dc;
-    --lightBlueDark: #b8d0eb;
-    --lightBlueLight: #b9faf8;
+    --PurpleDark: #6f2dbd;
+    --PurpleMid: #a663cc;
+    --PurpleLight: #b298dc;
+    --BlueDark: #b8d0eb;
+    --BlueLight: #b9faf8;
 
-    --DarkPurpleDark: #2e1350;
-    --DarkPurpleMid: #481f5f;
-    --DarkPurpleLight: #452874;
-    --DarkBlueDark: #275589;
-    --DarkBlueLight: #0caaa5;
+}
+
+.dark {
+    --PurpleDark: #2e1350;
+    --PurpleMid: #481f5f;
+    --PurpleLight: #452874;
+    --BlueDark: #275589;
+    --BlueLight: #0caaa5;
 }
 
 body {
-    background-color: var(--lightPurpleDark);
+    background-color: var(--PurpleDark);
 }

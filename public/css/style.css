@@ -83,6 +83,9 @@ input::placeholder {
     background-color: var(--PurpleDark);
     color: var(--white);
     margin-top: 5rem;
+    max-width: 30%;
+    width: 700px;
+    font-size: 25px;
 }
 
 #logo {

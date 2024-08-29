@@ -7,24 +7,32 @@
     <link rel="stylesheet" href="/css/style.css">
     <title>Login</title>
 </head>
-<body>
-    <img src="" alt="Logo">
+<body class="">
     <main>
-        <div>
-            <h1><b>Kangoroo</b></h1>
+        <img src="/img/logo.png" alt="Logo" id="logo">
 
-            <div class="form-group">
-                <label for="name">Nome:</label>
-                <input type="text" class="form-control" id="name" name="name">
-            </div>
+        <section class="rect">
 
-            <div class="form-group">
-                <label for="password">Senha:</label>
-                <input type="password" class="form-control" id="password" name="password">
-            </div>
-            
-            <button type="submit" class="btn btn-primary">Entrar</button>
-        </div>
+            <h1 class="title"><b>Kangoroo</b></h1>
+
+            <form action="">
+                <div class="group">
+                    <label for="name">Nome:</label>
+                    <input type="text" class="input" id="name" name="name" placeholder="Fulano da Silva">
+                </div>
+    
+                <div class="group">
+                    <label for="password">Senha:</label>
+                    <input type="password" class="input" id="password" name="password">
+                </div>
+                
+                <button type="submit" class="btn btnRegister">Entrar</button>
+
+            </form>
+
+            <a href="">Não tem uma conta?</a>
+
+        </section>
     </main>
 
     <script src="/js/script.js"></script>

@@ -19,14 +19,6 @@ const post = database.define('post',
         img: {
             type: Sequelize.DATE,
             allowNull: true
-        },
-        hashtag: {
-            type: Sequelize.STRING(60),
-            allowNull: true
-        },
-        postDate: {
-            type: Sequelize.DATE,
-            allowNull: false
         }
     });
 

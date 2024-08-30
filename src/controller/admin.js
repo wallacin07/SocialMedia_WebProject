@@ -8,7 +8,7 @@ module.exports = {
         //MORE
         allUsers = await users.findAll({
             raw: true,
-            attributes: ['idUser', 'name', 'profilePhoto', 'active']
+            attributes: ['idUser', 'name', 'profilePhoto', 'active', 'admin']
         })
         res.render('../views/adminScreen', {allUsers})
     },

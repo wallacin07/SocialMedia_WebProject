@@ -1,5 +1,5 @@
 const { Sequelize } = require('sequelize')
-const user = require('../model/user')
+const users = require('../model/user')
 
 
 module.exports = {
@@ -12,10 +12,10 @@ module.exports = {
         const password = req.body.password;
         
         try{
-            const id_user = await user.findOne(
+            const user = await users.findOne(
                 {
                     raw: true,
-                    attributes: ['idUser'],
+                    attributes: ['idUser', 'admin'],
                     where: {
                         [Sequelize.Op.and]: [
                             { name: name },
@@ -25,26 +25,29 @@ module.exports = {
                 }
             );
                 
-            if(id_user.length == 0){
+            if(user.length == 0){
                 console.log('nao achou');
-                console.log(id_user.idUser);
+                console.log(user.idUser);
+                redirect('/');
             }
             else{
                 console.log('achou');
-                console.log(id_user);
-                res.redirect('/getHome/' + id_user.idUser);
+
+                if(user.admin)
+                    res.redirect('/getAdmScreen');
+                else
+                    res.redirect('/getHome/' + user.idUser);
             }
 
         }
         catch(error){
             console.log('Error on LOGIN');
+            res.redirect('/')
         }
 
 
 
 
 
-    },
-
-
+    }
 }

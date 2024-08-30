@@ -23,7 +23,7 @@ module.exports = {
             description: dados.bio,
             email: dados.email,
             profilePhoto: foto,
-            admin: true,
+            admin: false,
             active: true
         });
         res.redirect('/')

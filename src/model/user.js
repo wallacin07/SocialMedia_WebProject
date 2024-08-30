@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize')
 const database = require('../config/db');
+const { defaultValueSchemable } = require('sequelize/lib/utils');
 // const { type } = require('os');
 
 const user = database.define('user',

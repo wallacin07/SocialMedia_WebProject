@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/adminScreen/style.css">
+    <title>Administrador</title>
+</head>
+<body>
+    <header>
+        <h1>Admin</h1>
+        <button>
+            <img src="..." alt="sair.png">
+        </button>
+    </header>
+    
+    <main>
+
+
+        <!-- MOLDE -->
+         <% for(let i=0; i<allUsers.length; i++){ %>
+        <section>
+            <div>
+                <img src=" img/profile_pictures/<%= allUsers[i].profilePhoto %>" alt="imagem_usuario.png">
+                <h3> <%= allUsers[i].name %> </h3>
+            </div>
+
+            <form action="/toggleActive/<%= allUsers[i].idUser %>" method="post" id="toggleActive">
+                <label class="switch">
+                    <input onchange="this.form.submit()" type="checkbox" <%= allUsers[i].active ? 'checked' : '' %>>
+                    <span class="slider"></span>
+                </label>
+            </form>
+        </section>
+        <% } %>
+
+    </main>
+</body>
+</html>

@@ -8,6 +8,10 @@ const login = require('./src/controller/login');
 route.get('/', login.pagInitGet);
 route.post('/login', login.login);
 
+const admin = require('./src/controller/admin');
+route.get('/getAdmScreen', admin.showAdmScreen);
+route.post('/toggleActive/:id_toggle', admin.toggleActive);
+
 
 const home = require('./src/controller/home');
 route.get('/getHome/:id_user', home.getHome);

@@ -42,9 +42,7 @@ module.exports = {
                     birthDate: dados.birth,
                     description: dados.bio,
                     email: dados.email,
-                    profilePhoto: foto,
-                    admin: true,
-                    active: true
+                    profilePhoto: foto
                 });
                 res.redirect('/')
             }

@@ -1,7 +1,6 @@
 const Sequelize = require('sequelize')
 const database = require('../config/db');
-const { defaultValueSchemable } = require('sequelize/lib/utils');
-// const { type } = require('os');
+const { defaultValueSchemable, toDefaultValue } = require('sequelize/lib/utils');
 
 const user = database.define('user',
     {
@@ -39,12 +38,38 @@ const user = database.define('user',
         },
         admin: {
             type: Sequelize.BOOLEAN,
-            allowNull: false
+            allowNull: false,
+            defaultValue: false
         },
         active: {
             type: Sequelize.BOOLEAN,
-            allowNull: false
+            allowNull: false,
+            defaultValue: true
         }
-    });
+    },{ 
+        
+        // Define os hooks para executar código após a sincronização do modelo
+        hooks: {
+            afterSync: async (options) => {
+                try {
+                    const existingAdmin = await user.findOne({ where: { admin: true } });
+                    if (!existingAdmin) {
+                        await user.create({
+                            name: 'admin',
+                            password: 'admin',
+                            birthDate: '0001-01-01', // Ajuste o formato da data para ISO 8601
+                            description: 'chefe é chefe né pae',
+                            email: 'admin@admin.com',
+                            profilePhoto: 'admin.png',
+                            admin: true
+                        });
+                    }
+                } catch (error) {
+                    console.error('Error creating admin user:', error);
+                }
+            }
+        }
+});
+
 
 module.exports = user;

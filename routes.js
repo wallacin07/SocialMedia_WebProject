@@ -11,7 +11,6 @@ route.post('/login', login.login);
 
 const home = require('./src/controller/home');
 route.get('/getHome/:id_user', home.getHome);
-route.get('/toogleRegister', register.PagRegisterGet);
 
 
 

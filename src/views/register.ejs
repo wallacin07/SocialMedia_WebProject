@@ -13,6 +13,23 @@
 </head>
 <body>
     <main>
+
+
+        <% if (errorEmail || '')  { %>
+            <script>
+                alert('<%= errorEmail %>');
+            </script>
+        <% } %>
+
+
+        <% if (errorName || '') { %>
+            <script>
+                alert('<%= errorName %>');
+            </script>
+        <% } %>
+
+
+
         <img src="/img/logo.png" alt="Logo" id="logo">
 
         <section class="rect">

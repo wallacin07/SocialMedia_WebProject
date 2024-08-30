@@ -4,167 +4,210 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/home/style.css">
+    <link rel="stylesheet" href="/css/cores.css">
     <title>Kangoroo</title>
 </head>
 
-<body>
-
-    <body>
-
-        <header>
-            <button data-toggle="modal" data-target="#modalPost">postar foto</button>
-            <button>notificações</button>
-        </header>
-
-        <main>
-            <section>
-                <button>storys q abre um modal com a imagem fofa</button>
-                <button>storys q abre um modal com a imagem fofa</button>
-                <button>storys q abre um modal com a imagem fofa</button>
-                <button>storys q abre um modal com a imagem fofa</button>
-            </section>
-            <section>
-                <img src="" alt="Imagem fofa da pessoa que postou">
-                <h3><b>Nome fofo da pessoa que postou</b></h3>
-                <img src="" alt="Publicação linda da pessoa">
-                <button>Botão de reações</button>
-                <button>Botão de comentários</button>
-                <button>Botão de enviar</button>
-                <h6><b>Nome da pessoa</b> descrição da foto</h6>
-                <button>Botão de ver comentários</button>
-            </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <!-- Modal -->
-            <div class="modal fade" id="modalPost" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
-                aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-
-                            <form action="/postPost/<%= id_user %>" method="post" enctype="multipart/form-data">
-                                <div>
-                                    <img src="" alt="post_image.png">
-                                    <input type="file" name="new_post_image" accept="image/*">
-                                </div>
-
-                                <div>
-                                    <label for="new_post_description"></label>
-                                    <input id="new_post_description" name="new_post_description" type="text">
-                                </div>
-                                <button type="submit">feed</button>
-                                <button type="submit">story</button>
-                            </form>
-
+<body class="">
+
+    <section class="topo">
+        <nav>
+            <a href="" class="aNav">
+                <svg class="iconeNav" width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M11.3103 1.77586C11.6966 1.40805 12.3034 1.40805 12.6897 1.77586L20.6897 9.39491L23.1897 11.7759C23.5896 12.1567 23.605 12.7897 23.2241 13.1897C22.8433 13.5896 22.2103 13.605 21.8103 13.2241L21 12.4524V20C21 21.1046 20.1046 22 19 22H14H10H5C3.89543 22 3 21.1046 3 20V12.4524L2.18966 13.2241C1.78972 13.605 1.15675 13.5896 0.775862 13.1897C0.394976 12.7897 0.410414 12.1567 0.810345 11.7759L3.31034 9.39491L11.3103 1.77586ZM5 10.5476V20H9V15C9 13.3431 10.3431 12 12 12C13.6569 12 15 13.3431 15 15V20H19V10.5476L12 3.88095L5 10.5476ZM13 20V15C13 14.4477 12.5523 14 12 14C11.4477 14 11 14.4477 11 15V20H13Z" fill="currentColor"/>
+                </svg>
+                <h1>Home</h1>
+            </a>
+            <a href="" class="aNav">
+                <svg class="iconeNav" height="100%" width="100%" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve">
+                    <g>
+                        <!-- Usando currentColor para permitir controle via CSS -->
+                        <path fill="currentColor" d="M312.069,53.445c-71.26-71.26-187.194-71.26-258.454,0c-71.261,71.26-71.261,187.206,0,258.466
+                        c71.26,71.26,187.194,71.26,258.454,0S383.329,124.705,312.069,53.445z M286.694,286.536
+                        c-57.351,57.34-150.353,57.34-207.704-0.011s-57.351-150.353,0-207.693c57.351-57.351,150.342-57.351,207.693,0
+                        S344.045,229.174,286.694,286.536z"/>
+                        <path fill="currentColor" d="M101.911,112.531c-29.357,37.725-31.801,89.631-7.321,129.702c1.877,3.087,5.902,4.048,8.978,2.182
+                        c3.065-1.888,4.037-5.903,2.16-8.978c-21.666-35.456-19.506-81.538,6.469-114.876c2.226-2.837,1.713-6.938-1.135-9.154
+                        C108.227,109.193,104.125,109.695,101.911,112.531z"/>
+                        <path fill="currentColor" d="M498.544,447.722l-132.637-129.2c-7.255-7.07-18.84-6.982-26.008,0.174l-21.033,21.033
+                        c-7.156,7.156-7.234,18.742-0.153,25.986l129.19,132.636c14.346,17.324,35.542,18.35,51.917,1.964
+                        C516.216,483.951,515.857,462.068,498.544,447.722z"/>
+                    </g>
+                </svg>
+                <h1>Search</h1>
+            </a>
+            <a href="" class="aNav">
+                <svg class="iconeNav" width="100%" height="100%" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path fill="currentcolor" d="M160 826.88 273.536 736H800a64 64 0 0 0 64-64V256a64 64 0 0 0-64-64H224a64 64 0 0 0-64 64v570.88zM296 800 147.968 918.4A32 32 0 0 1 96 893.44V256a128 128 0 0 1 128-128h576a128 128 0 0 1 128 128v416a128 128 0 0 1-128 128H296z"/><path fill="currentcolor" d="M352 512h320q32 0 32 32t-32 32H352q-32 0-32-32t32-32zm0-192h320q32 0 32 32t-32 32H352q-32 0-32-32t32-32z"/></svg>
+                <h1>Chats</h1>
+            </a>
+            <a class="aNav" href="/profilePag/<%= id_user %>">
+                <svg class="iconeNav" width="100%" height="100%" viewBox="0 0 32 32" id="Stock_cut" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><desc/>
+                    <g>
+                        <circle cx="16" cy="16" fill="none" r="15" stroke="currentColor" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+                        <path d="M26,27L26,27   c0-5.523-4.477-10-10-10h0c-5.523,0-10,4.477-10,10v0" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+                        <circle cx="16" cy="11" fill="none" r="6" stroke="currentColor" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+                    </g>
+                </svg> 
+                <h1>Profile</h1>
+            </a>
+        </nav>
+    
+        
+    
+
+    <main>
+
+        <div class="centralize">
+            <div class="quadrado">
+                <section class="header">
+                    <button class="botaoCima">         
+                        <svg class="iconeCima" width="34.39" height="34.39" viewBox="0 0 34.39 34.39" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <g>
+                            <path style="fill:currentColor" d="M31.939,6.603H2.455C1.102,6.603,0,7.701,0,9.056v19.623c0,1.355,1.102,2.453,2.455,2.453h29.484
+                                c1.354,0,2.451-1.098,2.451-2.453V9.056C34.391,7.701,33.293,6.603,31.939,6.603z M12.455,28.171c-5.137,0-9.301-4.164-9.301-9.303
+                                s4.164-9.303,9.301-9.303c5.139,0,9.303,4.164,9.303,9.303S17.594,28.171,12.455,28.171z M30.654,11.814h-2.986
+                                c-0.891,0-1.611-0.721-1.611-1.607c0-0.891,0.721-1.611,1.611-1.611h2.986c0.887,0,1.609,0.721,1.609,1.611
+                                C32.264,11.094,31.541,11.814,30.654,11.814z"/>
+                            <rect x="3.449" y="3.257" style="fill:currentColor" width="7.053" height="2.561"/>
+                            <circle style="fill:currentColor" cx="12.357" cy="18.867" r="4.436"/>
+                            </g>
+                        </svg>
+                    </button>
                         
+                    <h1 class="title">Kangoroo</h1>
 
-                        </div>
+                    <button class="botaoCima"><?xml version="1.0" encoding="utf-8"?>
+                        <svg class="iconeCima" width="100%" height="100%" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                          <path d="M10,20h4a2,2,0,0,1-4,0Zm8-4V10a6,6,0,0,0-5-5.91V3a1,1,0,0,0-2,0V4.09A6,6,0,0,0,6,10v6L4,18H20Z"/>
+                        </svg>
+                        </button>
+                </section>
+        
+                <section class="stories-container">
+                    <div class="stories-track">
+                        <!-- Colocar a classe 'imgStorys' nas imagens das pessoas que vão aparecer por cima das bolinhas -->
+                        <button class="storys"><img src="https://static.significados.com.br/foto/pessoa-og.jpg?class=ogImageRectangle" alt="" class="imgStorys"></button>
+                        <button class="storys"></button>
+                        <button class="storys"></button>
+                        <button class="storys"></button>
+                        <button class="storys"></button>
+                        <button class="storys"></button>
+                        <button class="storys"></button>
+                        <button class="storys"></button>
+                        <button class="storys"></button>
+                        <button class="storys"></button>
+                        <button class="storys"></button>
+                        <button class="storys"></button>
+                        <button class="storys"></button>
+                        <button class="storys"></button>
+                        <button class="storys"></button>
+                        <button class="storys"></button>
+                        <button class="storys"></button>
+                        <button class="storys"></button>
                     </div>
-                </div>
+                </section>
+
+
+                <article class="centralize">
+                    <div class="feed">
+                        <div class="post">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT65O7ZeXAIWS5dlANj__IbLdbkQrTTQj2AOQ&s" alt="Imagem fofa da pessoa que postou" class="imgPessoa">
+                            
+                            <h3><b>Joana_silva</b></h3>
+    
+                            <img src="https://i.pinimg.com/originals/47/14/4b/47144be735f48cdf694b9b0a724272e9.png" alt="Publicação linda da pessoa" class="imgPublicacao">
+                            
+                            <div class="botoes">
+                                <button class="botoesPublicacao"></button>
+                                <button class="botoesPublicacao"></button>
+                                <button class="botoesPublicacao"></button>
+                                <h4><strong>Joana_silva</strong> Que vista linda</h4>
+                                <a href="" class="verComentarios">Ver comentários</a> 
+                            </div>
+                        </div>
+
+                        <div class="post">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT65O7ZeXAIWS5dlANj__IbLdbkQrTTQj2AOQ&s" alt="Imagem fofa da pessoa que postou" class="imgPessoa">
+                            
+                            <h3><b>Joana_silva</b></h3>
+    
+                            <img src="https://i.pinimg.com/originals/47/14/4b/47144be735f48cdf694b9b0a724272e9.png" alt="Publicação linda da pessoa" class="imgPublicacao">
+                            
+                            <div class="botoes">
+                                <button class="botoesPublicacao"></button>
+                                <button class="botoesPublicacao"></button>
+                                <button class="botoesPublicacao"></button>
+                                <h4><strong>Joana_silva</strong> Que vista linda</h4>
+                                <a href="" class="verComentarios">Ver comentários</a>
+                            </div>
+                        </div>
+                        <div class="post">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT65O7ZeXAIWS5dlANj__IbLdbkQrTTQj2AOQ&s" alt="Imagem fofa da pessoa que postou" class="imgPessoa">
+                            
+                            <h3><b>Joana_silva</b></h3>
+    
+                            <img src="https://images.ecycle.com.br/wp-content/uploads/2021/05/20195924/o-que-e-paisagem.jpg.webp" alt="Publicação linda da pessoa" class="imgPublicacao">
+                            
+                            <div class="botoes">
+                                <button class="botoesPublicacao"></button>
+                                <button class="botoesPublicacao"></button>
+                                <button class="botoesPublicacao"></button>
+                                <h4><strong>Joana_silva</strong> Que vista linda</h4>
+                                <a href="" class="verComentarios">Ver comentários</a>
+                            </div>
+                        </div>
+
+                        <div class="post">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT65O7ZeXAIWS5dlANj__IbLdbkQrTTQj2AOQ&s" alt="Imagem fofa da pessoa que postou" class="imgPessoa">
+                            
+                            <h3><b>Joana_silva</b></h3>
+    
+                            <img src="https://images.ecycle.com.br/wp-content/uploads/2021/05/20195924/o-que-e-paisagem.jpg.webp" alt="Publicação linda da pessoa" class="imgPublicacao">
+                            
+                            <div class="botoes">
+                                <button class="botoesPublicacao"></button>
+                                <button class="botoesPublicacao"></button>
+                                <button class="botoesPublicacao"></button>
+                                <h4><strong>Joana_silva</strong> Que vista linda</h4>
+                                <a href="" class="verComentarios">Ver comentários</a>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                </article>
+                    
+            </div>
+        </div>
+
+    </main>
+
+    <img src="img/logo.png" alt="" class="logo"> 
+
+    </section>
+
+
+        <!-- FUTURAS IMPLEMENTAÇÕES -->
+        <!-- Modal -->
+        <form action="/postPost/<%= id_user %>" method="post" enctype="multipart/form-data">
+            <div>
+                <img src="" alt="post_image.png">
+                <input type="file" name="new_post_image" accept="image/*">
             </div>
 
+            <div>
+                <label for="new_post_description"></label>
+                <input id="new_post_description" name="new_post_description" type="text">
+            </div>
+            <button type="submit">feed</button>
+            <button type="submit">story</button>
+        </form>
 
+</body>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-        </main>
-
-        <footer>
-            <button>Botão de ir pra pag inicial</button>
-            <button>Botão de ir pra tela de pesquisar</button>
-            <button>Botão de abrir os chats</button>
-            <button>Botão de abrir perfil</button>
-        </footer>
-
-
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-            crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-            crossorigin="anonymous"></script>
-    </body>
 </html>

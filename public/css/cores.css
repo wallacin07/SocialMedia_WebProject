@@ -1,5 +1,7 @@
+
 :root {
     --PurpleDark: #6f2dbd;
+    --PurpleDarkHover: #4f0c9b;
     --PurpleMid: #a663cc;
     --PurpleLight: #b298dc;
     --BlueDark: #b8d0eb;
@@ -12,6 +14,7 @@
 
 .dark {
     --PurpleDark: #2e1350;
+    --PurpleDarkHover: #1a0731;
     --PurpleMid: #481f5f;
     --PurpleLight: #452874;
     --BlueDark: #275589;

@@ -161,6 +161,16 @@ input[type="file"] {
   margin-right: 20px;
 }
 
+.imgPublicar {
+  max-width: 625px;
+  width: 90%;
+  max-height: 700px;
+  height: 90%;
+  border-radius: 10px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
 .imgPublicacao {
   display: block;
   max-width: 600px;
@@ -183,10 +193,6 @@ input[type="file"] {
   border: none;
   background-color: var(--PurpleLight);
   cursor: pointer;
-}
-
-.botaoPost {
-  color: var(--textColor);
 }
 
 .verComentarios {
@@ -263,6 +269,11 @@ input[type="file"] {
   overflow: hidden;
 }
 .botaoFechar {
+  position: fixed;
+  display: block;
+  top: 0;
+  left: 0;
+  margin: 10px;
   height: 30px;
   border-radius: 50%;
   border: none;
@@ -281,11 +292,5 @@ input[type="file"] {
   color: var(--white);
 }
 
-#imgPublicar {
-  position: relative;
-  left: 50%;
-  margin-top: 180px;
-  margin-bottom: -100px;
-  transform: translate(-50%, -50%);
-}
+
 

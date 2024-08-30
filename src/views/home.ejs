@@ -108,6 +108,7 @@
 
                 <article class="centralize">
                     <div class="feed">
+                        <!-- Post -->
                         <div class="post">
                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT65O7ZeXAIWS5dlANj__IbLdbkQrTTQj2AOQ&s" alt="Imagem fofa da pessoa que postou" class="imgPessoa">
                             
@@ -144,6 +145,7 @@
                                 <a href="" class="verComentarios">Ver comentários</a>
                             </div>
                         </div>
+                        <!-- Fim do post -->
 
                     </div>
                     
@@ -159,7 +161,7 @@
     </section>
 
     <!-- Modal -->
-    <section class="modal" id="modal">
+    <section class="modal centralize" id="modal">
         <button class="botaoFechar" id="botaoFechar">
             <svg class="fechar" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path d="M20.7457 3.32851C20.3552 2.93798 19.722 2.93798 19.3315 3.32851L12.0371 10.6229L4.74275 3.32851C4.35223 2.93798 3.71906 2.93798 3.32854 3.32851C2.93801 3.71903 2.93801 4.3522 3.32854 4.74272L10.6229 12.0371L3.32856 19.3314C2.93803 19.722 2.93803 20.3551 3.32856 20.7457C3.71908 21.1362 4.35225 21.1362 4.74277 20.7457L12.0371 13.4513L19.3315 20.7457C19.722 21.1362 20.3552 21.1362 20.7457 20.7457C21.1362 20.3551 21.1362 19.722 20.7457 19.3315L13.4513 12.0371L20.7457 4.74272C21.1362 4.3522 21.1362 3.71903 20.7457 3.32851Z" fill="currentColor"/>
@@ -168,7 +170,8 @@
         <div class="centralize">
             <form action="/postPost/<%= id_user %>"  method="post" enctype="multipart/form-data">
                 <div>
-                    <img class="imgPublicacao" id="imgPublicar" src="https://files.tecnoblog.net/wp-content/uploads/2022/09/stable-diffusion-imagem.jpg" alt="post_image.png">
+                    <img class="imgPublicar" id="imgPublicar" src="/img/img_kangoroo/photo.png" alt="post_image.png">
+                    
                     <input type="file" name="new_post_image" id="inputPublicar" accept="image/*" onchange="publicar()">
                 </div>
         

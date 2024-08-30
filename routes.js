@@ -12,6 +12,6 @@ route.post('/login', login.login);
 
 route.get('/getHome', home.getHome);
 
-
+route.get('/pagRegister', register.PagRegisterGet)
 route.post('/registerUser', multer(config).single('foto') ,register.registerUser)
 module.exports = route;

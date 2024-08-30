@@ -14,6 +14,21 @@
         <div>
             <form action="/registerUser" method="post" enctype="multipart/form-data">
 
+
+                <% if (errorEmail || '')  { %>
+                    <script>
+                        alert('<%= errorEmail %>');
+                    </script>
+                <% } %>
+
+
+                <% if (errorName || '') { %>
+                    <script>
+                        alert('<%= errorName %>');
+                    </script>
+                <% } %>
+
+
                 <h1><b>Kangoroo</b></h1>
     
                 <div class="div-image d-flex justify-content-center mb-3">

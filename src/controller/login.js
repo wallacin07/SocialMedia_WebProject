@@ -3,7 +3,7 @@ const user = require('../model/user')
 
 
 module.exports = {
-    async PagInitGet(req, res){
+    async pagInitGet(req, res){
     res.render('../views/index');
     },
 
@@ -14,6 +14,8 @@ module.exports = {
         try{
             const id_user = await user.findOne(
                 {
+                    raw: true,
+                    attributes: ['idUser'],
                     where: {
                         [Sequelize.Op.and]: [
                             { name: name },
@@ -29,8 +31,8 @@ module.exports = {
             }
             else{
                 console.log('achou');
-                console.log(id_user.idUser);
-                res.redirect('/getHome/' + id_user);
+                console.log(id_user);
+                res.redirect('/getHome/' + id_user.idUser);
             }
 
         }

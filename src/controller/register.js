@@ -2,7 +2,7 @@ const user = require('../model/user')
 
 
 module.exports = {
-    async PagRegisterGet(req, res){
+    async pagInitGet(req, res){
         res.render('../views/register');
     },
 

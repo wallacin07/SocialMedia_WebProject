@@ -18,8 +18,6 @@ module.exports =
             where: {idUser: id_user}
         })
 
-        console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-
         res.render('../views/profile', {users,posts, id_user})
     }
 

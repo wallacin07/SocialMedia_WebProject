@@ -23,7 +23,14 @@
 
 29/08/2024
 
-- Post Cadastro.
-- Post Login.
-- Get home.
-- Post de Publicação.
+- Finalização Post Cadastro.
+- Finalização Post Login.
+- Finalização Get home.
+- Inicio Post de Publicação.
+
+
+30/08/2024
+
+- Pagina Admin com suas respectivas permissões
+- Criação do Layout da pagina de perfil
+- Estilização das paginas

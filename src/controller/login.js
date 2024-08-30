@@ -32,7 +32,7 @@ module.exports = {
             else{
                 console.log('achou');
                 console.log(id_user);
-                res.redirect('/getHome/' + id_user.idUser);
+                res.redirect('/profilePag/' + id_user.idUser);
             }
 
         }

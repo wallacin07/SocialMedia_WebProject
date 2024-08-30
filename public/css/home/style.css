@@ -7,6 +7,23 @@ body {
   font-style: normal;
 }
 
+body::-webkit-scrollbar {
+  width: 12px;
+}
+body::-webkit-scrollbar-track {
+  background-color: var(--PurpleLight);
+  box-shadow: inset 0px 0px 2px 1px var(--textColor);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--PurpleMid);
+  box-shadow: inset 0px 0px 2px 3px var(--shadow);
+  border-radius: 5px;
+}
+body::-webkit-scrollbar-thumb:hover {
+  box-shadow: inset 0px 0px 2px 4px var(--shadow);
+}
+
 h1 {
   margin-block-start: 0.3em;
   margin-block-end: 0.3em;
@@ -20,14 +37,16 @@ h4 {
 }
 
 nav {
-  /* position: fixed; */
-  float: left;
-  max-width: 300px;
+  max-width: 220px;
   width: 90%;
   background-color: var(--BlueDark);
   padding: 8px;
   border-radius: 10px;
   max-height: 300px;
+}
+
+input[type="file"] {
+  display: none;
 }
 
 .centralize {
@@ -42,6 +61,9 @@ nav {
   width: 90%;
   padding: 10px;
   border-radius: 10px;
+  min-width: 900px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .header {
@@ -61,6 +83,8 @@ nav {
 
 .iconeCima {
   color: var(--textColor);
+  max-width: 40px;
+  width: 90%;
 }
 
 .stories-container {
@@ -161,6 +185,10 @@ nav {
   cursor: pointer;
 }
 
+.botaoPost {
+  color: var(--textColor);
+}
+
 .verComentarios {
   text-decoration: none;
   color: var(--textGrey);
@@ -171,21 +199,93 @@ nav {
   max-width: 55px;
   width: 90%;
   margin-right: 1.5rem;
+  min-width: 55px;
 }
 
 .aNav {
   display: flex;
   text-decoration: none;
+  color: var(--textColor);
 }
 
 .logo {
   max-width: 300px;
   width: 90%;
-  float: right;
   max-height: 300px;
 }
 
 .topo {
   display: flex;
   justify-content: space-between;
+  padding: 10px;
 }
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--PurpleLight);
+  max-width: 700px;
+  width: 90%;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0px 0px 1000px 1000px var(--shadow), 0px 0px 10px 10px var(--shadow);
+  padding: 10px;
+}
+
+.botaoModal {
+  max-width: 100px;
+  width: 90%;
+  height: 30px;
+  border: none;
+  border-radius: 10px;
+  margin-top: 20px;
+  color: var(--white);
+  font-size: 18px;
+  background-color: var(--PurpleDark);
+  cursor: pointer;
+}
+
+.botaoModal:hover {
+  background-color: var(--PurpleDarkHover); 
+}
+
+.inputDescricao {
+  border-radius: 5px;
+  height: 25px;
+  max-width: 600px;
+  width: 90%;
+  resize: none;
+  font-size: 20px;
+  /* box-sizing: border-box; */
+  overflow: hidden;
+}
+.botaoFechar {
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--PurpleDark);
+  cursor: pointer;
+}
+
+.botaoFechar:hover {
+  background-color: var(--PurpleDarkHover);
+}
+
+.fechar {
+  display: flex;
+  max-width: 20px;
+  width: 90%;
+  color: var(--white);
+}
+
+#imgPublicar {
+  position: relative;
+  left: 50%;
+  margin-top: 180px;
+  margin-bottom: -100px;
+  transform: translate(-50%, -50%);
+}
+

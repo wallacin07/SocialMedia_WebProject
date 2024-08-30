@@ -13,6 +13,23 @@
 </head>
 <body>
     <main>
+
+
+        <% if (errorEmail || '')  { %>
+            <script>
+                alert('<%= errorEmail %>');
+            </script>
+        <% } %>
+
+
+        <% if (errorName || '') { %>
+            <script>
+                alert('<%= errorName %>');
+            </script>
+        <% } %>
+
+
+
         <img src="/img/logo.png" alt="Logo" id="logo">
 
         <section class="rect">
@@ -20,6 +37,7 @@
 
             <form action="/registerUser" method="post" enctype="multipart/form-data">
 
+                <h1><b>Kangoroo</b></h1>
     
                 <div class="centralize">
                     <label for="imagem">

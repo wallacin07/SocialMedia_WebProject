@@ -1,32 +1,65 @@
+const {where,Op} = require('sequelize');
 const user = require('../model/user')
 
 
 module.exports = {
-    async pagInitGet(req, res){
-        res.render('../views/register');
+    async PagRegisterGet(req, res){
+    res.render('../views/register', {errorName : '',errorEmail : ''});
     },
 
     async registerUser(req,res)
     {
         const dados = req.body;
-        let foto = 'profile.svg';
-        // Verificando se foi enviada alguma foto
-        if (req.file) {
-        // Pegar novo nome da foto
-            foto = req.file.filename;
+
+        const usersEmail= await user.findAll({
+            raw: true,
+            attributes: ['idUser','name','password', 'birthDate','description','email','profilePhoto','admin','active'],
+            where: {email: dados.email}
+
+        })
+
+
+        const usersName= await user.findAll({
+            raw: true,
+            attributes: ['idUser','name','password', 'birthDate','description','email','profilePhoto','admin','active'],
+            where: {name: dados.name}
+
+        })
+
+        if (usersEmail.length === 0) {
+
+            if (usersName.length === 0) {
+                let foto = 'profile.svg';
+                // Verificando se foi enviada alguma foto
+                if (req.file) {
+                // Pegar novo nome da foto
+                    foto = req.file.filename;
+                }
+        
+                await user.create({
+                    name: dados.name,
+                    password: dados.password,
+                    birthDate: dados.birth,
+                    description: dados.bio,
+                    email: dados.email,
+                    profilePhoto: foto,
+                    admin: true,
+                    active: true
+                });
+                res.redirect('/')
+            }
+            else
+            {
+                const erroNome = "Já existe alguém com o mesmo Nome, tente novamente"
+                res.render('../views/register',  {errorName : erroNome, errorEmail : ''})
+            }
+        }
+        else
+        {
+            const erroEmail = "Já existe alguém com o mesmo email, tente novamente"
+            res.render('../views/register', {errorEmail : erroEmail, errorName :''})
         }
 
-        await user.create({
-            name: dados.name,
-            password: dados.password,
-            birthDate: dados.birth,
-            description: dados.bio,
-            email: dados.email,
-            profilePhoto: foto,
-            admin: false,
-            active: true
-        });
-        res.redirect('/')
     }
 
 

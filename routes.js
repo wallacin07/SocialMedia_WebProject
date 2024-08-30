@@ -20,7 +20,7 @@ route.get('/getHome/:id_user', home.getHome);
 
 const register = require('./src/controller/register');
 const profileConfig = require('./src/config/profileMulter');
-route.get('/loadRegister', register.pagInitGet)
+route.get('/loadRegister', register.PagRegisterGet)
 route.post('/registerUser', multer(profileConfig).single('foto') ,register.registerUser);
 
 

@@ -30,4 +30,12 @@ const profile = require('./src/controller/profile');
 route.post('/postPost/:id_user', multer(postConfig).single('new_post_image'), post.postPost)
 
 route.get('/profilePag/:id', profile.PagProfileGet);
+
+const chats = require('./src/controller/chats')
+route.get('/chats/:id', chats.ChatsPageGet);
+route.get('/chats/:id/:idChat', chats.UserchatGet)
+route.get('/chats/:id/:idChat/get', chats.UserchatQuery)
+
+route.post('/chats/:id/:idChat', chats.UserchatPost);
+
 module.exports = route;

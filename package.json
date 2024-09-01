@@ -4,20 +4,24 @@
   "description": "Final Web project made in Html, css, js, Bootstrap, Node.js, Express.js and SQLServer, all in the MVC (Model–view–controller) design pattern.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",   
-     "start": "nodemon server.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/sequelize": "^4.28.20",
     "ejs": "^3.1.10",
     "express": "^4.19.2",
+    "express-async-errors": "^3.1.1",
     "mssql": "^11.0.1",
     "multer": "^1.4.5-lts.1",
     "mysql": "^2.18.1",
+    "mysql2": "^3.11.0",
     "nodemon": "^3.1.4",
     "sequelize": "^6.37.3",
-    "socialmedia_webproject": "file:"
+    "socialmedia_webproject": "file:",
+    "ws": "^8.18.0"
   }
 }

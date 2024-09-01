@@ -2,16 +2,16 @@ const sequelize = require('sequelize');
 
 const database = new sequelize (
 
-    'Kangoroo',         //DATABASE
-    'Admin',            //USER
-    'admin',         //PASSWORDD
+    'kangoroo',         //DATABASE
+    'root',            //USER
+    '123321',         //PASSWORDD
 
     {
     host: 'localhost',
-    port: 1433,
+    port: 3306,
     // port: 56604,
     // port: 54317,
-    dialect: 'mssql' 
+    dialect: 'mysql' 
     }
 );
 

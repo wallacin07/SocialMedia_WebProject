@@ -1,7 +1,6 @@
 const user = require('../model/user');
 const comment = require('../model/comment');
 const post = require('../model/post');
-const follow = require('../model/follow');
 const reaction = require('../model/reaction');
 
 module.exports = {
@@ -21,10 +20,6 @@ module.exports = {
         const posts = await post.findAll({
             raw: true,
             attributes: ['idPost','description','img', 'hashtag','postDate', 'idUser']
-        })
-        const follows = await follow.findAll({
-            raw: true,
-            attributes: ['idFollower','idFollowed','active']
         })
         const reactions = await reaction.findAll({
             raw: true,

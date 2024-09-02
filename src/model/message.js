@@ -19,8 +19,8 @@ const Message = database.define('Message', {
             model: Chat,
             key: 'idChat'
         },
-        onUpdate: "CASCADE",
-        onDelete: "CASCADE"
+        // onUpdate: "CASCADE",
+        // onDelete: "CASCADE"
     },
     message: {
         type: Sequelize.TEXT,
@@ -37,8 +37,8 @@ const Message = database.define('Message', {
             model: User,
             key: 'idUser'
         },
-        onUpdate: "CASCADE",
-        onDelete: "CASCADE"
+        // onUpdate: "CASCADE",
+        // onDelete: "CASCADE"
     }
 })
 

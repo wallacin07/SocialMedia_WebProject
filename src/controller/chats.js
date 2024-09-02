@@ -1,6 +1,7 @@
 const { Op } = require("sequelize");
 const Chat = require("../model/chat");
 const Message = require("../model/message");
+const User = require('../model/user');
 
 //Envia a pagina EJS com todos os chats de um usuario
 const ChatsPageGet = async (req, res) => {
@@ -17,15 +18,53 @@ const ChatsPageGet = async (req, res) => {
                     idUserB: id
                 }
             ]
-        }
+        },
+        include: [
+            {
+                model: User,
+                as: 'UserA',
+                attributes: ['idUser', 'name', 'profilePhoto'] // Obtendo o nome do usuário A
+            },
+            {
+                model: User,
+                as: 'UserB',
+                attributes: ['idUser', 'name', 'profilePhoto'] // Obtendo o nome do usuário B
+            }
+        ]
     });
 
-    res.render('../views/chats.ejs', { id, chats});
+    res.render('../views/chats.ejs', { id, chats });
 }
 
 //Envia a pagina EJS de um chat especifo
 const UserchatGet = async (req, res) => {
     const { id, idChat } = req.params;
+
+    const chats = await Chat.findAll({
+        where: {
+            // or fofo pra ver quais chats tem, independente da ordem dos ids
+            [Op.or]: [
+                {
+                    idUserA: id
+                },
+                {
+                    idUserB: id
+                }
+            ]
+        },
+        include: [
+            {
+                model: User,
+                as: 'UserA',
+                attributes: ['idUser', 'name', 'profilePhoto'] // Obtendo o nome do usuário A
+            },
+            {
+                model: User,
+                as: 'UserB',
+                attributes: ['idUser', 'name', 'profilePhoto'] // Obtendo o nome do usuário B
+            }
+        ]
+    });
 
     res.render('../views/userChat.ejs', {id, idChat })
 }

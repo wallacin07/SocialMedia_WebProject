@@ -17,8 +17,8 @@ const Chat = database.define('Chat', {
             model: User,
             key: "idUser"
         },
-        onUpdate: "CASCADE",
-        onDelete: "CASCADE"
+        // onUpdate: "CASCADE",
+        // onDelete: "CASCADE"
     },
     idUserB: {
         type: Sequelize.INTEGER,
@@ -27,10 +27,14 @@ const Chat = database.define('Chat', {
             model: User,
             key: "idUser"
         },
-        onUpdate: "CASCADE",
-        onDelete: "CASCADE"
+        // onUpdate: "CASCADE",
+        // onDelete: "CASCADE"
     }
-})
+});
+
+// Definindo as associações
+Chat.belongsTo(User, { as: 'UserA', foreignKey: 'idUserA' });
+Chat.belongsTo(User, { as: 'UserB', foreignKey: 'idUserB' });
 
 
 module.exports = Chat

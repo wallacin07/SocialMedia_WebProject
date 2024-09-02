@@ -1,3 +1,5 @@
+
+
 body {
     background-color: var(--PurpleDark);
     padding: 10px;
@@ -100,7 +102,40 @@ input[type="file"] {
     padding: 10px;
 }
 
-.chatList {
+.send {
+    padding: 0;
+    max-width: 25px;
+    width: 90%;
+    color: var(--white);
+}
+
+.inputDescricao {
+    border-radius: 5px;
+    height: 25px;
+    max-width: 600px;
+    width: 90%;
+    resize: none;
+    font-size: 20px;
+    /* box-sizing: border-box; */
+    overflow: hidden;
+}
+
+.formComentario {
+    display: flex;
+    align-items: center;
+    max-width: 800px;
+    width: 90%;
+    z-index: 20;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    gap: 5px;
+}
+
+.chat {
     background-color: var(--BlueDark);
     max-width: 1000px;
     width: 90%;
@@ -111,9 +146,8 @@ input[type="file"] {
     margin-right: 10px;
 }
 
-.chatBox {
+.mensagens {
     background-color: var(--PurpleLight);
-    display: flex;
     border-radius: 10px;
     max-width: 1000px;
     min-width: 600px;
@@ -122,14 +156,18 @@ input[type="file"] {
     text-align: left;
     text-decoration: none;
     color: var(--textColor);
+    gap: 20px;
+    /* hyphens: auto;
+    word-break: break-all; */
+    word-wrap: break-word;
 }
 
-.chatBox h3 {
+.mensagens h3 {
     overflow-wrap: break-word;
     max-width: 80%;
 }
 
-.chatList > .centralize {
+.chat > .centralize {
     position: relative;
     max-height: 80vh;
     overflow: auto;
@@ -138,16 +176,48 @@ input[type="file"] {
     justify-content: flex-start;
     gap: 10px;
     overflow-x: hidden;
+    display: flex;
 }
 
-.chatList > .centralize::-webkit-scrollbar {
+.chat > .centralize::-webkit-scrollbar {
     width: 8px;
 }
 
-.chatList > .centralize::-webkit-scrollbar-thumb {
+.chat > .centralize::-webkit-scrollbar-thumb {
     background-color: var(--PurpleDark);
     border-radius: 10px;
 }
-.chatList > .centralize::-webkit-scrollbar-thumb:hover {
+.chat > .centralize::-webkit-scrollbar-thumb:hover {
     background-color: var(--PurpleDarkHover);
+}
+
+.botao{
+    float: right;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    border: none;
+    background-color: var(--PurpleDark);
+    z-index: 20;
+    cursor: pointer;
+}
+
+.botao:hover {
+    background-color: var(--PurpleDarkHover);
+}
+
+.mensagens .owner {
+    background-color: var(--PurpleMid);
+    border-radius: 10px;
+    max-width: 50%;
+    margin-bottom: 5px;
+    align-self: flex-end;
+    text-align: end;
+
+}
+
+.mensagens .recipient {
+    background-color: var(--PurpleLight);
+    align-self: flex-start;
+    text-align: start;
+    max-width: 45%;
 }

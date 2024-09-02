@@ -29,5 +29,6 @@ const postConfig = require('./src/config/postMulter');
 const profile = require('./src/controller/profile');
 route.post('/postPost/:id_user', multer(postConfig).single('new_post_image'), post.postPost)
 
-route.get('/profilePag/:id', profile.PagProfileGet);
+route.get('/profilePag/:id_user', profile.PagProfileGet);
+route.post('/update/:id_user',multer(profileConfig).single('foto'), profile.updateProfile);
 module.exports = route;

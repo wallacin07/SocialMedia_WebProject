@@ -6,7 +6,8 @@ const reaction = require('../model/reaction');
 module.exports = {
 
     async getHome(req, res){
-
+        const dados = req.body
+        
         const id_user = req.params.id_user;
 
         const users = await user.findAll({

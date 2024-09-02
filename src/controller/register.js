@@ -17,7 +17,8 @@ module.exports = {
             where: {email: dados.email}
 
         })
-
+        console.log(dados);
+        
 
         const usersName= await user.findAll({
             raw: true,

@@ -17,7 +17,7 @@ const post = database.define('post',
             allowNull: true
         },
         img: {
-            type: Sequelize.DATE,
+            type: Sequelize.STRING(128),
             allowNull: true
         },
         hashtag: {

@@ -48,7 +48,6 @@ const user = database.define('user',
         }
     },{ 
         
-        // Define os hooks para executar código após a sincronização do modelo
         hooks: {
             afterSync: async (options) => {
                 try {

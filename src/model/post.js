@@ -17,14 +17,15 @@ const post = database.define('post',
             allowNull: true
         },
         img: {
-            type: Sequelize.DATE,
+            type: Sequelize.STRING(100),
             allowNull: true
         }
     });
 
 post.belongsTo(user, {
     constraint: true, //Garantir integridade referencial
-    foreignKey: 'idUser'
+    foreignKey: 'idUser',
+    as: 'user'
 });
 
 module.exports = post;

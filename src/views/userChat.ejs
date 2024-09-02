@@ -58,13 +58,25 @@
             </a>
         </nav>
 
+        
         <main class="centralize">
             <div class="chat">
+                <div class="nomeImg">
+                    <% if (id == chat.UserA.idUser) { %>
+                        <img src="/profile_pictures/<%= chat.UserB.profilePhoto %>" alt="<%= chat.UserB.name %>" class="imgPessoa">
+                        <h3><%= chat.UserB.name %></h3>
+                        <% } else { %>
+                            <img src="/profile_pictures/<%= chat.UserA.profilePhoto %>" alt="<%= chat.UserA.name %>" class="imgPessoa">
+                            <h3><%= chat.UserA.name %></h3>
+                            <% } %>
+                        </div>
+                        
                 <div class="centralize">
                     <div class="mensagens" id="messageBox">
                         <!--Aqui serao mostradas as mensagens, nao mexer-->
                     </div>
                 </div>
+                
                 <form method="post" class="formMensagem centralize">
                     <textarea name="message" id="inputComentario" class="inputDescricao"></textarea>
                     <button type="submit" class="botao">
@@ -73,6 +85,7 @@
                         </svg>
                     </button>
                 </form>
+
             </div>
 
         </main>

@@ -26,6 +26,7 @@ const Follow = database.define('follow', {
     }
 });
 
+
 // Definição dos relacionamentos
 user.belongsToMany(user, {
     as: 'follower',

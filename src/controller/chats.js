@@ -23,15 +23,17 @@ const ChatsPageGet = async (req, res) => {
             {
                 model: User,
                 as: 'UserA',
-                attributes: ['idUser', 'name', 'profilePhoto'] // Obtendo o nome do usuário A
+                attributes: ['idUser', 'name', 'profilePhoto', 'birthDate']
             },
             {
                 model: User,
                 as: 'UserB',
-                attributes: ['idUser', 'name', 'profilePhoto'] // Obtendo o nome do usuário B
+                attributes: ['idUser', 'name', 'profilePhoto', 'birthDate']
             }
         ]
     });
+
+    
 
     res.render('../views/chats.ejs', { id, chats });
 }
@@ -40,34 +42,44 @@ const ChatsPageGet = async (req, res) => {
 const UserchatGet = async (req, res) => {
     const { id, idChat } = req.params;
 
-    const chats = await Chat.findAll({
+    // Encontre o chat específico com base no idChat
+    const chat = await Chat.findOne({
         where: {
-            // or fofo pra ver quais chats tem, independente da ordem dos ids
+            idChat: idChat, // Busca pelo id do chat específico
             [Op.or]: [
-                {
-                    idUserA: id
-                },
-                {
-                    idUserB: id
-                }
+                { idUserA: id },
+                { idUserB: id }
             ]
         },
         include: [
             {
                 model: User,
                 as: 'UserA',
-                attributes: ['idUser', 'name', 'profilePhoto'] // Obtendo o nome do usuário A
+                attributes: ['idUser', 'name', 'profilePhoto', 'birthDate']
             },
             {
                 model: User,
                 as: 'UserB',
-                attributes: ['idUser', 'name', 'profilePhoto'] // Obtendo o nome do usuário B
+                attributes: ['idUser', 'name', 'profilePhoto', 'birthDate']
             }
         ]
     });
 
-    res.render('../views/userChat.ejs', {id, idChat })
-}
+    // Verificação de existência do chat
+    if (!chat) {
+        return res.status(404).send('Chat não encontrado');
+    }
+
+    // Log para verificar se o chat está sendo recuperado corretamente
+    console.log(JSON.stringify(chat, null, 2));
+
+    // Passa o chat específico para a view
+    res.render('../views/userChat.ejs', { id, chat });
+};
+
+
+
+
 
 //Envia em formato json as mensagens de um chat especifico
 const UserchatQuery = async (req, res) => {
@@ -94,8 +106,31 @@ const UserchatPost = async (req, res) => {
         idSender: id
     });
 
+    // Reencontra o chat após adicionar a mensagem
+    const chat = await Chat.findOne({
+        where: {
+            idChat: idChat,
+            [Op.or]: [
+                { idUserA: id },
+                { idUserB: id }
+            ]
+        },
+        include: [
+            {
+                model: User,
+                as: 'UserA',
+                attributes: ['idUser', 'name', 'profilePhoto', 'birthDate']
+            },
+            {
+                model: User,
+                as: 'UserB',
+                attributes: ['idUser', 'name', 'profilePhoto', 'birthDate']
+            }
+        ]
+    });
 
-    res.render('../views/userChat.ejs', {id, idChat })
+
+    res.render('../views/userChat.ejs', { id, idChat, chat })
 }
 
 module.exports = { ChatsPageGet, UserchatGet, UserchatQuery, UserchatPost }

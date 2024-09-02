@@ -31,4 +31,12 @@ route.post('/postPost/:id_user', multer(postConfig).single('new_post_image'), po
 
 route.get('/profilePag/:id_user', profile.PagProfileGet);
 route.post('/update/:id_user',multer(profileConfig).single('foto'), profile.updateProfile);
+
+const chats = require('./src/controller/chats')
+route.get('/chats/:id', chats.ChatsPageGet);
+route.get('/chats/:id/:idChat', chats.UserchatGet)
+route.get('/chats/:id/:idChat/get', chats.UserchatQuery)
+
+route.post('/chats/:id/:idChat', chats.UserchatPost);
+
 module.exports = route;

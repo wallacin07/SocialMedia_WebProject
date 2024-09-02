@@ -1,9 +1,9 @@
 let image = document.getElementById('imgPublicar');
 let file = document.getElementById('inputPublicar');
-image.addEventListener('click', () => 
-    {
-        file.click()
-    })
+
+image.addEventListener('click', () => {
+    file.click()
+})
 
 file.addEventListener('change', () => 
     {
@@ -21,11 +21,13 @@ file.addEventListener('change', () =>
     })
 
 // Função pra ver o tamanho da descrição do post, não mexa!!
-const textarea = document.getElementById('new_post_description');
+const textareas = document.querySelectorAll('.inputDescricao');
 
-textarea.addEventListener('input', function() {
-    this.style.height = 'auto'; // Reseta a altura para que o scrollHeight possa ser calculado corretamente
-    this.style.height = this.scrollHeight + 'px'; // Define a altura baseada no scrollHeight
+textareas.forEach(textarea => {
+    textarea.addEventListener('input', function() {
+        this.style.height = 'auto'; // Reseta a altura para que o scrollHeight possa ser calculado corretamente
+        this.style.height = this.scrollHeight + 'px'; // Define a altura baseada no scrollHeight
+    });
 });
 
 
@@ -40,4 +42,20 @@ botaoFechar.addEventListener('click', () => {
 
 botaoAbrirPublicar.addEventListener('click', () => {
     modal.style.display = `flex`;
+});
+
+
+const modalComentarios = document.getElementById('modalComentarios');
+const botaoFecharComentarios = document.getElementById('botaoFecharComentarios');
+const botoesAbrir = document.querySelectorAll(".abrirComentarios");
+
+botoesAbrir.forEach(botao => {
+    botao.addEventListener("click", (e) => {
+        e.preventDefault();
+        modalComentarios.style.display = 'flex';
+    });
+})
+
+botaoFecharComentarios.addEventListener('click', () => {
+    modalComentarios.style.display = `none`;
 });

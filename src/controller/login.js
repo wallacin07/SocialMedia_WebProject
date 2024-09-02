@@ -26,13 +26,9 @@ module.exports = {
             );
                 
             if(user.length == 0){
-                console.log('nao achou');
-                console.log(user.idUser);
                 redirect('/');
             }
             else{
-                console.log('achou');
-
                 if(user.admin)
                     res.redirect('/getAdmScreen');
                 else

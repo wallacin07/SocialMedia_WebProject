@@ -28,7 +28,7 @@ const follow = database.define('follow', {
 
 // Definição dos relacionamentos
 user.belongsToMany(user, {
-    as: 'follower',
+    as: 'followers',
     through: follow,
     foreignKey: 'idFollower',
     otherKey: 'idFollowed'
@@ -40,5 +40,7 @@ user.belongsToMany(user, {
     foreignKey: 'idFollowed',
     otherKey: 'idFollower'
 });
+
+
 
 module.exports = follow;

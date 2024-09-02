@@ -8,7 +8,7 @@ module.exports = {
 
         const data = req.body;
 
-        let postPicture = 'post.png';
+        let postPicture = '';
         let description = '';
         // Verificando se foi enviada alguma foto
         if (req.file || data.new_post_description){
@@ -17,13 +17,13 @@ module.exports = {
             if(data.new_post_description)
                 description = data.new_post_description
 
+
             await post.create(
                 {
                     idUser: id_user,
                     description: description,
                     img: postPicture
                 }
-
             )
             
 

@@ -13,11 +13,11 @@ const post = database.define('post',
         },
 
         description: {
-            type: Sequelize.STRING(100),
+            type: Sequelize.STRING(1000),
             allowNull: true
         },
         img: {
-            type: Sequelize.STRING(100),
+            type: Sequelize.STRING(1000),
             allowNull: true
         }
     });

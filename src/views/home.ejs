@@ -112,14 +112,17 @@
 
 
 
-                        <% for(let i=0; i<followedPosts.lenght; i++){ %>
-
+                        <% for(let i=0; i<followedPosts.length; i++){ %>
                             <div class="post">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT65O7ZeXAIWS5dlANj__IbLdbkQrTTQj2AOQ&s" alt="Imagem fofa da pessoa que postou" class="imgPessoa">
+                                <img src="/img/profile_pictures/<%= followedPosts[i].user.profilePhoto %>" alt="Imagem fofa da pessoa que postou" class="imgPessoa">
                                 
-                                <h3><b>Joana_silva</b></h3>
-        
-                                <img src="https://i.pinimg.com/originals/47/14/4b/47144be735f48cdf694b9b0a724272e9.png" alt="Publicação linda da pessoa" class="imgPublicacao">
+                                <h3>
+                                    <b>
+                                        <%= followedPosts[i].user.name %>
+                                    </b>
+                                </h3>
+                                
+                                <img src="/img/img_posts/<%= followedPosts[i].img %>" alt="Publicação linda da pessoa" class="imgPublicacao">
                                 
                                 <div class="botoes">
                                     <button class="botoesPublicacao">
@@ -146,13 +149,16 @@
                                             <path d="M10.3009 13.6949L20.102 3.89742M10.5795 14.1355L12.8019 18.5804C13.339 19.6545 13.6075 20.1916 13.9458 20.3356C14.2394 20.4606 14.575 20.4379 14.8492 20.2747C15.1651 20.0866 15.3591 19.5183 15.7472 18.3818L19.9463 6.08434C20.2845 5.09409 20.4535 4.59896 20.3378 4.27142C20.2371 3.98648 20.013 3.76234 19.7281 3.66167C19.4005 3.54595 18.9054 3.71502 17.9151 4.05315L5.61763 8.2523C4.48114 8.64037 3.91289 8.83441 3.72478 9.15032C3.56153 9.42447 3.53891 9.76007 3.66389 10.0536C3.80791 10.3919 4.34498 10.6605 5.41912 11.1975L9.86397 13.42C10.041 13.5085 10.1295 13.5527 10.2061 13.6118C10.2742 13.6643 10.3352 13.7253 10.3876 13.7933C10.4468 13.87 10.491 13.9585 10.5795 14.1355Z" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                                         </svg>
                                     </button>
-                                    <h4><strong>Joana_silva</strong> Que vista linda</h4>
+                                    <h4>
+                                        <strong>
+                                            <%= followedPosts[i].user.name %>
+                                        </strong> 
+                                        <%= followedPosts[i].description %>
+                                    </h4>
                                     <a href="" class="verComentarios">Ver comentários</a>
                                 </div>
                             </div>
-
                         <% } %>
-                    </div>
                         
 
 

@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/profile/style.css">
+    <link rel="stylesheet" href="/css/profile/elements.css">
     <link rel="stylesheet" href="/css/cores.css">
     <title>Kangoroo</title>
 </head>
@@ -89,22 +90,22 @@
                 </section>
         
 
-                <article class="centralize w-100">
+                <article class="centralize w-100 d-flex">
                     <div class="profile w-100">
                         <section class="profile-info w-100">
 
                             <div class="d-flex column w-100">
 
-                                <div class="d-flex row w-100">
+                                <div class="d-flex row w-100 between">
     
-                                    <div class="profile-image">
-                                        <img src="/img/profile_pictures/<%=  users.profilePhoto %>" alt="" class="image">
-                                    </div>
-        
+                                    
                                     
                                     <div class="profile-followers column center d-flex">
                                         <h3>Seguidores</h3>
                                         <h4>70</h4>
+                                    </div>
+                                    <div class="profile-image">
+                                        <img src="/img/profile_pictures/<%=  users.profilePhoto %>" alt="" class="image">
                                     </div>
                                     
                                     <div class="profile-followins column center d-flex">
@@ -127,21 +128,47 @@
                             </div>
 
     
-                                <button type="button" class="btn profile-edit w-100" data-target="#modalProfile-edit" data-toggle="modal" >Editar Perfil</button>
+                                <button type="button" class="btn profile-edit w-100" id="editPerfil" >Editar Perfil</button>
                         </section>
 
-                        <section class="profile-posts">
+                        <section class="profile-posts row d-flex wrap start">
 
                             
               <% for (let i=0; i<posts.length; i++) { %>
                 <div class="profile-post" >
-                    
                     <button type="button" data-target="" data-toggle="" class="btn-open-post">
-                        <img src="" alt="" class="image-post">
+                        <img src="/img/img_posts/<%=  posts.img %>" alt="" class="image-post">
                     </button>
                 </div>
-              <% } %>
+                <% } %>
 
+
+                <div class="profile-post">
+                    <img src="/img/profile_pictures/1724941222869-coronga.png" alt="" srcset="" class="image-post">
+                </div>
+
+                
+                <div class="profile-post">
+                    <img src="/img/profile_pictures/1724941222869-coronga.png" alt="" srcset="" class="image-post">
+                </div>
+
+                
+                <div class="profile-post">
+                    <img src="/img/profile_pictures/1724941222869-coronga.png" alt="" srcset="" class="image-post">
+                </div>
+
+                                
+                <div class="profile-post">
+                    <img src="/img/profile_pictures/1724941222869-coronga.png" alt="" srcset="" class="image-post">
+                </div>
+                                
+                <div class="profile-post">
+                    <img src="/img/profile_pictures/1724941222869-coronga.png" alt="" srcset="" class="image-post">
+                </div>
+                                
+                <div class="profile-post">
+                    <img src="/img/profile_pictures/1724941222869-coronga.png" alt="" srcset="" class="image-post">
+                </div>
 
                         </section>
 
@@ -161,11 +188,60 @@
     </section>
 
 
+    <div id="profile-Modal" class="modal">
+        <div class="modal-content d-flex column">
+            <div class="modal-header d-flex">
+                <span class="close">&times;</span>
+                <h2>Editar Perfil</h2>
+            </div>
+            <div class="modal-body d-flex center">
+                <form action="/" method="post" enctype="multipart/form-data" class="forms-profile d-flex column ">
+        
+                    <div class="center d-flex row">
+                        <label for="imagem">
+                            <img src="/img/profile_pictures/<%= users.profilePhoto %>" alt="Insira sua imagem" id="pessoa" class="img">
+                        </label>
+                        <input type="file" id="imagem" name="foto" onchange="Imagem()" accept="image/*">
+                    </div>
+    
+                    <div class="group row d-flex ">
+                        <label for="name">Nome:</label>
+                        <input type="text" class="input" id="name" name="name" value="<%= users.name  %>" >
+                    </div>
+        
+                    <div class="group  row d-flex ">
+                        <label for="birth">Nascimento:</label>
+                        <input type="date" class="input" id="birth" name="birth" value="<%= users.birthDate%>">
+                    </div>
+                    
+                    <div class="group  row d-flex ">
+                        <label for="bio">Bio:</label>
+                        <input type="text" class="input" id="bio" name="bio" value="<%=users.description%>">
+                    </div>
+    
+                    <div class="group  row d-flex ">
+                        <label for="email">Email:</label>
+                        <input type="email" class="input" id="email" name="email" value="<%=users.email%>">
+                    </div>
+    
+                    <div class="group  row d-flex ">
+                        <label for="password">Senha:</label>
+                        <input type="password" class="input" id="password" name="password" value="<%=users.password%>">
+                    </div>
+    
+                    
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btnEnter">Entrar</button>
+
+            </div>
+        </div>
+    </div>
 
 
 
-
-
+<script src="/scripts/profileScript.js"></script>
 </body>
 
 </html>

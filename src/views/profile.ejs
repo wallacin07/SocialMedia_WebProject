@@ -142,38 +142,7 @@
                 </div>
                 <% } %>
 
-
-                <div class="profile-post">
-                    <img src="/img/profile_pictures/1724941222869-coronga.png" alt="" srcset="" class="image-post">
-                </div>
-
-                
-                <div class="profile-post">
-                    <img src="/img/profile_pictures/1724941222869-coronga.png" alt="" srcset="" class="image-post">
-                </div>
-
-                
-                <div class="profile-post">
-                    <img src="/img/profile_pictures/1724941222869-coronga.png" alt="" srcset="" class="image-post">
-                </div>
-
-                                
-                <div class="profile-post">
-                    <img src="/img/profile_pictures/1724941222869-coronga.png" alt="" srcset="" class="image-post">
-                </div>
-                                
-                <div class="profile-post">
-                    <img src="/img/profile_pictures/1724941222869-coronga.png" alt="" srcset="" class="image-post">
-                </div>
-                                
-                <div class="profile-post">
-                    <img src="/img/profile_pictures/1724941222869-coronga.png" alt="" srcset="" class="image-post">
-                </div>
-
                         </section>
-
-
-
                     </div>
                     
                 </article>
@@ -195,45 +164,36 @@
                 <h2>Editar Perfil</h2>
             </div>
             <div class="modal-body d-flex center">
-                <form action="/" method="post" enctype="multipart/form-data" class="forms-profile d-flex column ">
-        
+                <form action="/update/<%= users.idUser %>" method="post"  enctype="multipart/form-data" class="forms-profile d-flex column " >
                     <div class="center d-flex row">
                         <label for="imagem">
                             <img src="/img/profile_pictures/<%= users.profilePhoto %>" alt="Insira sua imagem" id="pessoa" class="img">
                         </label>
                         <input type="file" id="imagem" name="foto" onchange="Imagem()" accept="image/*">
                     </div>
-    
                     <div class="group row d-flex ">
                         <label for="name">Nome:</label>
-                        <input type="text" class="input" id="modalName" name="modalName" value="<%= users.name  %>" >
-                    </div>
-        
-                    <div class="group  row d-flex ">
-                        <label for="birth">Nascimento:</label>
-                        <input type="date" class="input" id="modalBirth" name="modalBirth" value="<%= users.birthDate%>">
+                        <input type="text" class="input" id="name" name="name" value="<%= users.name %>">
                     </div>
                     
                     <div class="group  row d-flex ">
                         <label for="bio">Bio:</label>
-                        <input type="text" class="input" id="modalBio" name="modalBio" value="<%=users.description%>">
+                        <input type="text" class="input" id="bio" name="bio" value="<%=users.description%>">
                     </div>
     
                     <div class="group  row d-flex ">
                         <label for="email">Email:</label>
-                        <input type="email" class="input" id="modalEmail" name="modalEmail" value="<%=users.email%>">
+                        <input type="email" class="input" id="email" name="email" value="<%=users.email%>">
                     </div>
     
                     <div class="group  row d-flex ">
                         <label for="password">Senha:</label>
-                        <input type="password" class="input" id="modalPassword" name="modalPassword" value="<%=users.password%>">
+                        <input type="password" class="input" id="password" name="password" value="<%=users.password%>">
                     </div>
-    
-                    
+                    <button type="submit" class="btnEnter">Entrar</button>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btnEnter">Entrar</button>
 
             </div>
         </div>

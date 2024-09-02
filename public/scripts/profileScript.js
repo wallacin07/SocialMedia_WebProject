@@ -32,3 +32,4 @@ function Imagem() {
         document.getElementById("pessoa").src = oFREvent.target.result;
     };
 }
+

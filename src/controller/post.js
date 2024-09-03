@@ -19,9 +19,7 @@ module.exports = {
                 {
                     idUser: id_user,
                     description: description,
-                    img: postPicture,
-                    // hashtag: '',
-                    // postDate: 'NOW'
+                    img: postPicture
                 }
 
             )

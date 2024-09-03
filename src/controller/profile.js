@@ -15,7 +15,7 @@ module.exports =
         })
         const posts= await post.findAll({
             raw: true,
-            attributes: ['idPost','description','img', 'hashtag','postdate','idUser'],
+            attributes: ['idPost','description','img', 'idUser'],
             where: {idUser: id_user}
         })
 

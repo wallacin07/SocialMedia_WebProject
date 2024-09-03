@@ -20,7 +20,7 @@ module.exports = {
         })
         const posts = await post.findAll({
             raw: true,
-            attributes: ['idPost','description','img', 'hashtag','postDate', 'idUser']
+            attributes: ['idPost','description','img', 'idUser']
         })
         const reactions = await reaction.findAll({
             raw: true,

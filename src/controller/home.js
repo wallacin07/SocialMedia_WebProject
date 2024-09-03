@@ -5,6 +5,8 @@ const reaction = require('../model/reaction');
 const follow = require('../model/follow');
 const sequelize = require('sequelize');
 
+const database = require('../config/db');
+
 module.exports = {
 
     async getHome(req, res){
@@ -18,33 +20,21 @@ module.exports = {
         let nonFollowedPosts = '0'
 
 
-
-        const users = await user.findAll({
-            raw: true,
-            attributes: ['idUser','name','password', 'birthDate','description','email','profilePhoto','admin','active']
-        });
-
-        const comments = await comment.findAll({
-            raw: true,
-            attributes: ['idComment','description','commentDate', 'idPost','idUser']
-        });
+        const currentUser = await user.findOne({
+            where: { idUser: id_user }
+        })
 
 
+        const users = await user.findAll({});
 
 
         followed = await follow.findAll({
             raw: true,
             attributes: ['idFollowed'],
-            where: {
-                idFollower: id_user
-            }
+            where: {idFollower: id_user}
         })
 
         followedIds = followed.map(follow => follow.idFollowed);
-        console.log(followedIds);
-
-
-
         followedPosts = await post.findAll({
             include: {
                 as: 'user',
@@ -55,27 +45,33 @@ module.exports = {
                     {idUser: {[sequelize.Op.in]: followedIds}},
                     {idUser: id_user}
                 ]
-            }
-        })
-        console.log(followedPosts);
-
-
-
-        //=============================================
-       
-        //=============================================
-
-
-
-
-
-        const reactions = await reaction.findAll({
-            raw: true,
-            attributes: ['idReaction','description']
+            },
+            order: [['createdAt', 'DESC']]
         })
 
 
-        res.render('../views/home', {users,comments:'0',reactions:'0', id_user, followedPosts});
+        nonFollowedPosts = await post.findAll({
+            include: {
+                as: 'user',
+                model: user
+            },
+            where: {
+                    [sequelize.Op.and]: [
+                        {idUser: {[sequelize.Op.notIn]: followedIds}},
+                        {idUser: {[sequelize.Op.not]: id_user }}
+                    ]
+            },
+            order: database.literal('RAND()')
+        })
+
+
+
+
+
+        
+
+
+        res.render('../views/home', {users,comments:'0',reactions:'0', currentUser, followedPosts, nonFollowedPosts});
     }
 
    

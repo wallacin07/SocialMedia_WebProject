@@ -19,6 +19,10 @@ const post = database.define('post',
         img: {
             type: Sequelize.STRING(1000),
             allowNull: true
+        },
+        reactions: {
+            type: Sequelize.INTEGER,
+            defaultValue: 0
         }
     });
 

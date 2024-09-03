@@ -41,7 +41,6 @@ module.exports = {
         })
 
         followedIds = followed.map(follow => follow.idFollowed);
-        console.log(followedIds);
 
 
 
@@ -57,7 +56,6 @@ module.exports = {
                 ]
             }
         })
-        console.log(followedPosts);
 
 
 

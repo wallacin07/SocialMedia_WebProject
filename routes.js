@@ -39,4 +39,8 @@ route.get('/chats/:id/:idChat/get', chats.UserchatQuery)
 
 route.post('/chats/:id/:idChat', chats.UserchatPost);
 
+
+const search = require('./src/controller/search');
+route.get('/search/:id_user', search.getSearch);
+
 module.exports = route;

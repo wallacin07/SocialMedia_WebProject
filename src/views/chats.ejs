@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +22,7 @@
                 <h1>Home</h1>
             </a>
             <!-- Botão Search -->
-            <a href="" class="aNav">
+            <a href="/search/<%= id %>" class="aNav">
                 <svg class="iconeNav" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve">
                     <g>
                         <!-- Usando currentColor para permitir controle via CSS -->
@@ -62,9 +62,7 @@
             <div class="chatList">
                 <h1 class="centralize"><b>Chats</b></h1>
                 <div class="centralize">
-                    <% chats.forEach(chat => { %>
                         <!-- Chats que a pessoa tem, conferindo qual usuário está logado no momento pra exibir o nome e a foto certa -->
-
                         <% chats.forEach(chat => { %>
                             <a href="/chats/<%= id %>/<%= chat.idChat %>" class="chatBox">
                                 <% if (id == chat.UserA.idUser) { %>
@@ -76,8 +74,6 @@
                                 <% } %>
                             </a>
                         <% }) %>
-
-                    <% }) %>
 
                 </div>
             </div>

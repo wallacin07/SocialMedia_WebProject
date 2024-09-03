@@ -6,28 +6,58 @@ body {
     font-weight: 400;
     font-style: normal;
   }
+
+body::-webkit-scrollbar {
+  width: 12px;
+}
+body::-webkit-scrollbar-track {
+    background-color: var(--PurpleLight);
+    box-shadow: inset 0px 0px 2px 1px var(--textColor);
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--PurpleMid);
+    box-shadow: inset 0px 0px 2px 3px var(--shadow);
+    border-radius: 5px;
+}
+body::-webkit-scrollbar-thumb:hover {
+    box-shadow: inset 0px 0px 2px 4px var(--shadow);
+}
   
   h1 {
     margin-block-start: 0.3em;
     margin-block-end: 0.3em;
     font-size: 35px;
   }
+
+  h3 {
+    margin-block-start: 0.2em;
+    margin-block-end: 0.2em;
+  }
   
   h4 {
     font-weight: normal;
-    margin-block-start: 0.5em;
+    margin-block-start: 0.2em;
+    margin-block-end: 0.2em;
+  }
+
+  h5 {
+    font-weight: normal;
+    margin-block-start: 0.2em;
     margin-block-end: 0.2em;
   }
   
   nav {
     /* position: fixed; */
     float: left;
-    max-width: 300px;
+    max-width: 230px;
     width: 90%;
     background-color: var(--BlueDark);
     padding: 8px;
     border-radius: 10px;
     max-height: 300px;
+    margin-left: 5px;
+    margin-top: 5px;
   }
   
   .centralize {
@@ -99,6 +129,7 @@ body {
   .aNav {
     display: flex;
     text-decoration: none;
+    color: var(--textColor);
   }
   
   .logo {
@@ -148,6 +179,7 @@ body {
     transition: background-color 0.3s ease, transform 0.2s ease;
     /* Para melhor usabilidade em dispositivos móveis */
     touch-action: manipulation;
+    cursor: pointer;
 }
 
 .btn:hover {
@@ -201,8 +233,10 @@ margin-left: 5px;
 
 .image-post
 {
-  width: 100%;
-  height: 100%;
+  max-width: 300px;
+  width: 90%;
+  height: 300px;
+  object-fit: cover;
 }
 
 
@@ -244,8 +278,6 @@ margin-left: 5px;
   color: #000;
   text-decoration: none;
 }
-
-.modal-header{}
 
 .modal-body{
   border-top: 1px solid rgba(128, 128, 128, 0.418);
@@ -291,4 +323,16 @@ margin-left: 5px;
   margin-top: 25px;
 }
 
-.modal-footer{border-top: 1px solid rgba(37, 37, 37, 0.418);}
+.modal-footer{
+  border-top: 1px solid rgba(37, 37, 37, 0.418);
+}
+
+.aaaa {
+  margin-bottom: 15px;
+}
+
+.quadradinho {
+  background-color: rgba(255, 255, 255, 0.74);
+  padding: 20px;
+  border-radius: 15px;
+}

@@ -18,7 +18,8 @@ file.addEventListener('change', () =>
         reader.onload = () => {
             image.src = reader.result
         }
-    })
+    }
+)
 
 // Função pra ver o tamanho da descrição do post, não mexa!!
 const textareas = document.querySelectorAll('.inputDescricao');

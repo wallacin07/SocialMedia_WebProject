@@ -13,18 +13,19 @@ const post = database.define('post',
         },
 
         description: {
-            type: Sequelize.STRING(100),
+            type: Sequelize.STRING(1000),
             allowNull: true
         },
         img: {
-            type: Sequelize.STRING(128),
+            type: Sequelize.STRING(1000),
             allowNull: true
         }
     });
 
 post.belongsTo(user, {
     constraint: true, //Garantir integridade referencial
-    foreignKey: 'idUser'
+    foreignKey: 'idUser',
+    as: 'user'
 });
 
 module.exports = post;

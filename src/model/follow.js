@@ -2,12 +2,12 @@ const Sequelize = require('sequelize');
 const database = require('../config/db');
 const user = require('./user'); // Importe o modelo de usuário
 
-const Follow = database.define('follow', {
+const follow = database.define('follow', {
     idFollower: {
         type: Sequelize.INTEGER,
         references: {
             model: user,
-            key: 'id'
+            key: 'idUser'
         },
         primaryKey: true
     },
@@ -15,7 +15,7 @@ const Follow = database.define('follow', {
         type: Sequelize.INTEGER,
         references: {
             model: user,
-            key: 'id'
+            key: 'idUser'
         },
         primaryKey: true
     },
@@ -23,23 +23,25 @@ const Follow = database.define('follow', {
         type: Sequelize.BOOLEAN,
         allowNull: false,
         defaultValue: false
-    }
+    }   
 });
 
 
 // Definição dos relacionamentos
 user.belongsToMany(user, {
-    as: 'follower',
-    through: Follow,
+    as: 'followers',
+    through: follow,
     foreignKey: 'idFollower',
     otherKey: 'idFollowed'
 });
 
 user.belongsToMany(user, {
     as: 'followed',
-    through: Follow,
+    through: follow,
     foreignKey: 'idFollowed',
     otherKey: 'idFollower'
 });
 
-module.exports = Follow;
+
+
+module.exports = follow;

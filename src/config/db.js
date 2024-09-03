@@ -2,7 +2,7 @@ const sequelize = require('sequelize');
 
 const database = new sequelize (
 
-    'Kangoroo',         //DATABASE
+    'kangoroo',         //DATABASE
     'Admin',            //USER
     'admin',         //PASSWORDD
 
@@ -11,6 +11,7 @@ const database = new sequelize (
     // port: 1433,
     port: 56604,
     // port: 54317,
+    port: 1433,
     dialect: 'mssql' 
     }
 );

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/scripts/chats/controller.js" defer></script>
+    <link rel="stylesheet" href="/css/userChat/style.css">
+    <link rel="stylesheet" href="/css/cores.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <section class="topo">
+        <nav>
+            <!-- Botão Home -->
+            <a href="/getHome/<%= id %>" class="aNav">
+                <svg class="iconeNav" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M11.3103 1.77586C11.6966 1.40805 12.3034 1.40805 12.6897 1.77586L20.6897 9.39491L23.1897 11.7759C23.5896 12.1567 23.605 12.7897 23.2241 13.1897C22.8433 13.5896 22.2103 13.605 21.8103 13.2241L21 12.4524V20C21 21.1046 20.1046 22 19 22H14H10H5C3.89543 22 3 21.1046 3 20V12.4524L2.18966 13.2241C1.78972 13.605 1.15675 13.5896 0.775862 13.1897C0.394976 12.7897 0.410414 12.1567 0.810345 11.7759L3.31034 9.39491L11.3103 1.77586ZM5 10.5476V20H9V15C9 13.3431 10.3431 12 12 12C13.6569 12 15 13.3431 15 15V20H19V10.5476L12 3.88095L5 10.5476ZM13 20V15C13 14.4477 12.5523 14 12 14C11.4477 14 11 14.4477 11 15V20H13Z" fill="currentColor"/>
+                </svg>
+                <h1>Home</h1>
+            </a>
+            <!-- Botão Search -->
+            <a href="" class="aNav">
+                <svg class="iconeNav" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve">
+                    <g>
+                        <!-- Usando currentColor para permitir controle via CSS -->
+                        <path fill="currentColor" d="M312.069,53.445c-71.26-71.26-187.194-71.26-258.454,0c-71.261,71.26-71.261,187.206,0,258.466
+                        c71.26,71.26,187.194,71.26,258.454,0S383.329,124.705,312.069,53.445z M286.694,286.536
+                        c-57.351,57.34-150.353,57.34-207.704-0.011s-57.351-150.353,0-207.693c57.351-57.351,150.342-57.351,207.693,0
+                        S344.045,229.174,286.694,286.536z"/>
+                        <path fill="currentColor" d="M101.911,112.531c-29.357,37.725-31.801,89.631-7.321,129.702c1.877,3.087,5.902,4.048,8.978,2.182
+                        c3.065-1.888,4.037-5.903,2.16-8.978c-21.666-35.456-19.506-81.538,6.469-114.876c2.226-2.837,1.713-6.938-1.135-9.154
+                        C108.227,109.193,104.125,109.695,101.911,112.531z"/>
+                        <path fill="currentColor" d="M498.544,447.722l-132.637-129.2c-7.255-7.07-18.84-6.982-26.008,0.174l-21.033,21.033
+                        c-7.156,7.156-7.234,18.742-0.153,25.986l129.19,132.636c14.346,17.324,35.542,18.35,51.917,1.964
+                        C516.216,483.951,515.857,462.068,498.544,447.722z"/>
+                    </g>
+                </svg>
+                <h1>Search</h1>
+            </a>
+            <!-- Botão Chats -->
+            <a href="/chats/<%= id %>" class="aNav">
+                <svg class="iconeNav" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path fill="currentcolor" d="M160 826.88 273.536 736H800a64 64 0 0 0 64-64V256a64 64 0 0 0-64-64H224a64 64 0 0 0-64 64v570.88zM296 800 147.968 918.4A32 32 0 0 1 96 893.44V256a128 128 0 0 1 128-128h576a128 128 0 0 1 128 128v416a128 128 0 0 1-128 128H296z"/><path fill="currentcolor" d="M352 512h320q32 0 32 32t-32 32H352q-32 0-32-32t32-32zm0-192h320q32 0 32 32t-32 32H352q-32 0-32-32t32-32z"/></svg>
+                <h1>Chats</h1>
+            </a>
+            <!-- Botão Profile -->
+            <a href="/profilePag/ <%= id %>" class="aNav">
+                <svg class="iconeNav" viewBox="0 0 32 32" id="Stock_cut" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><desc/>
+                    <g>
+                        <circle cx="16" cy="16" fill="none" r="15" stroke="currentColor" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+                        <path d="M26,27L26,27   c0-5.523-4.477-10-10-10h0c-5.523,0-10,4.477-10,10v0" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+                        <circle cx="16" cy="11" fill="none" r="6" stroke="currentColor" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+                    </g>
+                </svg> 
+                <h1>Profile</h1>
+            </a>
+        </nav>
+
+        
+        <main class="centralize">
+            <div class="chat">
+                <div class="nomeImg">
+                    <% if (id == chat.UserA.idUser) { %>
+                        <img src="/profile_pictures/<%= chat.UserB.profilePhoto %>" alt="<%= chat.UserB.name %>" class="imgPessoa">
+                        <h3><%= chat.UserB.name %></h3>
+                        <% } else { %>
+                            <img src="/profile_pictures/<%= chat.UserA.profilePhoto %>" alt="<%= chat.UserA.name %>" class="imgPessoa">
+                            <h3><%= chat.UserA.name %></h3>
+                            <% } %>
+                        </div>
+                        
+                <div class="centralize">
+                    <div class="mensagens" id="messageBox">
+                        <!--Aqui serao mostradas as mensagens, nao mexer-->
+                    </div>
+                </div>
+                
+                <form method="post" class="formMensagem centralize">
+                    <textarea name="message" id="inputComentario" class="inputDescricao"></textarea>
+                    <button type="submit" class="botao">
+                        <svg class="send" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10.3009 13.6949L20.102 3.89742M10.5795 14.1355L12.8019 18.5804C13.339 19.6545 13.6075 20.1916 13.9458 20.3356C14.2394 20.4606 14.575 20.4379 14.8492 20.2747C15.1651 20.0866 15.3591 19.5183 15.7472 18.3818L19.9463 6.08434C20.2845 5.09409 20.4535 4.59896 20.3378 4.27142C20.2371 3.98648 20.013 3.76234 19.7281 3.66167C19.4005 3.54595 18.9054 3.71502 17.9151 4.05315L5.61763 8.2523C4.48114 8.64037 3.91289 8.83441 3.72478 9.15032C3.56153 9.42447 3.53891 9.76007 3.66389 10.0536C3.80791 10.3919 4.34498 10.6605 5.41912 11.1975L9.86397 13.42C10.041 13.5085 10.1295 13.5527 10.2061 13.6118C10.2742 13.6643 10.3352 13.7253 10.3876 13.7933C10.4468 13.87 10.491 13.9585 10.5795 14.1355Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </form>
+
+            </div>
+
+        </main>
+
+        <img src="/img/img_kangoroo/logo.png" alt="logo" class="logo"> 
+
+    </section>
+</body>
+</html>

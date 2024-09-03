@@ -44,10 +44,5 @@ module.exports = {
             console.log('Error on LOGIN');
             res.redirect('/')
         }
-
-
-
-
-
     }
 }

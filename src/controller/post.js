@@ -5,9 +5,7 @@ module.exports = {
 
     async postPost(req,res){
         const id_user = req.params.id_user;
-
         const data = req.body;
-
         let postPicture = 'post.png';
         let description = '';
         // Verificando se foi enviada alguma foto

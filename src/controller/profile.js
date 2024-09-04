@@ -23,13 +23,11 @@ module.exports =
     },
 
     async updateProfile(req, res) {
-        console.log('entramos no update fml')
-
 
         const id_user = req.params.id_user;
         const dados = req.body;
 
-        console.log(dados);
+
         
       
 

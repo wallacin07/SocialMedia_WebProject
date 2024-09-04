@@ -11,6 +11,7 @@ module.exports = {
         const dados = req.body
         
         const id_user = req.params.id_user;
+
         let followed = '0'
         let followedIds = '0'
         
@@ -31,7 +32,7 @@ module.exports = {
 
 
 
-
+        
         followed = await follow.findAll({
             raw: true,
             attributes: ['idFollowed'],
@@ -41,7 +42,6 @@ module.exports = {
         })
 
         followedIds = followed.map(follow => follow.idFollowed);
-
 
 
         followedPosts = await post.findAll({

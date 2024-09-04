@@ -138,10 +138,30 @@
                             
               <% for (let i=0; i<posts.length; i++) { %>
                 <div class="profile-post" >
-                    <button type="button" data-target="" data-toggle="" class="btn-open-post">
+                    <button type="button" class="btn-open-post" id="btn-post">
                         <img src="/img/img_posts/<%= posts[i].img %>" alt="" class="image-post">
                     </button>
                 </div>
+                
+                <div id="post-Modal" class="modal">
+                    <div class="modal-content-post d-flex column">
+                        <div class="modal-header d-flex text-center">
+                            <span class="close-post">&times;</span>
+                            <h2>Post</h2>
+                        </div>
+                        <div class="modal-body-post d-flex center">
+                            <div>  
+                                <img src="/img/img_posts/<%= posts[i].img %>" alt="" class="post-image-modal">
+                            </div>
+                        </div>
+                        <div class="modal-footer-post">
+                            <h4><%= posts[i].description  %></h4>
+                            <button type="button" id="btn-comment-open"> ver comentarios</button>
+                        </div>
+                    </div>
+                </div>
+
+
                 <% } %>
 
                         </section>
@@ -200,6 +220,14 @@
             </div>
         </div>
     </div>
+
+
+
+
+
+
+
+
 
 
 

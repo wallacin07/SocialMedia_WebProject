@@ -1,5 +1,6 @@
 const post = require('../model/post');
 const user = require('../model/user');
+const comment = require('../model/comment');
 const fs = require('fs');
 
 module.exports = 
@@ -19,7 +20,20 @@ module.exports =
             where: {idUser: id_user}
         })
 
-        res.render('../views/profile', {users,posts, id_user})
+        
+        // const comments = await comment.findAll({
+        //   raw: true,
+        //   attributes: ['idComment', 'description', 'commentDate', 'idPost', 'idUser'],
+        //   include: [{
+        //     model: post,
+        //     required: true,  // Isso cria o INNER JOIN
+        //     attributes: ['idPost','idUser'],  // Atributos do post que você deseja
+        //     where: { idUser: id_user }  // Filtra os posts pelo id do usuário
+        //   }],
+        // });
+        
+
+        res.render('../views/profile', {users,posts, id_user })
     },
 
     async updateProfile(req, res) {

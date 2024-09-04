@@ -15,7 +15,7 @@ module.exports = {
             const user = await users.findOne(
                 {
                     raw: true,
-                    attributes: ['idUser', 'admin'],
+                    attributes: ['idUser', 'admin', 'active'],
                     where: {
                         [Sequelize.Op.and]: [
                             { name: name },
@@ -26,19 +26,27 @@ module.exports = {
             );
                 
             if(user.length == 0){
-                redirect('/');
+                res.render('../views/index', {erroDesativado : 0, erroConta: 0});
             }
             else{
                 if(user.admin)
                     res.redirect('/getAdmScreen');
                 else
-                    res.redirect('/getHome/' + user.idUser);
+                    if (user.active) {
+                        res.redirect('/getHome/' + user.idUser);
+                    }
+                    else{
+                        const desativado = "Sua conta esta no momento desativada, Entre em contato com o suporte ou faça uma nova conta"
+                        res.render('../views/index', {erroDesativado : desativado, erroConta: 0});
+                    }
             }
 
         }
         catch(error){
             console.log('Error on LOGIN');
-            res.redirect('/')
+            const Undefined = "Não achamos nenhuma conta com esse nome e senha, por favor verifique se escreveu corretamente ou crie uma nova conta"
+            res.render('../views/index', {erroDesativado : 0, erroConta: Undefined});
+
         }
     }
 }

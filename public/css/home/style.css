@@ -201,6 +201,20 @@ input[type="file"] {
   background-color: var(--PurpleLight);
   cursor: pointer;
   color: var(--textColor);
+  position: relative;
+}
+
+.kangureOn {
+  display: none;
+  z-index: 0;
+  color: var(--PurpleDark);
+  top: 0;
+  left: 0;
+  max-width: 40px;
+  width: 90%;
+}
+
+.kangureOff {
 }
 
 .verComentarios {
@@ -235,6 +249,7 @@ input[type="file"] {
 }
 
 .modal {
+  z-index: 2;
   display: none;
   position: fixed;
   top: 50%;

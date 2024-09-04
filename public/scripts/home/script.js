@@ -60,3 +60,10 @@ botoesAbrir.forEach(botao => {
 botaoFecharComentarios.addEventListener('click', () => {
     modalComentarios.style.display = `none`;
 });
+
+
+
+const kangureButton = document.getElementById('kangureButton');
+kangureButton.addEventListener('click', () => {
+    this.form.submit();
+});

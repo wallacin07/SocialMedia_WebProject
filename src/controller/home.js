@@ -35,11 +35,18 @@ module.exports = {
         })
 
         followedIds = followed.map(follow => follow.idFollowed);
+
+
         followedPosts = await post.findAll({
             include: {
                 as: 'user',
                 model: user
             },
+            // include: {
+            //     model: reaction,
+            //     attributes: ['active'],
+            //     where:{idUser: id_user}
+            // },
             where: {
                 [sequelize.Op.or]:[
                     {idUser: {[sequelize.Op.in]: followedIds}},
@@ -47,6 +54,7 @@ module.exports = {
                 ]
             },
             order: [['createdAt', 'DESC']]
+            
         })
 
 
@@ -62,7 +70,9 @@ module.exports = {
                     ]
             },
             order: database.literal('RAND()')
-        })
+        });
+
+
 
 
 

@@ -155,8 +155,8 @@ nav {
 }
 
 .imagem-box {
-    max-width: 1000px;
-    width: 90%;
+    padding-left: 70px;
+    padding-right: 70px;
 }
 
 .imagens {
@@ -164,6 +164,146 @@ nav {
     width: 90%;
     height: 220px;
     border-radius: 10px;
-    margin: 5px;
+    /* margin: 5px; */
     object-fit: cover;
 }
+
+.botaoFechar {
+    z-index: 20;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    margin: 10px;
+    height: 30px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--PurpleDark);
+    cursor: pointer;
+  
+  }
+  
+  .botaoFechar:hover {
+    background-color: var(--PurpleDarkHover);
+  }
+
+  .modal {
+    display: flex;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--PurpleLight);
+    max-width: 700px;
+    width: 90%;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 0px 1000px 1000px var(--shadow), 0px 0px 10px 10px var(--shadow);
+    padding: 10px;
+  }
+
+  .botaoModal {
+    max-width: 100px;
+    width: 90%;
+    height: 30px;
+    border: none;
+    border-radius: 10px;
+    margin-top: 20px;
+    color: var(--white);
+    font-size: 18px;
+    background-color: var(--PurpleDark);
+    cursor: pointer;
+  }
+  
+  .botaoModal:hover {
+    background-color: var(--PurpleDarkHover); 
+  }
+
+  .fechar {
+    display: flex;
+    max-width: 20px;
+    width: 90%;
+    color: var(--white);
+  }
+  
+  .search {
+    background-color: var(--PurpleLight);
+    display: flex;
+    border: none;
+    border-radius: 10px;
+    max-width: 600px;
+    min-width: 600px;
+    width: 90%;
+    padding: 5px;
+    text-align: left;
+    text-decoration: none;
+    color: var(--textColor);
+    cursor: pointer;
+  }
+
+  .searchYou {
+    background-color: var(--PurpleLight);
+    display: flex;
+    border-radius: 10px;
+    max-width: 590px;
+    min-width: 590px;
+    width: 90%;
+    padding: 5px;
+    text-align: left;
+    text-decoration: none;
+    color: var(--textColor);
+  }
+  
+  .search h3 {
+    overflow-wrap: break-word;
+    max-width: 80%;
+  }
+
+  .escrito {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .imgSearch {
+    max-width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    float: left;
+    margin-right: 10px;
+    object-fit: cover;
+    margin-top: auto;
+    margin-bottom: auto;
+    aspect-ratio: 1/1;
+  }
+
+  #modalSearch {
+    background-color: var(--BlueDark);
+  }
+  
+  #modalSearch > .centralize::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  #modalSearch > .centralize::-webkit-scrollbar-thumb {
+    background-color: var(--PurpleDark);
+    border-radius: 10px;
+  }
+  
+  #modalSearch > .centralize::-webkit-scrollbar-thumb:hover {
+    background-color: var(--PurpleDarkHover);
+  }
+  
+  
+  #modalSearch > .centralize {
+    position: relative;
+    max-height: 80vh;
+    overflow: auto;
+    padding: 30px;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px;
+    overflow-x: hidden;
+  }

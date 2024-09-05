@@ -1,5 +1,4 @@
 const user = require('../model/user');
-const comment = require('../model/comment');
 const post = require('../model/post');
 const reaction = require('../model/reaction');
 const follow = require('../model/follow');
@@ -10,14 +9,8 @@ const database = require('../config/db');
 module.exports = {
 
     async getHome(req, res){
-        const dados = req.body
         
         const id_user = req.params.id_user;
-        let followed = '0'
-        let followedIds = '0'
-        
-        let followedPosts = '0'
-        let nonFollowedPosts = '0'
 
 
         const currentUser = await user.findOne({
@@ -25,28 +18,29 @@ module.exports = {
         })
 
 
-        const users = await user.findAll({});
 
 
-        followed = await follow.findAll({
+        const followed = await follow.findAll({
             raw: true,
             attributes: ['idFollowed'],
             where: {idFollower: id_user}
         })
 
-        followedIds = followed.map(follow => follow.idFollowed);
+        const followedIds = followed.map(follow => follow.idFollowed);
 
 
-        followedPosts = await post.findAll({
-            include: {
-                as: 'user',
-                model: user
-            },
-            // include: {
-            //     model: reaction,
-            //     attributes: ['active'],
-            //     where:{idUser: id_user}
-            // },
+        const followedPosts = await post.findAll({
+            include: [
+                {
+                    as: 'user',
+                    model: user
+                },
+                {
+                    model: reaction,
+                    attributes: ['active'],
+                    where:{idUser: id_user}
+                }
+            ],
             where: {
                 [sequelize.Op.or]:[
                     {idUser: {[sequelize.Op.in]: followedIds}},
@@ -58,7 +52,7 @@ module.exports = {
         })
 
 
-        nonFollowedPosts = await post.findAll({
+        const nonFollowedPosts = await post.findAll({
             include: {
                 as: 'user',
                 model: user
@@ -73,15 +67,17 @@ module.exports = {
         });
 
 
-
-
-
-
-
+        console.log('foll  ' + followedPosts, 'nonfoll  ' + nonFollowedPosts)
         
 
+        const comments = [{
+            'user': '0'
+        }]
 
-        res.render('../views/home', {users,comments:'0',reactions:'0', currentUser, followedPosts, nonFollowedPosts});
+
+
+
+        res.render('../views/home', {comments, currentPost:'0', currentUser, followedPosts, nonFollowedPosts});
     }
 
    

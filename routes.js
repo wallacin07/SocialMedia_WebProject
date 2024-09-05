@@ -41,6 +41,9 @@ route.post('/chats/:id/:idChat', chats.UserchatPost);
 
 const actions = require('./src/controller/actions');
 route.post('/kangure/:id_user', actions.kangure);
+route.get('/getComments/:id_user', actions.getComments);
+route.post('/comment/:id_user', actions.comment);
+
 
 
 

@@ -48,22 +48,51 @@ botaoAbrirPublicar.addEventListener('click', () => {
 
 const modalComentarios = document.getElementById('modalComentarios');
 const botaoFecharComentarios = document.getElementById('botaoFecharComentarios');
-const botoesAbrir = document.querySelectorAll(".abrirComentarios");
+const botoesAbrirComentarios = document.querySelectorAll(".abrirComentarios");
 
-botoesAbrir.forEach(botao => {
+botoesAbrirComentarios.forEach(botao => {
     botao.addEventListener("click", (e) => {
-        e.preventDefault();
-        modalComentarios.style.display = 'flex';
+        // modalComentarios.style.display = 'flex';
+        localStorage.setItem('Modal', '1');
     });
 })
 
 botaoFecharComentarios.addEventListener('click', () => {
+    localStorage.setItem('Modal', '0');
     modalComentarios.style.display = `none`;
 });
 
 
+// Recupera o estado do modal no localStorage
+function verificarModal() {
+    const modalEstado = localStorage.getItem('Modal');
+    if (modalEstado === '1') {
+        modalComentarios.style.display = 'flex';
+    } else {
+        modalComentarios.style.display = 'none';
+    }
+}
+
+// Vê como estava o estado do modal quando recarrega a página
+window.addEventListener('load', verificarModal);
+
+
+
+
+
+
+
+
+
+
 
 const kangureButton = document.getElementById('kangureButton');
-kangureButton.addEventListener('click', () => {
+kangureButton.addEventListener('click', (event) => {
     this.form.submit();
+    
 });
+
+
+
+
+

@@ -16,10 +16,6 @@ const comment = database.define('comment',
         description: {
             type: Sequelize.STRING(100),
             allowNull: true
-        },
-        commentDate: {
-            type: Sequelize.DATE,
-            allowNull: false
         }
     });
 

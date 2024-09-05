@@ -23,6 +23,5 @@ module.exports = {
                 where: { idUser: id_toggle }
             }
         )
-        res.redirect('/getAdmScreen')
-}
+    }
 }

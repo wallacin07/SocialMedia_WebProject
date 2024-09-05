@@ -34,3 +34,21 @@
 - Pagina Admin com suas respectivas permissões
 - Criação do Layout da pagina de perfil
 - Estilização das paginas
+
+02/09/2024
+
+- Criação do Chat
+- Finalização da Pagina de perfil
+- Criação do fedd (modo geral)
+
+03/09/2024
+
+- Finalização do chat
+- Correção de bugs
+
+04/09/2024
+
+- Visualização dos Posts no Perfil
+- Verificação de perfis desativados ou inexistentes
+- Criação da procura de usuarios
+- Implementando curtida e comentario nos posts

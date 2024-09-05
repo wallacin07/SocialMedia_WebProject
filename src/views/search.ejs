@@ -68,7 +68,7 @@
                 </section>
 
                 <section class="centralize">
-                    <form action="/searchUser/<%= id_user %>" method="post" class="formPesquisa">
+                    <form id="searchForm" action="/searchUser/<%= id_user %>" method="post" class="formPesquisa">
                         <input type="text" placeholder="Pesquise um usuário" class="inputPesquisa" id="text" name="text">
                         <button type="submit" class="botaoPesquisa" id="abrirModalSearch">
                             <svg class="iconePesquisa" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve">
@@ -125,22 +125,26 @@
         </button>
 
         <div class="centralize">
-            <% users.forEach(user => { %>
-                <% if (id_user == user.idUser) { %>
-                        <a href="/profilePag/<%= id_user %>" class="searchYou" type="submit">
-                            <img src="/profile_pictures/<%= user.profilePhoto %>" alt="<%= user.name %>" class="imgSearch">
-                            <h3 class="escrito">@<%= user.name %></h3>
-                        </a>
-                <% } else if (user.admin == 1) {%>
-                <% } else { %>
-                    <form action="/searchUser/<%= id_user %>/<%= user.idUser %>" method="get">
-                        <button class="search" type="submit">
-                            <img src="/profile_pictures/<%= user.profilePhoto %>" alt="<%= user.name %>" class="imgSearch">
-                            <h3 class="escrito">@<%= user.name %></h3>
-                        </button>
-                    </form>
-                <% } %>
-            <% }) %>
+            <% if (typeof users !== 'undefined') { %>
+                <% users.forEach(user => { %>
+                    <% if (id_user == user.idUser) { %>
+                            <a href="/profilePag/<%= id_user %>" class="searchYou" type="submit">
+                                <img src="/profile_pictures/<%= user.profilePhoto %>" alt="<%= user.name %>" class="imgSearch">
+                                <h3 class="escrito">@<%= user.name %></h3>
+                            </a>
+                    <% } else if (user.admin == 1) {%>
+                    <% } else { %>
+                        <form action="/searchUser/<%= id_user %>/<%= user.idUser %>" method="get">
+                            <button class="search" type="submit">
+                                <img src="/profile_pictures/<%= user.profilePhoto %>" alt="<%= user.name %>" class="imgSearch">
+                                <h3 class="escrito">@<%= user.name %></h3>
+                            </button>
+                        </form>
+                    <% } %>
+                <% }) %>
+            <% } else { %>
+                <p>Nenhum resultado encontrado.</p>
+            <% } %>
         </div>
     </section>
 

@@ -1,4 +1,4 @@
-// require('express-async-errors');
+require('express-async-errors');
 const express = require('express');
 const routes = require('./routes');
 const path = require('path');

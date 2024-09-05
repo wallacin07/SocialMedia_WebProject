@@ -136,3 +136,122 @@ body {
     object-fit: cover;
     aspect-ratio: 1/1;
   }
+
+  .botaoFollow {
+    max-width: 800px;
+    width: 90%;
+    height: 35px;
+    border-radius: 10px;
+    border: none;
+    background-color: var(--PurpleDark);
+    color: var(--white);
+    cursor: pointer;
+    margin-bottom: 15px;
+    margin-top: 5px;
+    font-size: 18px;
+  }
+
+  .botaoFollow:hover {
+    background-color: var(--PurpleDarkHover);
+  }
+
+  .imgPost-box {
+    padding-left: 20px;
+    padding-right: 15px;
+  }
+
+  .botaopost {
+    cursor: pointer;
+  }
+
+  .imgPost{
+    display: block;
+    max-width: 280px;
+    width: 90%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 10px;
+    float: left;
+    margin: 5px;
+  }
+
+  .modalPost {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 48.5%;
+    transform: translate(-50%, -50%);
+    background-color: var(--PurpleLight);
+    max-width: 950px;
+    width: 90%;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 0px 1000px 1000px var(--shadow), 0px 0px 10px 10px var(--shadow);
+    padding: 10px;
+  }
+
+  .botaoFechar {
+    z-index: 20;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    margin: 10px;
+    height: 30px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--PurpleDark);
+    cursor: pointer;
+  }
+  
+  .botaoFechar:hover {
+    background-color: var(--PurpleDarkHover);
+  }
+  
+  .fechar {
+    display: flex;
+    max-width: 20px;
+    width: 90%;
+    color: var(--white);
+  }
+
+  .publicacaoModal {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    max-width: 900px;
+    width: 90%;
+  }
+
+  .imgPostModal {
+    max-width: 550px;
+    height: 600px;
+    object-fit: cover;
+    width: 99%;
+    float: left;
+    border-radius: 10px;
+  }
+
+  .comentarios {
+    background-color: var(--BlueDark);
+    max-width: 700px;
+    width: 99%;
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+  .comentario {
+    background-color: var(--PurpleLight);
+    color: var(--textColor);
+    border-radius: 10px;
+    max-width: 360px;
+    min-width: 360px;
+    width: 90%;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
+    padding: 5px;
+  }

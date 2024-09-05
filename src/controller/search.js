@@ -1,5 +1,6 @@
 const { raw } = require('mysql');
 const User = require('../model/user');
+const Post = require('../model/post');
 const { Op } = require("sequelize");
 
 const getSearch = async (req, res) => {
@@ -11,6 +12,9 @@ const getSearch = async (req, res) => {
 const searchUser = async (req, res) => {
     const id_user = req.params.id_user;
     const dados = req.body.text;
+
+    console.log('IDUSERS: ' + id_user);
+    console.log('DADOS: ' + dados);
     
     const users = await User.findAll({
         where: {
@@ -44,12 +48,15 @@ const profile = async (req, res) => {
             idUser: id_user
         }
     });
+    const posts = await Post.findAll({
+        raw: true,
+        attributes: ['idPost', 'description', 'img', 'idUser'],
+        where: {idUser: id_user}
+    })
 
-    console.log(user);
+    console.log(posts.map(post => post.img));
 
-
-
-    res.render('../views/searchProfile.ejs', { id_currentUser, user });
+    res.render('../views/searchProfile.ejs', { id_currentUser, user, posts });
 }
 
 module.exports = { getSearch, searchUser, profile }

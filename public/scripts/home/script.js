@@ -41,7 +41,7 @@ botaoFechar.addEventListener('click', () => {
     modal.style.display = `none`;
 });
 
-botaoAbrirPublicar.addEventListener('click', () => {
+botaoAbrir.addEventListener('click', () => {
     modal.style.display = `flex`;
 });
 

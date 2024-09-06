@@ -14,7 +14,7 @@ module.exports =
             attributes: ['idUser','name','password', 'birthDate','description','email','profilePhoto','admin','active'],
             where: {idUser: id_user}
         })
-        const posts= await post.findAll({
+        const posts = await post.findAll({
             raw: true,
             attributes: ['idPost','description','img', 'idUser'],
             where: {idUser: id_user}

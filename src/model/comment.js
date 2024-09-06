@@ -2,7 +2,6 @@ const Sequelize = require('sequelize')
 const database = require('../config/db');
 const user = require('./user')
 const post = require('./post')
-// const { type } = require('os');
 
 const comment = database.define('comment',
     {
@@ -16,10 +15,6 @@ const comment = database.define('comment',
         description: {
             type: Sequelize.STRING(100),
             allowNull: true
-        },
-        commentDate: {
-            type: Sequelize.DATE,
-            allowNull: false
         }
     });
 
@@ -27,6 +22,12 @@ comment.belongsTo(post, {
     constraint: true, //Garantir integridade referencial
     foreignKey: 'idPost'
 });
+
+post.hasMany(comment, {
+    foreignKey: 'idPost'
+});
+
+
 comment.belongsTo(user, {
     constraint: true, //Garantir integridade referencial
     foreignKey: 'idUser'

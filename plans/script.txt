@@ -1,0 +1,30 @@
+USE Kangoroo;
+
+DROP TABLE comments;
+DROP TABLE reactions;
+DROP TABLE posts;
+DROP TABLE follows;
+DROP TABLE users;
+DROP TABLE Messages;
+DROP TABLE Chats;
+
+SELECT * FROM comments;
+SELECT * FROM reactions;
+SELECT * FROM posts;
+SELECT * FROM follows;
+SELECT * FROM messages;
+SELECT * FROM chats;
+SELECT * FROM users;
+
+
+
+INSERT INTO reactions (idUser, idPost, createdAt, updatedAt) VALUES (2,1,'2024-09-04 16:40:33.5570000 +00:00','2024-09-04 16:40:33.5570000 +00:00');
+
+TRUNCATE TABLE reactions;
+
+
+SELECT reactions.active 
+FROM posts 
+LEFT JOIN reactions 
+ON reactions.idPost = posts.idPost  
+WHERE reactions.idUser = 2;

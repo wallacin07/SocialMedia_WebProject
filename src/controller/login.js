@@ -10,7 +10,6 @@ module.exports = {
     async login(req,res){
         const name = req.body.name;
         const password = req.body.password;
-        console.log(name);
         try{
             const user = await users.findOne(
                 {

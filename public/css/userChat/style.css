@@ -1,3 +1,4 @@
+
 body {
     background-color: var(--PurpleDark);
     padding: 10px;
@@ -148,3 +149,97 @@ input[type="file"] {
     gap: 5px;
 }
 
+.chat {
+    background-color: var(--BlueDark);
+    max-width: 1000px;
+    width: 90%;
+    padding: 10px;
+    border-radius: 10px;
+    min-width: 900px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.mensagens {
+    background-color: var(--PurpleLight);
+    border-radius: 10px;
+    max-width: 1000px;
+    min-width: 600px;
+    width: 90%;
+    padding: 5px;
+    text-align: left;
+    text-decoration: none;
+    color: var(--textColor);
+    word-wrap: break-word;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.mensagens h3 {
+    overflow-wrap: break-word;
+    max-width: 80%;
+}
+
+.chat > .centralize {
+    position: relative;
+    max-height: 80vh;
+    overflow: auto;
+    padding: 10px;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px;
+    overflow-x: hidden;
+    display: flex;
+}
+
+.chat > .centralize::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chat > .centralize::-webkit-scrollbar-thumb {
+    background-color: var(--PurpleDark);
+    border-radius: 10px;
+}
+.chat > .centralize::-webkit-scrollbar-thumb:hover {
+    background-color: var(--PurpleDarkHover);
+}
+
+.botao{
+    float: right;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    border: none;
+    background-color: var(--PurpleDark);
+    z-index: 20;
+    cursor: pointer;
+}
+
+.botao:hover {
+    background-color: var(--PurpleDarkHover);
+}
+
+.owner {
+    background-color: var(--PurpleDark);
+    color: var(--white);
+    border-radius: 10px;
+    margin-bottom: 5px;
+    align-self: flex-end;
+    text-align: end;
+    padding: 5px;
+    padding-left: 8px;
+    padding-right: 8px;
+    max-width: 50%;
+}
+
+.recipient {
+    background-color: var(--PurpleMid);
+    align-self: flex-start;
+    text-align: start;
+    max-width: 50%;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    padding: 5px;
+    padding-left: 8px;
+    padding-right: 8px;
+}

@@ -36,7 +36,6 @@ const chats = require('./src/controller/chats')
 route.get('/chats/:id', chats.ChatsPageGet);
 route.get('/chats/:id/:idChat', chats.UserchatGet)
 route.get('/chats/:id/:idChat/get', chats.UserchatQuery)
-
 route.post('/chats/:id/:idChat', chats.UserchatPost);
 
 
@@ -44,5 +43,6 @@ const search = require('./src/controller/search');
 route.get('/search/:id_user', search.getSearch);
 route.post('/searchUser/:id_user', search.searchUser);
 route.get('/searchUser/:id_currentUser/:id_user', search.profile);
+route.post('/searchUser/:id_currentUser/:id_user/follow', search.follow);
 
 module.exports = route;

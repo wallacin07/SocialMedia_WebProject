@@ -29,3 +29,13 @@ botaoFechar.forEach(botao => {
         }
     });
 });
+
+// Função pra ver o tamanho da descrição do post, não mexa!!
+const textareas = document.querySelectorAll('.inputDescricao');
+
+textareas.forEach(textarea => {
+    textarea.addEventListener('input', function() {
+        this.style.height = 'auto'; // Reseta a altura para que o scrollHeight possa ser calculado corretamente
+        this.style.height = this.scrollHeight + 'px'; // Define a altura baseada no scrollHeight
+    });
+});

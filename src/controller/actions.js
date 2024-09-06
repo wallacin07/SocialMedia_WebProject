@@ -48,6 +48,7 @@ module.exports = {
     
 
     async getComments(req,res){
+        
         const id_user = req.params.id_user;
         const id_post = req.query.post;
 

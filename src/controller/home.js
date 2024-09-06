@@ -11,23 +11,17 @@ module.exports = {
     async getHome(req, res){
         
         const id_user = req.params.id_user;
-
-
-        const currentUser = await user.findOne({
-            where: { idUser: id_user }
-        })
-
-
-
+        const currentUser = await user.findByPk(id_user);
 
         const followed = await follow.findAll({
             raw: true,
             attributes: ['idFollowed'],
-            where: {idFollower: id_user}
-        })
+            where: {
+                idFollower: id_user
+            }
+        });
 
         const followedIds = followed.map(follow => follow.idFollowed);
-
 
         const followedPosts = await post.findAll({
             include: [
@@ -38,7 +32,8 @@ module.exports = {
                 {
                     model: reaction,
                     attributes: ['active'],
-                    where:{idUser: id_user}
+                    where:{idUser: id_user},
+                    required: false
                 }
             ],
             where: {
@@ -48,17 +43,18 @@ module.exports = {
                 ]
             },
             order: [['createdAt', 'DESC']]
-            
-        })
+        });
 
-
+        
+        
+        
         const nonFollowedPosts = await post.findAll({
             include: {
                 as: 'user',
                 model: user
             },
             where: {
-                    [sequelize.Op.and]: [
+                [sequelize.Op.and]: [
                         {idUser: {[sequelize.Op.notIn]: followedIds}},
                         {idUser: {[sequelize.Op.not]: id_user }}
                     ]
@@ -67,9 +63,18 @@ module.exports = {
         });
 
 
-        console.log('foll  ' + followedPosts, 'nonfoll  ' + nonFollowedPosts)
         
+        
+        followedPosts.map((element, index) => {
+            if(element.reactions[0] == undefined)
+                followedPosts[index].reactions[0] = {"active" : "nao"}
+        });
 
+        nonFollowedPosts.map((element, index) => {
+            if(element.reactions[0] == undefined)
+                nonFollowedPosts[index].reactions[0] = {"active" : "nao"}
+        });
+        
         const comments = [{
             'user': '0'
         }]

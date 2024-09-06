@@ -65,7 +65,6 @@ window.onclick = function(event) {
         }
     });
 }
-
 // =============================================================================================
 
 // const modalComentarios = document.getElementById('modalComentarios');

@@ -33,7 +33,7 @@ module.exports =
         // });
         
 
-        res.render('../views/profile', {users,posts, id_user })
+        res.render('../views/profile', {users,posts, id_user, novaSenha: 0, confirmarTroca:0 })
     },
 
     async updateProfile(req, res) {
@@ -45,8 +45,37 @@ module.exports =
 
         console.log(dados);
         
-      
 
+
+
+        const users= await user.findOne({
+          raw: true,
+          attributes: ['idUser','name','password', 'birthDate','description','email','profilePhoto','admin','active'],
+          where: {idUser: id_user}
+      })
+      const posts= await post.findAll({
+          raw: true,
+          attributes: ['idPost','description','img', 'idUser'],
+          where: {idUser: id_user}
+      })
+
+
+
+
+
+        const senha= await user.findOne({
+          raw: true,
+          attributes: ['password'],
+          where: {idUser: id_user}
+      })
+
+      if (dados.password !== senha) {
+        const novaSenha = dados.password
+        const confirmarTroca = true
+        res.render('../views/profile', {users,posts, id_user, novaSenha, confirmarTroca })
+      } 
+
+      else{
         if (req.file) {
           // Recebendo a antiga foto do aluno
           const antigaFoto = await user.findAll({
@@ -62,8 +91,8 @@ module.exports =
           {where: { idUser: id_user }}
           );
           }
-
-
+  
+  
         console.log(req.body.olaa); // For debugging purposes (remove if not needed)
       
         try {
@@ -82,6 +111,71 @@ module.exports =
           console.error('Error updating user profile:', error);
           // Handle the error appropriately, e.g., return an error response to the user
         }
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+      if (dados.passwordChange === senha) {
+        
+        if (req.file) {
+          // Recebendo a antiga foto do aluno
+          const antigaFoto = await user.findAll({
+          raw: true,
+          attributes: ['profilePhoto'],
+          where: { idUser: id_user }
+          });
+          // Excluindo a foto da pasta
+          if (antigaFoto[0].Foto != 'usuario.png') fs.unlink(`public/img/${antigaFoto[0].Foto}`, ( err => { if(err) console.log(err); } ));
+          // Update da nova foto no DB
+          await user.update(
+          {profilePhoto: req.file.filename},
+          {where: { idUser: id_user }}
+          );
+          }
+  
+  
+        console.log(req.body.olaa); // For debugging purposes (remove if not needed)
+      
+        try {
+          await user.update({
+            name: dados.name,
+            password: dados.password,
+            birthDate: dados.birth,
+            description: dados.bio,
+            email: dados.email,
+          }, {
+            where: { idUser: id_user },
+          });
+      
+          res.redirect('/profilePag/' + id_user); // Redirect after successful update
+        } catch (error) {
+          console.error('Error updating user profile:', error);
+          // Handle the error appropriately, e.g., return an error response to the user
+        }
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       }
 
 }

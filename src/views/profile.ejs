@@ -212,7 +212,12 @@
                         <label for="password">Senha:</label>
                         <input type="password" class="input" id="password" name="password" value="<%=users.password%>">
                     </div>
-                    <button type="submit" class="btnEnter">Entrar</button>
+
+                    <div class="group  row d-flex ">
+                        <label for="password">Nova Senha:</label>
+                        <input type="password" class="input" id="password" name="newPassword" >
+                    </div>
+                    <button type="submit" class="btnEnter" id="change">Atualizar</button>
                 </form>
             </div>
             <div class="modal-footer">
@@ -222,11 +227,42 @@
     </div>
 
 
+    
+    <div id="myModal" class="modalPassword">
+        <div class="modalPassword-content">
+            <span class="closePassword">&times;</span>
+            <p id="modalMessage">Confirme sua senha:</p>
+            <input type="text" id="userInput" name="passwordChange">
+            <form action= "/update/<%= users.idUser %>" method="post">
+                
+                <div class="escondido"> <input name="senhaNova"><%= novaSenha %></input></div>
+                <button type="submit"  id="submitBtn">Enviar</button>
+            </form>
+        </div>
+    </div>
 
 
+ <!-- nao ta dando certo, reveja oq fez e tente aproveitar ao maximo -->
 
 
+    <% if (confirmarTroca)  { %>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var modal = document.getElementById("myModal");
+                modal.style.display = "block";
+            });
+        </script>
+    <% } %>
 
+
+    <% if (!confirmarTroca)  { %>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var modal = document.getElementById("myModal");
+                modal.style.display = "none";
+            });
+        </script>
+    <% } %>
 
 
 

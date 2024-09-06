@@ -48,26 +48,23 @@ module.exports = {
     
 
     async getComments(req,res){
-        
+
         const id_user = req.params.id_user;
         const id_post = req.query.post;
 
 
-        const currentUser = await user.findOne({
-            where: { idUser: id_user }
-        });
-
+        const currentUser = await user.findByPk(id_user);
         const currentPost = await post.findByPk(id_post);
-
 
         const followed = await follow.findAll({
             raw: true,
             attributes: ['idFollowed'],
-            where: {idFollower: id_user}
-        })
+            where: {
+                idFollower: id_user
+            }
+        });
 
         const followedIds = followed.map(follow => follow.idFollowed);
-
 
         const followedPosts = await post.findAll({
             include: [
@@ -78,20 +75,22 @@ module.exports = {
                 {
                     model: reaction,
                     attributes: ['active'],
-                    where:{idUser: id_user}
+                    where:{idUser: id_user},
+                    required: false
                 }
             ],
             where: {
                 [sequelize.Op.or]:[
-                    {idUser: {[sequelize.Op.in]: {followedIds}}},
+                    {idUser: {[sequelize.Op.in]: followedIds}},
                     {idUser: id_user}
                 ]
             },
             order: [['createdAt', 'DESC']]
-            
-        })
+        });
 
-
+        
+        
+        
         const nonFollowedPosts = await post.findAll({
             include: [
                 {
@@ -101,16 +100,30 @@ module.exports = {
                 {
                     model: reaction,
                     attributes: ['active'],
-                    where:{idUser: id_user}
+                    where:{idUser: id_user},
+                    required: false
                 }
             ],
             where: {
-                    [sequelize.Op.and]: [
+                [sequelize.Op.and]: [
                         {idUser: {[sequelize.Op.notIn]: followedIds}},
                         {idUser: {[sequelize.Op.not]: id_user }}
                     ]
             },
             order: database.literal('RAND()')
+        });
+
+
+        
+        
+        followedPosts.map((element, index) => {
+            if(element.reactions < 1)
+                followedPosts[index].reactions = [{"active" : false}]
+        });
+        
+        nonFollowedPosts.map((element, index) => {
+            if(element.reactions < 1)
+                nonFollowedPosts[index].reactions = [{"active" : false}]
         });
 
 

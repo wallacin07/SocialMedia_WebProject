@@ -1,6 +1,5 @@
 let image = document.getElementById('imgPublicar');
 let file = document.getElementById('inputPublicar');
-
 image.addEventListener('click', () => {
     file.click()
 })
@@ -52,7 +51,6 @@ const botoesAbrirComentarios = document.querySelectorAll(".abrirComentarios");
 
 botoesAbrirComentarios.forEach(botao => {
     botao.addEventListener("click", (e) => {
-        // modalComentarios.style.display = 'flex';
         localStorage.setItem('Modal', '1');
     });
 })
@@ -79,13 +77,6 @@ window.addEventListener('load', verificarModal);
 
 
 
-
-
-
-
-
-
-
 const kangureButton = document.getElementById('kangureButton');
 kangureButton.addEventListener('click', (event) => {
     this.form.submit();
@@ -93,6 +84,17 @@ kangureButton.addEventListener('click', (event) => {
 });
 
 
+const sendCommentButton = document.getElementById('sendCommentButton');
+sendCommentButton.addEventListener('click', () => {
+    localStorage.setItem('Modal', '0');
+    modalComentarios.style.display = `none`;
+})
 
 
 
+document.addEventListener('DOMContentLoaded', function() {
+    if (!localStorage.getItem('Modal')) {
+        localStorage.setItem('Modal', '0');
+        modalComentarios.style.display = `none`;
+    }
+});

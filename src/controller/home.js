@@ -49,10 +49,18 @@ module.exports = {
         
         
         const nonFollowedPosts = await post.findAll({
-            include: {
-                as: 'user',
-                model: user
-            },
+            include: [
+                {
+                    as: 'user',
+                    model: user
+                },
+                {
+                    model: reaction,
+                    attributes: ['active'],
+                    where:{idUser: id_user},
+                    required: false
+                }
+            ],
             where: {
                 [sequelize.Op.and]: [
                         {idUser: {[sequelize.Op.notIn]: followedIds}},
@@ -66,19 +74,18 @@ module.exports = {
         
         
         followedPosts.map((element, index) => {
-            if(element.reactions[0] == undefined)
-                followedPosts[index].reactions[0] = {"active" : "nao"}
+            if(element.reactions < 1)
+                followedPosts[index].reactions = [{"active" : false}]
         });
-
+        
         nonFollowedPosts.map((element, index) => {
-            if(element.reactions[0] == undefined)
-                nonFollowedPosts[index].reactions[0] = {"active" : "nao"}
+            if(element.reactions < 1)
+                nonFollowedPosts[index].reactions = [{"active" : false}]
         });
         
         const comments = [{
             'user': '0'
         }]
-
 
 
 

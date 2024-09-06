@@ -22,6 +22,12 @@ comment.belongsTo(post, {
     constraint: true, //Garantir integridade referencial
     foreignKey: 'idPost'
 });
+
+post.hasMany(comment, {
+    foreignKey: 'idPost'
+});
+
+
 comment.belongsTo(user, {
     constraint: true, //Garantir integridade referencial
     foreignKey: 'idUser'

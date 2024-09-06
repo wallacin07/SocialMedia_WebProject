@@ -8,10 +8,9 @@ const database = new sequelize (
 
     {
     host: 'localhost',
-    // port: 1433,
-    port: 56604,
-    // port: 58868,
-    // port: 54317,
+    // port: 1433, // Porta padrão sala perfeita
+    // port: 56604,
+    port: 54317, // Porta Sabrina sala fedida
     // port: 1433,
     dialect: 'mssql' 
     }

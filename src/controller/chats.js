@@ -23,12 +23,12 @@ const ChatsPageGet = async (req, res) => {
             {
                 model: User,
                 as: 'UserA',
-                attributes: ['idUser', 'name', 'profilePhoto', 'birthDate']
+                attributes: ['idUser', 'name', 'profilePhoto']
             },
             {
                 model: User,
                 as: 'UserB',
-                attributes: ['idUser', 'name', 'profilePhoto', 'birthDate']
+                attributes: ['idUser', 'name', 'profilePhoto']
             }
         ]
     });
@@ -55,12 +55,12 @@ const UserchatGet = async (req, res) => {
             {
                 model: User,
                 as: 'UserA',
-                attributes: ['idUser', 'name', 'profilePhoto', 'birthDate']
+                attributes: ['idUser', 'name', 'profilePhoto']
             },
             {
                 model: User,
                 as: 'UserB',
-                attributes: ['idUser', 'name', 'profilePhoto', 'birthDate']
+                attributes: ['idUser', 'name', 'profilePhoto']
             }
         ]
     });
@@ -119,12 +119,12 @@ const UserchatPost = async (req, res) => {
             {
                 model: User,
                 as: 'UserA',
-                attributes: ['idUser', 'name', 'profilePhoto', 'birthDate']
+                attributes: ['idUser', 'name', 'profilePhoto']
             },
             {
                 model: User,
                 as: 'UserB',
-                attributes: ['idUser', 'name', 'profilePhoto', 'birthDate']
+                attributes: ['idUser', 'name', 'profilePhoto']
             }
         ]
     });

@@ -44,6 +44,8 @@ modalList.forEach(m => {
     closeBtn.addEventListener("click", () => {
         m.style.display = 'none';
     })
+
+    
 });
 
 posts.forEach(post => {

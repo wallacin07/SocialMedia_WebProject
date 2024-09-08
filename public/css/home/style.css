@@ -381,6 +381,32 @@ input[type="file"] {
   color: var(--white);
 }
 
+.storyModal {
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  position: fixed;
+  height: 75vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  box-shadow: 0px 0px 1000px 1000px var(--shadow), 0px 0px 10px 10px var(--shadow);
+
+  display: none;
+  background-color: var(--PurpleMid);
+  border-radius: 10px;
+  padding: 50px;
+}
+
+.storyModalImg{
+  object-fit: cover;
+  max-width: 95%;
+  max-height: 95%;
+  height: 90%;
+  border-radius: 10px;
+}
+
 .barrinha {
   border-color: var(--PurpleLight);
 }

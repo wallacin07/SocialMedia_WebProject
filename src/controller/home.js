@@ -5,6 +5,7 @@ const follow = require('../model/follow');
 const sequelize = require('sequelize');
 
 const database = require('../config/db');
+const story = require('../model/story');
 
 module.exports = {
 
@@ -45,6 +46,22 @@ module.exports = {
             order: [['createdAt', 'DESC']]
         });
 
+        const stories = await story.findAll({
+            include: [
+                {
+                    as: 'user',
+                    model: user,
+                    attributes: ["profilePhoto"]
+                }
+            ],
+            where: {
+                [sequelize.Op.or]: [
+                    {idUser: {[sequelize.Op.in]: followedIds}},
+                    {idUser: id_user}
+                ]
+            },
+            order: [['createdAt', 'DESC']]
+        })
         
         
         
@@ -88,8 +105,7 @@ module.exports = {
         }]
 
 
-
-        res.render('../views/home', {comments, currentPost:'0', currentUser, followedPosts, nonFollowedPosts});
+        res.render('../views/home', {comments, currentPost:'0', currentUser, followedPosts, nonFollowedPosts, stories});
     }
 
    

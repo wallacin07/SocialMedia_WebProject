@@ -123,7 +123,7 @@ body {
   }
 
   .quadradinho {
-    background-color: rgba(255, 255, 255, 0.74);
+    background-color: var(--PurpleLight);
     padding: 20px;
     border-radius: 15px;
     height: 60px;
@@ -140,6 +140,7 @@ body {
 
   .imgPerfil {
     max-width: 150px;
+    min-width: 130px;
     width: 90%;
     border-radius: 50%;
     object-fit: cover;
@@ -212,6 +213,7 @@ body {
   }
 
   .modalPost {
+    z-index: 99;
     display: none;
     position: fixed;
     top: 50%;
@@ -220,7 +222,6 @@ body {
     background-color: var(--PurpleLight);
     max-width: 1000px;
     width: 90%;
-    min-height: 600px;
     text-align: center;
     border-radius: 10px;
     box-shadow: 0px 0px 1000px 1000px var(--shadow), 0px 0px 10px 10px var(--shadow);

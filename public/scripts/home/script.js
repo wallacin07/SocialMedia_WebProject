@@ -98,3 +98,36 @@ document.addEventListener('DOMContentLoaded', function() {
         modalComentarios.style.display = `none`;
     }
 });
+
+const postModal = document.querySelector('#postModal');
+const feedButton = postModal.querySelector("#submitFeed");
+const storyButton = postModal.querySelector("#submitStory");
+
+feedButton.addEventListener("click", () => {
+    postModal.setAttribute("action", `/postPost/${postModal.getAttribute("data-user")}`);
+
+    postModal.submit();
+})
+
+storyButton.addEventListener("click", () => {
+    postModal.setAttribute("action", `/postStory/${postModal.getAttribute("data-user")}`);
+
+    postModal.submit();
+})
+
+const stories = document.querySelectorAll(".storys");
+
+stories.forEach(story => {
+    const id = story.getAttribute("data-for")
+    const modal = document.querySelector(`.storyModal[data-modal="${id}"]`)
+
+    const closeBtn = modal.querySelector(".botaoFechar");
+
+    closeBtn.addEventListener("click", () => {
+        modal.style.display = 'none';
+    })
+
+    story.addEventListener("click", () => { 
+        modal.style.display = 'flex';
+    })
+})

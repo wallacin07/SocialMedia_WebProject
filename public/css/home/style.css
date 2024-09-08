@@ -381,6 +381,10 @@ input[type="file"] {
   color: var(--white);
 }
 
+.barrinha {
+  border-color: var(--PurpleLight);
+}
+
 #modalComentarios {
   background-color: var(--BlueDark);
 }

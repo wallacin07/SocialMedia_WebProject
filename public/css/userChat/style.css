@@ -78,17 +78,18 @@ input[type="file"] {
 }
 
 .nomeImg {
-    position: fixed;
     background-color: var(--BlueDark);
     z-index: 20;
-    max-width: 5%;
-    width: 90%;
+    width: min-content;
     border-radius: 15px;
     padding: 5px;
+    text-align: center;
 }
 
 .nomeImg h3 {
     margin-left: 6px;
+    padding: 0;
+    margin: 0;
 }
 
 .iconeNav {
@@ -150,6 +151,10 @@ input[type="file"] {
 }
 
 .chat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     background-color: var(--BlueDark);
     max-width: 1000px;
     width: 90%;
@@ -171,7 +176,7 @@ input[type="file"] {
     text-decoration: none;
     color: var(--textColor);
     word-wrap: break-word;
-
+    min-height: 30px;
     display: flex;
     flex-direction: column;
 }

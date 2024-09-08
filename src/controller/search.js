@@ -101,7 +101,7 @@ const follow = async (req, res) => {
 
     // try {
         // Verificar se o follow já existe
-        const existingFollow = await Follow.findOne({
+        let existingFollow = await Follow.findOne({
             where: {
                 idFollower: id_currentUser,
                 idFollowed: id_user
@@ -112,11 +112,13 @@ const follow = async (req, res) => {
 
         if (existingFollow == null) {
             // Se não existir, criar um novo follow
-            await Follow.create({
+            existingFollow = await Follow.create({
                 idFollower: id_currentUser,
                 idFollowed: id_user,
                 active: 1
             });
+
+            
 
             // Verificar se o chat deve ser criado
             const chatExists = await Chat.findOne({

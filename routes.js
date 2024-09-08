@@ -3,6 +3,7 @@ const multer = require("multer");
 const route = express.Router();
 // Importando os Controllers
 
+
 // Iniciando as rotas
 const login = require('./src/controller/login');
 route.get('/', login.pagInitGet);
@@ -53,5 +54,8 @@ route.post('/comment/:id_user', actions.comment);
 
 
 
+route.get("/*", (req, res) => {
+    res.status(404).redirect("/pages/notfound.html");
+})
 
 module.exports = route;

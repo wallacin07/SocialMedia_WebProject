@@ -3,7 +3,7 @@ const post = require('../model/post');
 const reaction = require('../model/reaction');
 const follow = require('../model/follow');
 const sequelize = require('sequelize');
-
+const notification = require('../model/notification');
 const database = require('../config/db');
 const story = require('../model/story');
 
@@ -63,6 +63,14 @@ module.exports = {
             order: [['createdAt', 'DESC']]
         })
         
+
+        const notifications = await notification.findAll({
+            raw: true,
+            attributes: ['idNotification', 'message', 'notificationDate','idTarget','idSended'],
+            where: {
+                idTarget : id_user
+            }
+        });
         
         
         const nonFollowedPosts = await post.findAll({
@@ -88,6 +96,7 @@ module.exports = {
         });
 
 
+
         
         
         followedPosts.map((element, index) => {
@@ -105,7 +114,7 @@ module.exports = {
         }]
 
 
-        res.render('../views/home', {comments, currentPost:'0', currentUser, followedPosts, nonFollowedPosts, stories});
+        res.render('../views/home', {comments, currentPost:'0', currentUser, followedPosts, nonFollowedPosts, stories, notifications});
     }
 
    

@@ -129,3 +129,17 @@ stories.forEach(story => {
         modal.style.display = 'flex';
     })
 })
+
+
+
+const modalNotificacao = document.getElementById('modalNotificacao');
+const botaoFecharNotificacao = document.getElementById('botaoFecharNotificacao');
+const botaoNotificacao = document.getElementById('botaoAbrirNotificacao');
+
+botaoFecharNotificacao.addEventListener('click', () => {
+    modalNotificacao.style.display = `none`;
+});
+
+botaoNotificacao.addEventListener('click', () => {
+    modalNotificacao.style.display = `flex`;
+});

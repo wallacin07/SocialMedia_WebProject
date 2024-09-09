@@ -16,10 +16,6 @@ const notification = database.define('notification', {
         type: Sequelize.TEXT,
         allowNull: false,
     },
-    notificationDate: {
-        type: Sequelize.DATE,
-        allowNull: false
-    },
     idTarget: {
         type: Sequelize.INTEGER,
         references: {
@@ -38,19 +34,11 @@ const notification = database.define('notification', {
 
 
 // Definição dos relacionamentos
-User.belongsToMany(User, {
-    as: 'idSended',
-    through: notification,
-    foreignKey: 'idSended',
-    otherKey: 'idTarget'
-});
+User.hasMany(notification, { foreignKey: 'idTarget', as: 'receivedNotifications' });
+User.hasMany(notification, { foreignKey: 'idSended', as: 'sentNotifications' });
 
-User.belongsToMany(User, {
-    as: 'idTarget',
-    through: notification,
-    foreignKey: 'idTarget',
-    otherKey: 'idSended'
-});
+notification.belongsTo(User, { foreignKey: 'idTarget', as: 'targetUser' });
+notification.belongsTo(User, { foreignKey: 'idSended', as: 'sendedUser' });
 
 
 

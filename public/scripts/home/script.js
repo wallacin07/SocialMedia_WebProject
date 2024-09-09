@@ -77,11 +77,11 @@ window.addEventListener('load', verificarModal);
 
 
 
-const kangureButton = document.getElementById('kangureButton');
-kangureButton.addEventListener('click', (event) => {
-    this.form.submit();
+// const kangureButton = document.getElementById('kangureButton');
+// kangureButton.addEventListener('click', (event) => {
+//     this.form.submit();
     
-});
+// });
 
 
 const sendCommentButton = document.getElementById('sendCommentButton');

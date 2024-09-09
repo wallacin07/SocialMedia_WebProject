@@ -66,18 +66,23 @@ module.exports = {
 
         const notifications = await notification.findAll({
             raw: true,
-            attributes: ['idNotification', 'message', 'notificationDate','idTarget','idSended'],
-            include: {
-                as: 'user',
-                model: user
-            },
+            attributes: ['idNotification', 'message', 'idTarget', 'idSended'],
+            include: [
+                {
+                    as: 'targetUser', // Alias definido na associação
+                    model: user,
+                    attributes: ['idUser', 'name'] // Quaisquer atributos do usuário alvo
+                },
+                {
+                    as: 'sendedUser', // Alias definido na associação
+                    model: user,
+                    attributes: ['idUser', 'name'] // Quaisquer atributos do usuário que enviou
+                }
+            ],
             where: {
-                idTarget : id_user
+                idTarget: id_user
             }
         });
-
-
-        console.log(notifications);
         
         
         const nonFollowedPosts = await post.findAll({

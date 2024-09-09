@@ -3,6 +3,7 @@ const Post = require('../model/post');
 const Follow = require('../model/follow');
 const Chat = require('../model/chat');
 const { Op } = require("sequelize");
+const notification = require('../model/notification');
 
 const getSearch = async (req, res) => {
     const id_user = req.params.id_user;
@@ -84,6 +85,21 @@ const follow = async (req, res) => {
             idUser: id_user
         }
     });
+
+    const actualUser = await User.findOne({
+        raw: true,
+        attributes: ['name'],
+        where: {
+            idUser: id_currentUser
+        }
+    });
+    const newNotification = await notification.create({
+        message : `O usuario ${actualUser.name}  acabou de se seguir`,
+        idTarget: id_user,
+        idSended: id_currentUser
+
+    })
+
     const posts = await Post.findAll({
         raw: true,
         attributes: ['idPost', 'description', 'img', 'idUser'],
@@ -108,7 +124,6 @@ const follow = async (req, res) => {
                 active: 1
             });
 
-            
 
             // Verificar se o chat deve ser criado
             const chatExists = await Chat.findOne({
@@ -135,7 +150,7 @@ const follow = async (req, res) => {
             );
         }
   
-    res.render('../views/searchProfile.ejs', { id_currentUser, user, posts, existingFollow });
+    res.render('../views/searchProfile.ejs', { id_currentUser, user, posts, existingFollow,newNotification });
 
 }
 module.exports = { getSearch, searchUser, profile, follow }

@@ -42,10 +42,6 @@ module.exports =
         const dados = req.body;
 
 
-        
-
-
-
         const users= await user.findOne({
           raw: true,
           attributes: ['idUser','name','password', 'birthDate','description','email','profilePhoto','admin','active'],
@@ -90,17 +86,6 @@ module.exports =
           // Handle the error appropriately, e.g., return an error response to the user
         }
       }
-
-
-
-
-
-
-
-
-
-
-
 
         
         if (req.file) {

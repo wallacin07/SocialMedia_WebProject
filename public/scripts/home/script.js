@@ -113,7 +113,7 @@ storyButton.addEventListener("click", () => {
     postModal.submit();
 })
 
-const stories = document.querySelectorAll(".storys");
+const stories = document.querySelectorAll(".stories");
 
 stories.forEach(story => {
     const id = story.getAttribute("data-for")

@@ -186,7 +186,7 @@
                 <h2>Editar Perfil</h2>
             </div>
             <div class="modal-body d-flex center">
-                <form action="/update/<%= users.idUser %>" method="post"  enctype="multipart/form-data" class="forms-profile d-flex column " >
+                <form enctype="multipart/form-data" class="forms-profile d-flex column " >
                     <div class="center d-flex row">
                         <label for="imagem">
                             <img src="/img/profile_pictures/<%= users.profilePhoto %>" alt="Insira sua imagem" id="pessoa" class="img">
@@ -213,10 +213,6 @@
                         <input type="password" class="input" id="password" name="password" value="<%=users.password%>">
                     </div>
 
-                    <div class="group  row d-flex ">
-                        <label for="password">Nova Senha:</label>
-                        <input type="password" class="input" id="password" name="newPassword" >
-                    </div>
                     <button type="submit" class="btnEnter" id="change">Atualizar</button>
                 </form>
             </div>
@@ -227,44 +223,27 @@
     </div>
 
 
-    
-    <div id="myModal" class="modalPassword">
-        <div class="modalPassword-content">
-            <span class="closePassword">&times;</span>
-            <p id="modalMessage">Confirme sua senha:</p>
-            <input type="text" id="userInput" name="passwordChange">
-            <form action= "/update/<%= users.idUser %>" method="post">
-                
-                <div class="escondido"> <input name="senhaNova"><%= novaSenha %></input></div>
-                <button type="submit"  id="submitBtn">Enviar</button>
-            </form>
+
+
+    <div id="modalPassword" class="modal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Modal Title</h5>
+              <button class="close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form action="">
+                    <input type="text" class="" id="newPassword">
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button class="btn" id="closeModalBtn">Close</button>
+              <button class="btn" id="confirmBtn">Save changes</button>
+            </div>
+          </div>
         </div>
-    </div>
-
-
- <!-- nao ta dando certo, reveja oq fez e tente aproveitar ao maximo -->
-
-
-    <% if (confirmarTroca)  { %>
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                var modal = document.getElementById("myModal");
-                modal.style.display = "block";
-            });
-        </script>
-    <% } %>
-
-
-    <% if (!confirmarTroca)  { %>
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                var modal = document.getElementById("myModal");
-                modal.style.display = "none";
-            });
-        </script>
-    <% } %>
-
-
+      </div>
 
 
 <script src="/scripts/profileScript.js"></script>

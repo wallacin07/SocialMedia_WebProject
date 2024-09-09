@@ -67,6 +67,101 @@ window.onclick = function(event) {
 }
 // =============================================================================================
 
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Somente exibe o alerta se erroDesativado estiver definido e não for vazio
+    const senhaAtual = document.getElementById("password");
+    localStorage.setItem('senhaAtual', senhaAtual );
+    }
+);
+
+
+const modalPassword = document.getElementById('modalPassword');
+
+// Get button to close modal
+const closeModalBtn = document.getElementById('closeModalBtn');
+
+// Get the close button (x)
+const closeBtn = document.querySelector('.close');
+
+const confirmBtn = document.querySelector('.confirmBtn');
+
+const currentPasswordInput = document.getElementById('password');
+
+const newPassword = document.getElementById('newPassword');
+
+
+form.addEventListener('submit', function (e) {
+    // Verifica se o campo de senha foi alterado
+    if (passwordInput.value !== "<%=users.password%>") {
+        e.preventDefault(); // Impede o envio do formulário
+
+        // Abre o modal para confirmação
+        modalPassword.style.display = 'block';
+    }
+});
+
+
+
+
+confirmBtn.addEventListener('click', function () {
+    const currentPassword = currentPasswordInput.value;
+
+    // Verificação simples da senha atual (você pode fazer uma verificação mais complexa no backend)
+    if (currentPassword === "<%=users.password%>") {
+        modal.style.display = 'none'; // Fecha o modal
+
+        // Defina dinamicamente a ação e o método de envio do formulário
+        form.setAttribute('action', `/update/<%= users.idUser %>`);
+        form.setAttribute('method', 'POST');
+
+        form.submit(); // Envia o formulário
+    } else {
+        alert('Senha atual incorreta.');
+    }
+});
+
+
+
+
+
+
+
+
+// Close modal by clicking the close button
+closeBtn.addEventListener('click', function () {
+  modal.style.display = 'none';
+});
+
+// Close modal by clicking the close button in the footer
+closeModalBtn.addEventListener('click', function () {
+  modal.style.display = 'none';
+});
+
+// Close modal by clicking outside of the modal content
+window.addEventListener('click', function (e) {
+  if (e.target === modal) {
+    modal.style.display = 'none';
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // const modalComentarios = document.getElementById('modalComentarios');
 // const botaoFecharComentarios = document.getElementById('botaoFecharComentarios');
 // const botoesAbrir = document.querySelectorAll(".abrirComentarios");

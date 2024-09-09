@@ -94,7 +94,7 @@ const follow = async (req, res) => {
         }
     });
     const newNotification = await notification.create({
-        message : `O usuario ${actualUser.name}  acabou de se seguir`,
+        message : `O usuario ${actualUser.name} começou a te seguir.`,
         idTarget: id_user,
         idSended: id_currentUser
 

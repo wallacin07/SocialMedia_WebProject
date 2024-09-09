@@ -93,17 +93,20 @@ fecharNotificacao.addEventListener('click', () => {
 
 
 const kangureButton = document.getElementById('kangureButton');
-kangureButton.addEventListener('click', (event) => {
-    this.form.submit();
+
+if (kangureButton !== undefined) {
+    kangureButton.addEventListener('click', (event) => {
+        this.form.submit();
+        
+    });
     
-// });
-
-
-const sendCommentButton = document.getElementById('sendCommentButton');
-sendCommentButton.addEventListener('click', () => {
-    localStorage.setItem('Modal', '0');
-    modalComentarios.style.display = `none`;
-})
+    
+    const sendCommentButton = document.getElementById('sendCommentButton');
+    sendCommentButton.addEventListener('click', () => {
+        localStorage.setItem('Modal', '0');
+        modalComentarios.style.display = `none`;
+    });
+}
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -144,17 +147,3 @@ stories.forEach(story => {
         modal.style.display = 'flex';
     })
 })
-
-
-
-const modalNotificacao = document.getElementById('modalNotificacao');
-const botaoFecharNotificacao = document.getElementById('botaoFecharNotificacao');
-const botaoNotificacao = document.getElementById('botaoAbrirNotificacao');
-
-botaoFecharNotificacao.addEventListener('click', () => {
-    modalNotificacao.style.display = `none`;
-});
-
-botaoNotificacao.addEventListener('click', () => {
-    modalNotificacao.style.display = `flex`;
-});

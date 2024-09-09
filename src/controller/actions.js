@@ -42,7 +42,7 @@ module.exports = {
             );
             
            await notification.create({
-            message : `O usuario ${sender.name}  acabou de curtir sua publicação`,
+            message : `O usuario ${sender.name} curtiu sua publicação.`,
             idTarget: ActualUserPost.idUser,
             idSended: id_user
     
@@ -55,7 +55,7 @@ module.exports = {
             });
 
            await notification.create({
-                message : `O usuario ${sender.name}  acabou de curtir sua publicação`,
+                message : `O usuario ${sender.name} curtiu sua publicação.`,
                 idTarget: ActualUserPost.idUser,
                 idSended: id_user
         
@@ -201,7 +201,7 @@ module.exports = {
 
         
         await notification.create({
-            message : `O usuario ${sender.name}  acabou de comentar sua publicação`,
+            message : `O usuario ${sender.name} comentou na sua publicação.`,
             idTarget: ActualUserPost.idUser,
             idSended: id_user
     

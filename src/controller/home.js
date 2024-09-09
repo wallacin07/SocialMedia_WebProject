@@ -4,7 +4,7 @@ const reaction = require('../model/reaction');
 const follow = require('../model/follow');
 const sequelize = require('sequelize');
 const notification = require('../model/notification');
-const Op = require('sequelize');
+const { Op, literal } = require('sequelize');
 
 const database = require('../config/db');
 const story = require('../model/story');
@@ -49,6 +49,7 @@ module.exports = {
             order: [['createdAt', 'DESC']]
         });
 
+        //MySQL
         const stories = await story.findAll({
             include: [
                 {
@@ -58,13 +59,55 @@ module.exports = {
                 }
             ],
             where: {
-                [sequelize.Op.or]: [
-                    {idUser: {[sequelize.Op.in]: followedIds}},
-                    {idUser: id_user}
-                ],
+                [Op.and]: [
+                    {
+                        createdAt: {
+                            [Op.between]: [
+                                literal("NOW() - INTERVAL 24 HOUR"), 
+                                literal("NOW()") 
+                            ]
+                        }
+                    },
+                    {
+                        [Op.or]: [
+                            { idUser: { [Op.in]: followedIds } },
+                            { idUser: id_user }
+                        ]
+                    }
+                ]
             },
             order: [['createdAt', 'DESC']]
-        })
+        });
+
+        //SQL SERVER
+        // const stories = await story.findAll({
+        //     include: [
+        //         {
+        //             as: 'user',
+        //             model: user,
+        //             attributes: ["profilePhoto"]
+        //         }
+        //     ],
+        //     where: {
+        //         [Op.and]: [
+        //             {
+        //                 createdAt: {
+        //                     [Op.between]: [
+        //                         literal("DATEADD(HOUR, -24, GETDATE())"), 
+        //                         literal("GETDATE()") 
+        //                     ]
+        //                 }
+        //             },
+        //             {
+        //                 [Op.or]: [
+        //                     { idUser: { [Op.in]: followedIds } },
+        //                     { idUser: id_user }
+        //                 ]
+        //             }
+        //         ]
+        //     },
+        //     order: [['createdAt', 'DESC']]
+        // });
         
 
         const notifications = await notification.findAll({
@@ -72,14 +115,14 @@ module.exports = {
             attributes: ['idNotification', 'message', 'idTarget', 'idSended'],
             include: [
                 {
-                    as: 'targetUser', // Alias definido na associação
+                    as: 'targetUser', 
                     model: user,
-                    attributes: ['idUser', 'name'] // Quaisquer atributos do usuário alvo
+                    attributes: ['idUser', 'name'] 
                 },
                 {
-                    as: 'sendedUser', // Alias definido na associação
+                    as: 'sendedUser', 
                     model: user,
-                    attributes: ['idUser', 'name'] // Quaisquer atributos do usuário que enviou
+                    attributes: ['idUser', 'name'] 
                 }
             ],
             where: {

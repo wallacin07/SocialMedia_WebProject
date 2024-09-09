@@ -100,18 +100,16 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 const postModal = document.querySelector('#postModal');
-const feedButton = postModal.querySelector("#submitFeed");
-const storyButton = postModal.querySelector("#submitStory");
+const feedButton = document.getElementById("submitFeed");
+const storyButton = document.getElementById("submitStory");
 
 feedButton.addEventListener("click", () => {
     postModal.setAttribute("action", `/postPost/${postModal.getAttribute("data-user")}`);
-
     postModal.submit();
 })
 
 storyButton.addEventListener("click", () => {
     postModal.setAttribute("action", `/postStory/${postModal.getAttribute("data-user")}`);
-
     postModal.submit();
 })
 

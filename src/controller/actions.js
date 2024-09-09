@@ -4,6 +4,7 @@ const post = require('../model/post');
 const reaction = require('../model/reaction');
 const follow = require('../model/follow');
 const sequelize = require('sequelize');
+const story = require('../model/story');
 
 const database = require('../config/db');
 
@@ -113,6 +114,24 @@ module.exports = {
             order: database.literal('RAND()')
         });
 
+        const stories = await story.findAll({
+            include: [
+                {
+                    as: 'user',
+                    model: user,
+                    attributes: ["profilePhoto"]
+                }
+            ],
+            where: {
+                [sequelize.Op.or]: [
+                    {idUser: {[sequelize.Op.in]: followedIds}},
+                    {idUser: id_user}
+                ]
+            },
+            order: [['createdAt', 'DESC']]
+        })
+        
+
 
         
         
@@ -136,7 +155,7 @@ module.exports = {
 
 
 
-        res.render('../views/home', {comments, currentPost, currentUser, followedPosts, nonFollowedPosts});
+        res.render('../views/home', {comments, currentPost, currentUser, followedPosts, nonFollowedPosts, stories});
     },
 
 

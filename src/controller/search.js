@@ -3,32 +3,20 @@ const Post = require('../model/post');
 const Follow = require('../model/follow');
 const Chat = require('../model/chat');
 const { Op } = require("sequelize");
-const riapi = require('../../random-images-api/src/riapi');
 
 const getSearch = async (req, res) => {
     const id_user = req.params.id_user;
-
-    let gatos = [];
-
-    for (let i = 0; i < 9; i++) {
-        gatos.push(await riapi.nekos("meow"));
-    }
     
-    res.render('../views/search', { id_user, gatos });
+    res.render('../views/search', { id_user});
 }
 
 const searchUser = async (req, res) => {
     const id_user = req.params.id_user;
     const dados = req.body.text;
 
-    let gatos = [];
 
-    for (let i = 0; i < 9; i++) {
-        gatos.push(await riapi.nekos("meow"));
-    }
 
     console.log('IDUSERS: ' + id_user);
-    console.log('DADOS: ' + dados);
     
     const users = await User.findAll({
         where: {
@@ -45,7 +33,7 @@ const searchUser = async (req, res) => {
 
     console.log(users.map(user => user.name)); // Imprime os nomes
 
-    res.render('../views/search', { id_user, users, gatos });
+    res.render('../views/search', { id_user, users });
 }
 
 const profile = async (req, res) => {
@@ -53,8 +41,7 @@ const profile = async (req, res) => {
     const id_user = req.params.id_user;
 
 
-    // console.log('IdCurrentUser: ' + id_currentUser);
-    // console.log('IdUser: ' + id_user);
+
 
     const user = await User.findOne({
         raw: true,
@@ -76,14 +63,11 @@ const profile = async (req, res) => {
             idFollowed: id_user
         }
     });
-    console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA:' + existingFollow)
+
     
     if(existingFollow == null)
         existingFollow = {'active' : false};
     
-    console.log('BGL EXISTIDO DO PROFILE: ' + existingFollow.active)
-
-    // console.log(posts.map(post => post.img));
 
     res.render('../views/searchProfile.ejs', { id_currentUser, user, posts, existingFollow });
 }
@@ -92,11 +76,6 @@ const follow = async (req, res) => {
     const id_currentUser = req.body.id_currentUser;
     const id_user = req.body.id_user;
     
-    let gatos = [];
-
-    for (let i = 0; i < 9; i++) {
-        gatos.push(await riapi.nekos("meow"));
-    }
 
     const user = await User.findOne({
         raw: true,
@@ -114,12 +93,6 @@ const follow = async (req, res) => {
     });
 
 
-    // console.log('IdCurrentUser: ' + id_currentUser);
-    // console.log('IdUser: ' + id_user);
-
-
-    // try {
-        // Verificar se o follow já existe
         let existingFollow = await Follow.findOne({
             where: {
                 idFollower: id_currentUser,
@@ -127,11 +100,9 @@ const follow = async (req, res) => {
             }
         });
 
-        // console.log('Estado Atual: ' + existingFollow.active)
 
         if (existingFollow == null) {
-            // Se não existir, criar um novo follow
-            existingFollow = await Follow.create({
+         existingFollow = await Follow.create({
                 idFollower: id_currentUser,
                 idFollowed: id_user,
                 active: 1
@@ -163,11 +134,7 @@ const follow = async (req, res) => {
                 { where: { idFollower: id_currentUser, idFollowed: id_user } }
             );
         }
-    // } catch (error) {
-    //     const existingFollow = false;
-    //     console.error('Erro ao verificar/criar follow:', error);
-    // }
-    
+  
     res.render('../views/searchProfile.ejs', { id_currentUser, user, posts, existingFollow });
 
 }

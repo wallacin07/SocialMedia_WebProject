@@ -76,19 +76,21 @@ window.addEventListener('load', verificarModal);
 
 
 
+try{
+    const kangureButton = document.getElementById('kangureButton');
+    kangureButton.addEventListener('click', (event) => {
+        this.form.submit();
+        
+    });
 
-const kangureButton = document.getElementById('kangureButton');
-kangureButton.addEventListener('click', (event) => {
-    this.form.submit();
-    
-});
 
-
-const sendCommentButton = document.getElementById('sendCommentButton');
-sendCommentButton.addEventListener('click', () => {
-    localStorage.setItem('Modal', '0');
-    modalComentarios.style.display = `none`;
-})
+    const sendCommentButton = document.getElementById('sendCommentButton');
+    sendCommentButton.addEventListener('click', () => {
+        localStorage.setItem('Modal', '0');
+        modalComentarios.style.display = `none`;
+    })
+}
+catch(error){ console.log("nenhuma publicação ainda ")}
 
 
 

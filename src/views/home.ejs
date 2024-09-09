@@ -98,7 +98,7 @@
                         <!-- Colocar a classe 'imgStorys' nas imagens das pessoas que vão aparecer por cima das bolinhas -->
 
                         <% stories.forEach((story, index) => { %>
-                            <button class="storys" data-for="<%= index %>">
+                            <button class="stories" data-for="<%= index %>">
                                 <img src="/img/profile_pictures/<%= story.user.profilePhoto %>" alt="" class="imgStorys">
                             </button>
 
@@ -327,15 +327,15 @@
                 <div>
                     <img class="imgPublicar" id="imgPublicar" src="/img/img_kangoroo/photo.png" alt="post_image.png">
                     
-                    <input type="file" name="new_post_image" id="inputPublicar" accept="image/*" onchange="publicar()">
+                    <input type="file" name="new_post_image" id="inputPublicar" accept="image/*">
                 </div>
         
                 <div>
                     <label for="new_post_description">Description:</label>
                     <textarea name="new_post_description" id="new_post_description" class="inputDescricao"></textarea>
                 </div>
-                <button type="submit" class="botaoModal" id="submitFeed">feed</button>
-                <button type="submit" class="botaoModal" id="submitStory">story</button>
+                <div class="botaoModal" id="submitFeed">feed</div>
+                <div class="botaoModal" id="submitStory">story</div>
             </form>
         </div>
     </section>

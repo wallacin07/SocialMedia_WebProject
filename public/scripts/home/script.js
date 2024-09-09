@@ -20,6 +20,7 @@ file.addEventListener('change', () =>
     }
 )
 
+
 // Função pra ver o tamanho da descrição do post, não mexa!!
 const textareas = document.querySelectorAll('.inputDescricao');
 
@@ -75,8 +76,6 @@ function verificarModal() {
 window.addEventListener('load', verificarModal);
 
 
-
-
 const kangureButton = document.getElementById('kangureButton');
 kangureButton.addEventListener('click', (event) => {
     this.form.submit();
@@ -91,7 +90,6 @@ sendCommentButton.addEventListener('click', () => {
 })
 
 
-
 document.addEventListener('DOMContentLoaded', function() {
     if (!localStorage.getItem('Modal')) {
         localStorage.setItem('Modal', '0');
@@ -99,21 +97,22 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-const postModal = document.querySelector('#postModal');
+const postModal = document.getElementById('postModal');
 const feedButton = document.getElementById("submitFeed");
 const storyButton = document.getElementById("submitStory");
 
 feedButton.addEventListener("click", () => {
     postModal.setAttribute("action", `/postPost/${postModal.getAttribute("data-user")}`);
     postModal.submit();
-})
+});
 
 storyButton.addEventListener("click", () => {
+    console.log(postModal.getAttribute("data-user"));
     postModal.setAttribute("action", `/postStory/${postModal.getAttribute("data-user")}`);
     postModal.submit();
-})
+});
 
-const stories = document.querySelectorAll(".storys");
+const stories = document.querySelectorAll(".stories");
 
 stories.forEach(story => {
     const id = story.getAttribute("data-for")
@@ -123,9 +122,11 @@ stories.forEach(story => {
 
     closeBtn.addEventListener("click", () => {
         modal.style.display = 'none';
-    })
+    });
 
     story.addEventListener("click", () => { 
         modal.style.display = 'flex';
-    })
-})
+        console.log('oi')
+
+    });
+});

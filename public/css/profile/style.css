@@ -68,9 +68,8 @@ body::-webkit-scrollbar-thumb:hover {
   
   .quadrado {
     background-color: var(--BlueDark);
-    max-width: 1000px;
     min-width: 800px;
-    width: 90%;
+    width: 48vw;
     padding: 10px;
     border-radius: 10px;
     margin-left: 10px;
@@ -103,10 +102,10 @@ body::-webkit-scrollbar-thumb:hover {
   
 
   
-  .profile {
+  /* .profile {
     max-width: 1200px;
     width: 100%;
-  }
+  } */
 
   
   .botoes {
@@ -250,7 +249,7 @@ margin-left: 5px;
   display: block;
   max-width: 280px;
   width: 90%;
-  height: 220px;
+  height: 210px;
   object-fit: cover;
   border-radius: 10px;
   float: left;

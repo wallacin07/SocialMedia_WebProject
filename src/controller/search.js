@@ -14,7 +14,6 @@ const getSearch = async (req, res) => {
     })
     const users = await User.findAll()
 
-    console.log('\n\n\n\n\n\n\n\n'+allPosts+'\n\n\n\n\n\n\n\n\n')
     
     res.render('../views/search', { id_user, allPosts, users });
 }
@@ -59,6 +58,19 @@ const profile = async (req, res) => {
             idUser: id_user
         }
     });
+
+
+    const following = await Follow.count({
+        where:{[Op.and]: [{idFollower: id_user}, {active: 1}]}
+      })
+  
+    const followers = await Follow.count({
+        where:{
+            [Op.and]: [{idFollowed: id_user}, {active: 1}]}
+    })
+
+
+
     const posts = await Post.findAll({
         raw: true,
         attributes: ['idPost', 'description', 'img', 'idUser'],
@@ -76,7 +88,7 @@ const profile = async (req, res) => {
         existingFollow = {'active' : false};
     
 
-    res.render('../views/searchProfile', { id_currentUser, user, posts, existingFollow });
+    res.render('../views/searchProfile', { id_currentUser, user, posts, existingFollow, followers, following });
 }
 
 const follow = async (req, res) => {
@@ -95,10 +107,23 @@ const follow = async (req, res) => {
             idFollowed: id_user,
             active: 1
         });
-        await Chat.create({
+
+        const chatExists = await Chat.findOne({
+            where: {
+                [Op.or]: [
+                    { idUserA: id_currentUser, idUserB: id_user },
+                    { idUserA: id_user, idUserB: id_currentUser }
+                ]
+            }
+        });
+
+        if (!chatExists) {
+            // Se o chat não existir, criar um novo chat
+            await Chat.create({
                 idUserA: id_currentUser,
                 idUserB: id_user
-        });
+            });
+        }
 
     } else {
         // Se já existir, atualizar o campo 'active' para 0

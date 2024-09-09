@@ -31,6 +31,17 @@ const loadMessages = async() => {
     })
 }
 
+document.addEventListener('DOMContentLoaded',async function() {
+    const res = await fetch(`${window.location.pathname}/get`);
+    const mensagens = await res.json();
+    if (!localStorage.getItem('chat:')){
+        localStorage.setItem('Modal', '0');
+        modalComentarios.style.display = `none`;
+    }
+});
+
+
+
 setInterval(() => {
     loadMessages();
 }, 500);

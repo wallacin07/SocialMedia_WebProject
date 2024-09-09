@@ -51,19 +51,19 @@ const botoesAbrirComentarios = document.querySelectorAll(".abrirComentarios");
 
 botoesAbrirComentarios.forEach(botao => {
     botao.addEventListener("click", (e) => {
-        localStorage.setItem('Modal', '1');
+        sessionStorage.setItem('Modal', '1');
     });
 })
 
 botaoFecharComentarios.addEventListener('click', () => {
-    localStorage.setItem('Modal', '0');
+    sessionStorage.setItem('Modal', '0');
     modalComentarios.style.display = `none`;
 });
 
 
-// Recupera o estado do modal no localStorage
+// Recupera o estado do modal no sessionStorage
 function verificarModal() {
-    const modalEstado = localStorage.getItem('Modal');
+    const modalEstado = sessionStorage.getItem('Modal');
     if (modalEstado === '1') {
         modalComentarios.style.display = 'flex';
     } else {
@@ -85,9 +85,15 @@ try{
 
 
     const sendCommentButton = document.getElementById('sendCommentButton');
-    sendCommentButton.addEventListener('click', () => {
-        localStorage.setItem('Modal', '0');
+    sendCommentButton.addEventListener('click', (event) => {
+        const comment = document.getElementById('inputComentario').value.trim();
+
+        sessionStorage.setItem('Modal', '0');
         modalComentarios.style.display = `none`;
+    
+        if (!comment) 
+            event.preventDefault();
+
     })
 }
 catch(error){ console.log("nenhuma publicação ainda ")}
@@ -95,8 +101,8 @@ catch(error){ console.log("nenhuma publicação ainda ")}
 
 
 document.addEventListener('DOMContentLoaded', function() {
-    if (!localStorage.getItem('Modal')) {
-        localStorage.setItem('Modal', '0');
+    if (!sessionStorage.getItem('Modal')){
+        sessionStorage.setItem('Modal', '0');
         modalComentarios.style.display = `none`;
     }
 });

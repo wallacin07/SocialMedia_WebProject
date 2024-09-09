@@ -76,11 +76,13 @@ function verificarModal() {
 window.addEventListener('load', verificarModal);
 
 
-const kangureButton = document.getElementById('kangureButton');
-kangureButton.addEventListener('click', (event) => {
-    this.form.submit();
+
+
+// const kangureButton = document.getElementById('kangureButton');
+// kangureButton.addEventListener('click', (event) => {
+//     this.form.submit();
     
-});
+// });
 
 
 const sendCommentButton = document.getElementById('sendCommentButton');
@@ -126,7 +128,19 @@ stories.forEach(story => {
 
     story.addEventListener("click", () => { 
         modal.style.display = 'flex';
-        console.log('oi')
+    })
+})
 
-    });
+
+
+const modalNotificacao = document.getElementById('modalNotificacao');
+const botaoFecharNotificacao = document.getElementById('botaoFecharNotificacao');
+const botaoNotificacao = document.getElementById('botaoAbrirNotificacao');
+
+botaoFecharNotificacao.addEventListener('click', () => {
+    modalNotificacao.style.display = `none`;
+});
+
+botaoNotificacao.addEventListener('click', () => {
+    modalNotificacao.style.display = `flex`;
 });

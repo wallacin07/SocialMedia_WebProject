@@ -5,6 +5,7 @@ const reaction = require('../model/reaction');
 const follow = require('../model/follow');
 const sequelize = require('sequelize');
 const story = require('../model/story');
+const notification = require('../model/notification');
 
 const database = require('../config/db');
 
@@ -14,7 +15,13 @@ module.exports = {
         const id_user = req.params.id_user;
         const id_post = req.body.post;
         
+        const ActualPost = await post.findByPk(id_post);
 
+        const ActualUserPost = await user.findByPk(ActualPost.idUser);
+        const sender = await user.findByPk(id_user);
+        
+        console.log(sender.name);
+        
         const check = await reaction.findOne({
             where: {
                 [sequelize.Op.and]: [
@@ -33,12 +40,26 @@ module.exports = {
                     where: {[sequelize.Op.and]: [{idUser: id_user}, {idPost: id_post}]}
                 }
             );
+            
+           await notification.create({
+            message : `O usuario ${sender.name}  acabou de curtir sua publicação`,
+            idTarget: ActualUserPost.idUser,
+            idSended: id_user
+    
+        })
         }
         else{
             await reaction.create({
                 idPost: id_post,
                 idUser: id_user
             });
+
+           await notification.create({
+                message : `O usuario ${sender.name}  acabou de curtir sua publicação`,
+                idTarget: ActualUserPost.idUser,
+                idSended: id_user
+        
+            })
         }
 
 
@@ -165,7 +186,11 @@ module.exports = {
         const id_user = req.params.id_user;
         const id_post = req.body.post;
         const text_comment = req.body.text_comment;
+        
+        const ActualPost = await post.findByPk(id_post);
 
+        const ActualUserPost = await user.findByPk(ActualPost.idUser);
+        const sender = await user.findByPk(id_user);
 
 
         await comment.create({
@@ -173,6 +198,14 @@ module.exports = {
             idUser: id_user,
             description: text_comment
         });
+
+        
+        await notification.create({
+            message : `O usuario ${sender.name}  acabou de comentar sua publicação`,
+            idTarget: ActualUserPost.idUser,
+            idSended: id_user
+    
+        })
 
         res.redirect('/getHome/' + id_user)
     }

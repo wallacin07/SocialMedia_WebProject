@@ -20,25 +20,38 @@ const notification = database.define('notification', {
         type: Sequelize.DATE,
         allowNull: false
     },
-    idSender: {
+    idTarget: {
         type: Sequelize.INTEGER,
-        allowNull: false,
         references: {
             model: User,
             key: 'idUser'
         }
     },
-        idTarget: {
-            type: Sequelize.INTEGER,
-            allowNull: false,
-            references: {
-                model: User,
-                key: 'idUser'
-            },
-        // onUpdate: "CASCADE",
-        // onDelete: "CASCADE"
+    idSended: {
+        type: Sequelize.INTEGER,
+        references: {
+            model: User,
+            key: 'idUser'
+        }
     }
-})
+});
+
+
+// Definição dos relacionamentos
+User.belongsToMany(User, {
+    as: 'idSended',
+    through: notification,
+    foreignKey: 'idSended',
+    otherKey: 'idTarget'
+});
+
+User.belongsToMany(User, {
+    as: 'idTarget',
+    through: notification,
+    foreignKey: 'idTarget',
+    otherKey: 'idSended'
+});
+
 
 
 module.exports = notification

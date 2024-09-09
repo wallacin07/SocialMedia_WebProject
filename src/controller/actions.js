@@ -186,7 +186,11 @@ module.exports = {
         const id_user = req.params.id_user;
         const id_post = req.body.post;
         const text_comment = req.body.text_comment;
+        
+        const ActualPost = await post.findByPk(id_post);
 
+        const ActualUserPost = await user.findByPk(ActualPost.idUser);
+        const sender = await user.findByPk(id_user);
 
 
         await comment.create({
@@ -194,6 +198,14 @@ module.exports = {
             idUser: id_user,
             description: text_comment
         });
+
+        
+        await notification.create({
+            message : `O usuario ${sender.name}  acabou de comentar sua publicação`,
+            idTarget: ActualUserPost.idUser,
+            idSended: id_user
+    
+        })
 
         res.redirect('/getHome/' + id_user)
     }

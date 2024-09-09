@@ -118,7 +118,7 @@ input[type="file"] {
 }
 
 .send {
-    padding: 0;
+    padding: 0; 
     max-width: 25px;
     width: 90%;
     color: var(--white);
@@ -126,29 +126,21 @@ input[type="file"] {
 
 .inputDescricao {
     border-radius: 5px;
-    height: 25px;
-    max-width: 600px;
-    width: 90%;
+    flex-grow: 1;
     resize: none;
     font-size: 20px;
     /* box-sizing: border-box; */
     overflow: hidden;
 }
 
-.formComentario {
-    display: flex;
-    align-items: center;
-    max-width: 800px;
+.formMensagem {
+    margin-top: 20px;
     width: 90%;
-    z-index: 20;
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: 0 auto;
-    margin-bottom: 10px;
-    gap: 5px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
 }
+
 
 .chat {
     display: flex;
@@ -159,6 +151,7 @@ input[type="file"] {
     max-width: 1000px;
     width: 90%;
     padding: 10px;
+    height: 93vh;
     border-radius: 10px;
     min-width: 900px;
     margin-left: 10px;
@@ -166,6 +159,7 @@ input[type="file"] {
 }
 
 .mensagens {
+    overflow: auto;
     background-color: var(--PurpleLight);
     border-radius: 10px;
     max-width: 1000px;
@@ -198,26 +192,28 @@ input[type="file"] {
     display: flex;
 }
 
-.chat > .centralize::-webkit-scrollbar {
+.mensagens::-webkit-scrollbar {
     width: 8px;
 }
 
-.chat > .centralize::-webkit-scrollbar-thumb {
+.mensagens::-webkit-scrollbar-thumb {
     background-color: var(--PurpleDark);
     border-radius: 10px;
 }
-.chat > .centralize::-webkit-scrollbar-thumb:hover {
+.mensagens::-webkit-scrollbar-thumb:hover {
     background-color: var(--PurpleDarkHover);
 }
 
 .botao{
-    float: right;
     border-radius: 50%;
     aspect-ratio: 1/1;
+    height: 50px;
     border: none;
     background-color: var(--PurpleDark);
-    z-index: 20;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .botao:hover {

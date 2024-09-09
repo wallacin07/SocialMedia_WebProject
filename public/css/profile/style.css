@@ -68,7 +68,7 @@ body::-webkit-scrollbar-thumb:hover {
   
   .quadrado {
     background-color: var(--BlueDark);
-    max-width: 1200px;
+    max-width: 1000px;
     min-width: 800px;
     width: 90%;
     padding: 10px;
@@ -255,8 +255,16 @@ margin-left: 5px;
   border-radius: 10px;
   float: left;
   margin: 5px;
+  cursor: pointer;
 }
 
+.send {
+  padding: 0;
+  padding-top: 3px;
+  max-width: 25px;
+  width: 90%;
+  color: var(--white);
+}
 
 .modal {
   z-index: 90;
@@ -486,7 +494,6 @@ margin-left: 5px;
   width: 200px;
   cursor: pointer;
   border-radius: 50%;
-  margin-bottom: 1.5rem;
   aspect-ratio: 1/1;
   object-fit: cover;
 }
@@ -581,4 +588,8 @@ margin-left: 5px;
   height: 700px;/* Largura do modal */
   max-width: 600px; /* Largura máxima do modal */
   border-radius: 4px;
+}
+
+#profile-Modal {
+  max-width: 750px !important;
 }

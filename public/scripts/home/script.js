@@ -76,6 +76,22 @@ function verificarModal() {
 window.addEventListener('load', verificarModal);
 
 
+
+// Modal de notificações
+const modalNotificacao = document.getElementById('modalNotificacoes');
+const btnAbrir = document.getElementById('abrirNotificacao');
+const fecharNotificacao = document.getElementById('botaoFecharNotificacoes');
+
+btnAbrir.addEventListener('click', () => {
+    modalNotificacao.style.display = 'flex';
+});
+
+fecharNotificacao.addEventListener('click', () => {
+    modalNotificacao.style.display = 'none';
+});
+
+
+
 const kangureButton = document.getElementById('kangureButton');
 kangureButton.addEventListener('click', (event) => {
     this.form.submit();

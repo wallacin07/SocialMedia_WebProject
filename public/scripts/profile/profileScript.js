@@ -26,45 +26,41 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
+
 function Imagem() {
     var oFReader = new FileReader();
     oFReader.readAsDataURL(document.getElementById("imagem").files[0]);
-    
+
     oFReader.onload = function (oFREvent) {
         document.getElementById("pessoa").src = oFREvent.target.result;
     };
 }
 
-let btns_openPost = document.querySelectorAll(".btn-open-post");
+const posts = document.querySelectorAll('.botaoPost');
+const modalList = document.querySelectorAll('.modal[data-modal]');
 
-// Obtém todos os modais
-let modals_post = document.querySelectorAll(".modal");
+modalList.forEach(m => {
+    const closeBtn = m.querySelector(".close-post");
 
-// Obtém todos os elementos <span> que fecham o modal
-let spans_post = document.querySelectorAll(".close-post");
-
-// Adiciona um event listener para cada botão
-btns_openPost.forEach((btn, index) => {
-    btn.onclick = function() {
-        modals_post[index].style.display = "block";
-    }
+    closeBtn.addEventListener("click", () => {
+        m.style.display = 'none';
+    })
 });
 
-// Adiciona um event listener para cada <span> (fechar)
-spans_post.forEach((span, index) => {
-    span.onclick = function() {
-        modals_post[index].style.display = "none";
-    }
-});
+posts.forEach(post => {
+    const id = post.getAttribute("data-for")
+    post.addEventListener('click', (e) => {
+        e.preventDefault();
 
-// Fechar o modal quando o usuário clica fora do modal
-window.onclick = function(event) {
-    modals_post.forEach((modal) => {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    });
-}
+        const element = e.target;
+
+        const targetModal = document.querySelector(`.modal[data-modal="${id}"]`)
+
+        targetModal.style.display = "block";
+
+    })
+})
+
 // =============================================================================================
 
 

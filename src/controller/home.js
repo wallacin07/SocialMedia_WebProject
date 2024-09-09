@@ -3,9 +3,11 @@ const post = require('../model/post');
 const reaction = require('../model/reaction');
 const follow = require('../model/follow');
 const sequelize = require('sequelize');
+const Op = require('sequelize');
 
 const database = require('../config/db');
 const story = require('../model/story');
+
 
 module.exports = {
 
@@ -58,10 +60,23 @@ module.exports = {
                 [sequelize.Op.or]: [
                     {idUser: {[sequelize.Op.in]: followedIds}},
                     {idUser: id_user}
-                ]
+                ],
             },
             order: [['createdAt', 'DESC']]
-        })
+        });
+
+        // AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA N FUNCIONAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA, dps eu vejo o pq
+        // const currentDate = new Date();
+        // const hours24Ago = new Date(currentDate.setHours(currentDate.getHours() - 24)).getHours();
+
+        // console.log(hours24Ago);
+
+        // const recentStories = stories.filter(story => {
+        //     const storyDate = new Date(story.createdAt);
+        //     return storyDate.getHours() >= hours24Ago;
+        // });
+
+        // console.log(recentStories)
         
         
         
@@ -105,10 +120,10 @@ module.exports = {
         }]
 
 
+        // res.render('../views/home', {comments, currentPost:'0', currentUser, followedPosts, nonFollowedPosts, stories: recentStories});
         res.render('../views/home', {comments, currentPost:'0', currentUser, followedPosts, nonFollowedPosts, stories});
     }
 
-   
 }
 
 

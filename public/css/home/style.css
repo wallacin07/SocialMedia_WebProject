@@ -131,10 +131,10 @@ input[type="file"] {
   height: 60px;
   border-radius: 50%;
   margin: 5px;
-  flex: 0 0 auto; /* Impede que os botões redimensionem */
+  flex: 0 0 auto;
   border: none;
   background-color: var(--PurpleLight);
-  scroll-snap-align: start; /* Snap para alinhar o story ao iniciar o scroll */
+  scroll-snap-align: start;
   padding: 3px;
   cursor: pointer;
 }
@@ -195,6 +195,7 @@ input[type="file"] {
 
 .botoesAcoes {
   display: flex;
+  gap: 3px;
 }
 
 .botoesPublicacao {
@@ -279,6 +280,54 @@ input[type="file"] {
   border-radius: 10px;
   box-shadow: 0px 0px 1000px 1000px var(--shadow), 0px 0px 10px 10px var(--shadow);
   padding: 10px;
+}
+
+.modalNotificacao {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--PurpleLight);
+  max-width: 700px;
+  width: 90%;
+  height: 800px;
+  align-items: center;
+  /* justify-content: center; */
+  flex-direction: column;
+  border-radius: 10px;
+  box-shadow: 0px 0px 1000px 1000px var(--shadow), 0px 0px 10px 10px var(--shadow);
+  padding: 10px;
+}
+
+.notificacoes {
+  display: flex;
+  overflow-y: scroll;
+  align-items: center;
+  flex-direction: column;
+  /* justify-content: center; */
+  max-width: 700px;
+  width: 90%;
+  gap: 5px;
+}
+
+.notificacoes::-webkit-scrollbar {
+  width: 10px;
+}
+
+.notificacoes::-webkit-scrollbar-thumb {
+  background-color: var(--PurpleDark);
+  border-radius: 20px;
+}
+
+.notificacoes::-webkit-scrollbar-thumb:hover {
+  background-color: var(--PurpleDarkHover);
+}
+
+.notificacao {
+  background-color: var(--BlueDark);
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .descricao {

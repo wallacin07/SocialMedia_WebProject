@@ -256,10 +256,10 @@ input[type="file"] {
   display: none;
   position: fixed;
   top: 50%;
-  left: 50%;
+  left: 48.5%;
   transform: translate(-50%, -50%);
   background-color: var(--PurpleLight);
-  max-width: 700px;
+  max-width: 1000px;
   width: 90%;
   text-align: center;
   border-radius: 10px;
@@ -287,7 +287,7 @@ input[type="file"] {
 .inputDescricao {
   border-radius: 5px;
   height: 25px;
-  max-width: 600px;
+  max-width: 300px;
   width: 90%;
   resize: none;
   font-size: 20px;
@@ -310,7 +310,6 @@ input[type="file"] {
   border: none;
   background-color: var(--PurpleDark);
   cursor: pointer;
-
 }
 
 .botaoFechar:hover {
@@ -326,13 +325,17 @@ input[type="file"] {
 
 .comentario {
   background-color: var(--PurpleLight);
-  display: flex;
+  color: var(--textColor);
   border-radius: 10px;
-  max-width: 600px;
-  min-width: 600px;
-  width: 90%;
+  width: 100%;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
   padding: 5px;
-  text-align: left;
+  margin: 3px;
+  display: flex;
+  flex-direction: row;
+  gap: 3px;
 }
 
 .comentario h3 {
@@ -352,18 +355,18 @@ input[type="file"] {
 }
 
 .formComentario {
-  display: flex;
-  align-items: center;
-  max-width: 800px;
+  max-width: 360px;
   width: 90%;
-  z-index: 20;
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: 0 auto;
-  margin-bottom: 10px;
-  gap: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--BlueDark);
+  padding: 6px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 10px;
 }
 
 .botaoComentario {
@@ -438,4 +441,83 @@ input[type="file"] {
   justify-content: flex-start;
   gap: 10px;
   overflow-x: hidden;
+}
+
+.comentarios {
+  background-color: var(--BlueDark);
+  max-width: 700px;
+  width: 99%;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  max-height: 600px;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  overflow-y: scroll;
+}
+
+.comentarios::-webkit-scrollbar {
+  width: 6px;
+}
+.comentarios::-webkit-scrollbar-thumb {
+  background-color: var(--PurpleDark);
+  border-radius: 10px;
+}
+
+.comentarios::-webkit-scrollbar-thumb:hover {
+  background-color: var(--PurpleDarkHover);
+}
+
+.publicacaoModal {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 25px;
+  max-width: 900px;
+  width: 100%;
+}
+
+
+.image-post
+{
+  display: block;
+  max-width: 280px;
+  width: 90%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 10px;
+  float: left;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.close-post {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-post:hover,
+.close-post:focus {
+  color: #000;
+  text-decoration: none;
+}
+
+.imgPostModal {
+  max-width: 550px;
+  object-fit: contain;
+  width: 50%;
+  float: left;
+  border-radius: 10px;
+}
+
+.comentar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
 }

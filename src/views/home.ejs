@@ -359,7 +359,7 @@
                     <section>
                         <% for(let i=0; i<comments.length; i++){ %>
                             <div class="comentario">
-                                <img src="/img/profile_pictures/<%= comments[i].user.active ? comments[i].user.profilePhoto : 'disable-user.png' %>" alt="imgComentario" class="imgComentario">
+                                <img src="/img/profile_pictures/<%= comments[i].user.active ? comments[i].user.profilePhoto : 'disable-user.png' %>" alt="imgComentario" class="imgPessoaComentario">
                                 <h3><b> <%= comments[i].user.active ? comments[0].user.name : 'user' %></b> <%= comments[i].description %> </h3>
                             </div>
                         <% } %>

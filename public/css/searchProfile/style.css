@@ -267,7 +267,7 @@ body {
 
   .imgPostModal {
     max-width: 550px;
-    height: 98%px;
+    height: 98%;
     object-fit: cover;
     width: 99%;
     float: left;

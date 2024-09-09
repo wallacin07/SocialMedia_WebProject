@@ -186,7 +186,7 @@
                 <h2>Editar Perfil</h2>
             </div>
             <div class="modal-body d-flex center">
-                <form enctype="multipart/form-data" class="forms-profile d-flex column " >
+                <form enctype="multipart/form-data" class="forms-profile d-flex column " id="confirmarSenha" data-user-id="<%= users.idUser %>">
                     <div class="center d-flex row">
                         <label for="imagem">
                             <img src="/img/profile_pictures/<%= users.profilePhoto %>" alt="Insira sua imagem" id="pessoa" class="img">
@@ -225,17 +225,14 @@
 
 
 
-    <div id="modalPassword" class="modal">
+    <div id="modalPassword" class="modalPassword">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title">Modal Title</h5>
-              <button class="close">&times;</button>
             </div>
-            <div class="modal-body">
-                <form action="">
+            <div class="modal-body">    
                     <input type="text" class="" id="newPassword">
-                </form>
             </div>
             <div class="modal-footer">
               <button class="btn" id="closeModalBtn">Close</button>

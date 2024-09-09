@@ -59,23 +59,6 @@ module.exports =
           where: {idUser: id_user}
       })
 
-
-
-
-
-        const senha= await user.findOne({
-          raw: true,
-          attributes: ['password'],
-          where: {idUser: id_user}
-      })
-
-      if (dados.password !== senha) {
-        const novaSenha = dados.password
-        const confirmarTroca = true
-        res.render('../views/profile', {users,posts, id_user, novaSenha, confirmarTroca })
-      } 
-
-      else{
         if (req.file) {
           // Recebendo a antiga foto do aluno
           const antigaFoto = await user.findAll({
@@ -90,10 +73,7 @@ module.exports =
           {profilePhoto: req.file.filename},
           {where: { idUser: id_user }}
           );
-          }
-  
-  
-        console.log(req.body.olaa); // For debugging purposes (remove if not needed)
+          
       
         try {
           await user.update({
@@ -124,7 +104,6 @@ module.exports =
 
 
 
-      if (dados.passwordChange === senha) {
         
         if (req.file) {
           // Recebendo a antiga foto do aluno
@@ -162,20 +141,5 @@ module.exports =
           // Handle the error appropriately, e.g., return an error response to the user
         }
       }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       }
 
-}

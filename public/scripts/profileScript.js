@@ -70,7 +70,7 @@ window.onclick = function(event) {
 
 document.addEventListener("DOMContentLoaded", function() {
     // Somente exibe o alerta se erroDesativado estiver definido e não for vazio
-    const senhaAtual = document.getElementById("password");
+    const senhaAtual = document.getElementById("password").value;
     localStorage.setItem('senhaAtual', senhaAtual );
     }
 );
@@ -78,26 +78,33 @@ document.addEventListener("DOMContentLoaded", function() {
 
 const modalPassword = document.getElementById('modalPassword');
 
+const formsMudanca = document.getElementById('confirmarSenha');
 // Get button to close modal
 const closeModalBtn = document.getElementById('closeModalBtn');
 
-// Get the close button (x)
-const closeBtn = document.querySelector('.close');
 
-const confirmBtn = document.querySelector('.confirmBtn');
+const confirmBtn = document.getElementById('confirmBtn');
 
 const currentPasswordInput = document.getElementById('password');
 
 const newPassword = document.getElementById('newPassword');
 
+const userId = formsMudanca.getAttribute('data-user-id');
 
-form.addEventListener('submit', function (e) {
+formsMudanca.addEventListener('submit', function (e) {
     // Verifica se o campo de senha foi alterado
-    if (passwordInput.value !== "<%=users.password%>") {
+    if (currentPasswordInput.value !== localStorage.getItem('senhaAtual')) {
         e.preventDefault(); // Impede o envio do formulário
 
         // Abre o modal para confirmação
         modalPassword.style.display = 'block';
+    }else
+    {
+                // Defina dinamicamente a ação e o método de envio do formulário
+                formsMudanca.setAttribute('action', `/update/${userId}`);
+                formsMudanca.setAttribute('method', 'POST');
+        
+                formsMudanca.submit(); 
     }
 });
 
@@ -105,17 +112,17 @@ form.addEventListener('submit', function (e) {
 
 
 confirmBtn.addEventListener('click', function () {
-    const currentPassword = currentPasswordInput.value;
+    const currentPassword = newPassword.value;
 
     // Verificação simples da senha atual (você pode fazer uma verificação mais complexa no backend)
-    if (currentPassword === "<%=users.password%>") {
+    if (currentPassword === localStorage.getItem('senhaAtual')) {
         modal.style.display = 'none'; // Fecha o modal
 
         // Defina dinamicamente a ação e o método de envio do formulário
-        form.setAttribute('action', `/update/<%= users.idUser %>`);
-        form.setAttribute('method', 'POST');
+        formsMudanca.setAttribute('action',  `/update/${userId}`);
+        formsMudanca.setAttribute('method', 'POST');
 
-        form.submit(); // Envia o formulário
+        formsMudanca.submit(); // Envia o formulário
     } else {
         alert('Senha atual incorreta.');
     }
@@ -129,19 +136,15 @@ confirmBtn.addEventListener('click', function () {
 
 
 // Close modal by clicking the close button
-closeBtn.addEventListener('click', function () {
-  modal.style.display = 'none';
-});
-
 // Close modal by clicking the close button in the footer
 closeModalBtn.addEventListener('click', function () {
-  modal.style.display = 'none';
+    modalPassword.style.display = 'none';
 });
 
 // Close modal by clicking outside of the modal content
 window.addEventListener('click', function (e) {
-  if (e.target === modal) {
-    modal.style.display = 'none';
+  if (e.target === modalPassword) {
+    modalPassword.style.display = 'none';
   }
 });
 

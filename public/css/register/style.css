@@ -23,8 +23,8 @@ main {
 label {
     font-size: 1.2rem;
     border: none;
-    margin-right: 2%;
 }
+
 a {
     text-decoration: none;
 }
@@ -45,57 +45,71 @@ input[type="file"] {
 
 .img {
     max-width: 90%;
-    width: 200px;
+    width: 150px;
     cursor: pointer;
     border-radius: 50%;
-    height: 179px;
-    margin-bottom: 1.5rem;
+    aspect-ratio: 1/1;
 }
 
 
 .rect {
-    max-width: 650px;
-    width: 90%;
-    padding: 20px;
-    padding-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
     background-color: var(--BlueDark);
-    text-align: center;
     border-radius: 10px;
+    max-height: 90vh;
+    width: 36vw;
+    padding: 10px;
     box-shadow: 0px 0px 15px 10px var(--shadow);
 }
 
+.imgFofa {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
 .title {
-    margin-top: 2rem;
-    margin-bottom: 3rem;
     font-size: 40px;
 }
 
 .input {
-    max-width: 80%;
-    width: 800px;
+    display: flex;
     background-color: var(--PurpleMid);
     height: 35px;
     border-radius: 10px;
     padding: 5px;
     color: var(--white);
+    width: 30vw;
 }
 
 .group {
     display: flex;
     align-items: center;
-    margin-bottom: 2.5rem;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+    width: 30vw;
 }
 
 .btnEnter {
     background-color: var(--PurpleDark);
     color: var(--white);
-    margin-top: 1rem;
     max-width: 30%;
     width: 300px;
     font-size: 140%;
     border-radius: 8px;
-    margin-bottom: 1rem;
     padding: 5px;
     cursor: pointer;
 }
@@ -116,7 +130,53 @@ input[type="file"] {
     margin-bottom: 12rem;
 }
 
-/* .fundinho {
-    background-color: rgb(249, 252, 255);
-    border-radius: 50%;
-} */
+@media (max-width: 1100px) {
+    #logo {
+        display: none;
+    }
+
+    main {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .rect {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 5px;
+        border-radius: 10px;
+        max-height: 90vh;
+        width: 80vw;
+        padding: 10px;
+    }
+
+    .form {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 15px;
+        width: 80vw;
+    }
+
+    .input {
+        display: flex;
+        background-color: var(--PurpleMid);
+        height: 35px;
+        border-radius: 10px;
+        padding: 5px;
+        color: var(--white);
+        width: 70vw;
+    }
+
+    .group {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+}

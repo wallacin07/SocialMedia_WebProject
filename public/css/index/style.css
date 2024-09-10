@@ -1,26 +1,3 @@
-/* :root {
-    --PurpleDark: #6f2dbd;
-    --PurpleMid: #a663cc;
-    --PurpleLight: #b298dc;
-    --BlueDark: #b8d0eb;
-    --BlueLight: #b9faf8;
-    --textColor: black;
-    --white: white;
-    --textGrey: #535353;
-    --shadow: rgba(0, 0, 0, 0.384);
-}
-
-.dark {
-    --PurpleDark: #2e1350;
-    --PurpleMid: #481f5f;
-    --PurpleLight: #452874;
-    --BlueDark: #275589;
-    --BlueLight: #0caaa5;
-    --textColor: white;
-    --textGrey: #807f7f;
-    --shadow: rgba(0, 0, 0, 0.486);
-} */
-
 body {
     margin: 0;
     padding: 0;
@@ -48,8 +25,10 @@ label {
     border: none;
     margin-right: 2%;
 }
+
 a {
     text-decoration: none;
+    color: var(--textColor);
 }
 
 input::placeholder {
@@ -96,8 +75,8 @@ input::placeholder {
     background-color: var(--PurpleDark);
     color: var(--white);
     margin-top: 5rem;
-    max-width: 30%;
-    width: 300px;
+    max-width: 300px;
+    width: 90%;
     font-size: 140%;
     border-radius: 8px;
     margin-bottom: 1.5rem;
@@ -119,4 +98,39 @@ input::placeholder {
 
 #redirectRegister {
     margin-bottom: 12rem;
+}
+
+
+@media (max-width: 1000px) {
+    #logo {
+        display: none;
+    }
+
+    main {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .rect {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        max-width: 80vw;
+    }
+
+    .form {
+        max-width: 700px;
+        width: 90%;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    .group {
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: 6px;
+    }   
+
 }

@@ -464,14 +464,13 @@ h5 {
   overflow-wrap: break-word;
   word-break: break-word;
   white-space: normal;
-  /* padding: 5px; */
   margin: 3px;
   display: flex;
   min-width: 250px;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: row;
-  gap: 3px;
+  gap: 5px;
 }
 
 .comentario h3 {

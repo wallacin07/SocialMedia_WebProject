@@ -21,7 +21,10 @@ module.exports = {
             raw: true,
             attributes: ['idFollowed'],
             where: {
-                idFollower: id_user
+                [sequelize.Op.and]: [
+                    {idFollower: id_user},
+                    {active: 1}
+                ]
             }
         });
 
@@ -90,14 +93,14 @@ module.exports = {
             ],
             where: {
                 [Op.and]: [
-                    {
-                        createdAt: {
-                            [Op.between]: [
-                                literal("DATEADD(HOUR, -24, GETDATE())"), 
-                                literal("GETDATE()") 
-                            ]
-                        }
-                    },
+                    // {
+                    //     createdAt: {
+                    //         [Op.between]: [
+                    //             literal("DATEADD(HOUR, -24, GETDATE())"), 
+                    //             literal("GETDATE()") 
+                    //         ]
+                    //     }
+                    // },
                     {
                         [Op.or]: [
                             { idUser: { [Op.in]: followedIds } },

@@ -1,5 +1,6 @@
 const post = require('../model/post');
 const user = require('../model/user');
+const comment = require('../model/comment');
 const follow = require('../model/follow');
 const { Op } = require("sequelize");
 const fs = require('fs');
@@ -18,6 +19,9 @@ module.exports =
     const posts = await post.findAll({
       raw: true,
       attributes: ['idPost', 'description', 'img', 'idUser'],
+      // include: {
+      //   model: comment
+      // },
       where: 
       {
         [Op.and]: [
@@ -26,6 +30,15 @@ module.exports =
         ]
       }
     })
+
+
+    // console.log('\n\n\n\n\n\n\n-' + posts[0].comments + '-\n\n\n\n\n\n\n')
+    // posts.forEach((o) => {
+    //   console.log(o)
+      
+    // })
+
+
 
     const following = await follow.count({
       where: { [Op.and]: [{ idFollower: id_user }, { active: 1 }] }
@@ -64,7 +77,6 @@ module.exports =
       }
     })
 
-    console.log('\n\n\n\n\n\n\n-' + check + '-\n\n\n\n\n\n\n')
 
     if(check.length > 0){
       res.redirect('back');

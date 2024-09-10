@@ -97,7 +97,12 @@ const UserchatQuery = async (req, res) => {
 //Enviar a msg do usuario pro banco
 const UserchatPost = async (req, res) => {
     const {id, idChat} = req.params;
-    const {message} = req.body;
+    let {message} = req.body;
+    if(message.includes('>') || message.includes('<')){
+        res.redirect(`/chats/${id}/${idChat}`)
+        return
+    }
+
 
     await Message.create({
         idChat: idChat,

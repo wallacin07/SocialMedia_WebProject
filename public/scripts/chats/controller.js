@@ -20,8 +20,6 @@ const loadMessages = async() => {
 
     //Limpar elementos
     messageBox.innerHTML = '';
-
-
     mensagens.forEach(msg => {
         messageBox.insertAdjacentHTML('beforeend', `
                 <div class="${msg.idSender === id ? 'owner' : 'recipient'}">

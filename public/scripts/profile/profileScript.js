@@ -102,15 +102,12 @@ const modalPassword = document.getElementById('modalPassword');
 const confirmBtn = document.getElementById('confirmBtn');
 
 const closeModalBtn = document.getElementById('closeModalBtn');
-console.log(formsMudanca)
-
 
 formsMudanca.addEventListener('submit', function (e) {
     const currentPasswordInput = document.getElementById('password');
     
     // Verifica se o campo de senha foi alterado
     if (currentPasswordInput.value !== localStorage.getItem('senhaAtual')) {
-        alert(currentPasswordInput.value)
         e.preventDefault(); // Impede o envio do formulário
         
         // Abre o modal para confirmação
@@ -132,13 +129,10 @@ confirmBtn.addEventListener('click', function () {
     const newPassword = document.getElementById('newPassword');
     const currentPassword = newPassword.value;
 
-    console.log(currentPassword)
-
     // Verificação simples da senha atual (você pode fazer uma verificação mais complexa no backend)
     if (currentPassword === localStorage.getItem('senhaAtual')) {
         modal.style.display = 'none'; // Fecha o modal
 
-        console.log("aaaaaaaaaa")
         modalPassword.style.display = 'flex'
         const userId = formsMudanca.getAttribute('data-user-id');
 

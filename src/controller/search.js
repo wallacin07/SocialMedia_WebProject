@@ -77,7 +77,12 @@ const profile = async (req, res) => {
     const posts = await Post.findAll({
         raw: true,
         attributes: ['idPost', 'description', 'img', 'idUser'],
-        where: {idUser: id_user}
+        where: {
+            [Op.and]: [
+                {idUser: id_user},
+                {[Op.not]: {img: ''}}
+            ]
+        }
     })
 
     let existingFollow = await Follow.findOne({

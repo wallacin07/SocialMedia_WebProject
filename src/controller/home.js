@@ -50,36 +50,6 @@ module.exports = {
         });
 
         //MySQL
-        const stories = await story.findAll({
-            include: [
-                {
-                    as: 'user',
-                    model: user,
-                    attributes: ["profilePhoto"]
-                }
-            ],
-            where: {
-                [Op.and]: [
-                    {
-                        createdAt: {
-                            [Op.between]: [
-                                literal("NOW() - INTERVAL 24 HOUR"), 
-                                literal("NOW()") 
-                            ]
-                        }
-                    },
-                    {
-                        [Op.or]: [
-                            { idUser: { [Op.in]: followedIds } },
-                            { idUser: id_user }
-                        ]
-                    }
-                ]
-            },
-            order: [['createdAt', 'DESC']]
-        });
-
-        //SQL SERVER
         // const stories = await story.findAll({
         //     include: [
         //         {
@@ -93,8 +63,8 @@ module.exports = {
         //             {
         //                 createdAt: {
         //                     [Op.between]: [
-        //                         literal("DATEADD(HOUR, -24, GETDATE())"), 
-        //                         literal("GETDATE()") 
+        //                         literal("NOW() - INTERVAL 24 HOUR"), 
+        //                         literal("NOW()") 
         //                     ]
         //                 }
         //             },
@@ -108,6 +78,36 @@ module.exports = {
         //     },
         //     order: [['createdAt', 'DESC']]
         // });
+
+        //SQL SERVER
+        const stories = await story.findAll({
+            include: [
+                {
+                    as: 'user',
+                    model: user,
+                    attributes: ["profilePhoto"]
+                }
+            ],
+            where: {
+                [Op.and]: [
+                    {
+                        createdAt: {
+                            [Op.between]: [
+                                literal("DATEADD(HOUR, -24, GETDATE())"), 
+                                literal("GETDATE()") 
+                            ]
+                        }
+                    },
+                    {
+                        [Op.or]: [
+                            { idUser: { [Op.in]: followedIds } },
+                            { idUser: id_user }
+                        ]
+                    }
+                ]
+            },
+            order: [['createdAt', 'DESC']]
+        });
         
 
         const notifications = await notification.findAll({
@@ -175,7 +175,6 @@ module.exports = {
         // res.render('../views/home', {comments, currentPost:'0', currentUser, followedPosts, nonFollowedPosts, stories: recentStories});
         res.render('../views/home', {comments, currentPost:'0', currentUser, followedPosts, nonFollowedPosts, stories, notifications});
     }
-
 }
 
 

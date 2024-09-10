@@ -438,7 +438,7 @@
                     </section>
                 </div>
 
-                <form action="/comment/<%= currentUser.idUser %>" class="formComentario" method="post">
+                <form id="commentModal" action="/comment/<%= currentUser.idUser %>" class="formComentario" method="post">
                     <textarea name="text_comment" id="inputComentario" class="inputDescricao"></textarea>
                     <button id="sendCommentButton" type="submit" class="botaoComentario centralize" value="<%= currentPost.idPost %>"  name="post">
                         <svg class="send" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

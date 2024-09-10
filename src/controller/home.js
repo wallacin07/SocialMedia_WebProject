@@ -111,8 +111,6 @@ module.exports = {
             },
             order: [['createdAt', 'DESC']]
         });
-
-        console.log('\n\n\n\n\n\n\n-' + stories + '-\n\n\n\n\n\n\n')
         
 
         const notifications = await notification.findAll({

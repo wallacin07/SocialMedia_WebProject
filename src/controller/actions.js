@@ -20,8 +20,6 @@ module.exports = {
         const ActualUserPost = await user.findByPk(ActualPost.idUser);
         const sender = await user.findByPk(id_user);
         
-        console.log(sender.name);
-        
         const check = await reaction.findOne({
             where: {
                 [sequelize.Op.and]: [
@@ -212,6 +210,11 @@ module.exports = {
         const ActualUserPost = await user.findByPk(ActualPost.idUser);
         const sender = await user.findByPk(id_user);
 
+        if(text_comment == ''){
+            res.redirect('back');
+            return;
+        }
+
 
         await comment.create({
             idPost: id_post,
@@ -227,6 +230,6 @@ module.exports = {
     
         })
 
-        res.redirect('/getHome/' + id_user)
+        res.redirect('back')
     }
 }

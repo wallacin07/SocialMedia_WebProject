@@ -101,14 +101,8 @@ try{
 
     const sendCommentButton = document.getElementById('sendCommentButton');
     sendCommentButton.addEventListener('click', (event) => {
-        const comment = document.getElementById('inputComentario').value.trim();
-
         sessionStorage.setItem('Modal', '0');
         modalComentarios.style.display = `none`;
-    
-        if (!comment) 
-            event.preventDefault();
-
     })
 }
 catch(error){ console.log("nenhuma publicação ainda ")}
@@ -132,7 +126,6 @@ feedButton.addEventListener("click", () => {
 });
 
 storyButton.addEventListener("click", () => {
-    console.log(postModal.getAttribute("data-user"));
     postModal.setAttribute("action", `/postStory/${postModal.getAttribute("data-user")}`);
     postModal.submit();
 });
@@ -153,3 +146,5 @@ stories.forEach(story => {
         modal.style.display = 'flex';
     })
 })
+
+

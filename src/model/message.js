@@ -23,7 +23,7 @@ const Message = database.define('Message', {
         // onDelete: "CASCADE"
     },
     message: {
-        type: Sequelize.TEXT,
+        type: Sequelize.STRING(1000),
         allowNull: false,
     },
     messageDate: {

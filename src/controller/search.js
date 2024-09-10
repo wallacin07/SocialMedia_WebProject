@@ -2,6 +2,8 @@ const User = require('../model/user');
 const Post = require('../model/post');
 const Follow = require('../model/follow');
 const Chat = require('../model/chat');
+const comment = require('../model/comment');
+
 const { Op } = require("sequelize");
 const sequelize = require("sequelize");
 const database = require('../config/db');
@@ -75,8 +77,15 @@ const profile = async (req, res) => {
 
 
     const posts = await Post.findAll({
-        raw: true,
         attributes: ['idPost', 'description', 'img', 'idUser'],
+        include: [{
+            model: comment,
+            as: 'comments',
+            required: false,
+            include: [{
+              model: User
+            }]
+          }],
         where: {
             [Op.and]: [
                 {idUser: id_user},

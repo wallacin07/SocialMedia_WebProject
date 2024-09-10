@@ -4,9 +4,11 @@ DROP TABLE comments;
 DROP TABLE reactions;
 DROP TABLE posts;
 DROP TABLE follows;
-DROP TABLE users;
 DROP TABLE Messages;
 DROP TABLE Chats;
+DROP TABLE Stories;
+DROP TABLE Notifications;
+DROP TABLE users;
 
 SELECT * FROM comments;
 SELECT * FROM reactions;

@@ -70,9 +70,6 @@ const UserchatGet = async (req, res) => {
         return res.status(404).send('Chat não encontrado');
     }
 
-    // Log para verificar se o chat está sendo recuperado corretamente
-    console.log(JSON.stringify(chat, null, 2));
-
     // Passa o chat específico para a view
     res.render('../views/userChat.ejs', { id, chat });
 };
@@ -98,7 +95,7 @@ const UserchatQuery = async (req, res) => {
 const UserchatPost = async (req, res) => {
     const {id, idChat} = req.params;
     let {message} = req.body;
-    if(message.includes('>') || message.includes('<')){
+    if(message.includes('>') || message.includes('<') || message == ''){
         res.redirect(`/chats/${id}/${idChat}`)
         return
     }

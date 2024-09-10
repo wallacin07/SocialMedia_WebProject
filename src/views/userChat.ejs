@@ -98,7 +98,13 @@
                     <!--Aqui serao mostradas as mensagens, nao mexer-->
                 </div>
 
-                <form method="post" class="formMensagem">
+                <form method="post" class="formMensagem" enctype="multipart/form-data">
+                    <div class="imgFofa">
+                        <label for="imagem" style="display: flex; justify-content: center; align-items: center;">
+                            <img src="/img/icons/images_icon-icons.webp" alt="Insira sua imagem" id="pessoa" class="img" style="width: 45px; height: 45px;">
+                        </label>
+                        <input type="file" id="imagem" name="foto" accept="image/*">
+                    </div>
                     <textarea name="message" id="inputComentario" class="inputDescricao"></textarea>
                     <button type="submit" class="botao">
                         <svg class="send" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

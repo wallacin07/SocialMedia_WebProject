@@ -37,10 +37,11 @@ route.post('/update/:id_user',multer(profileConfig).single('foto'), profile.upda
 
 
 const chats = require('./src/controller/chats')
+const chatConfig = require('./src/config/chatMulter');
 route.get('/chats/:id', chats.ChatsPageGet);
 route.get('/chats/:id/:idChat', chats.UserchatGet)
 route.get('/chats/:id/:idChat/get', chats.UserchatQuery)
-route.post('/chats/:id/:idChat', chats.UserchatPost);
+route.post('/chats/:id/:idChat', multer(chatConfig).single('foto'),chats.UserchatPost);
 
 
 const search = require('./src/controller/search');

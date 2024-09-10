@@ -290,9 +290,16 @@
                                             <%= nonFollowedPosts[i].user.name %>
                                         </b>
                                     </h3>
-                                    
-                                    <img src="/img/img_posts/<%= nonFollowedPosts[i].img %>" alt="Publicação linda da pessoa" class="imgPublicacao">
-                                    
+
+                                    <% if(nonFollowedPosts[i].img != ''){ %>
+                                        <img src="/img/img_posts/<%= nonFollowedPosts[i].img %>" alt="Publicação linda da pessoa" class="imgPublicacao">
+                                    <% } else { %>
+                                        <%= nonFollowedPosts[i].description %>
+                                    <% } %>
+
+
+
+
                                     <div class="botoes">
                                         <div class="botoesAcoes">
                                             <form id="formKangure" action="/kangure/<%= currentUser.idUser %>" method="post">
@@ -356,12 +363,14 @@
                                             </button>
                                         </div>
 
-                                        <h4>
-                                            <strong>
-                                                <%= nonFollowedPosts[i].user.name %>
-                                            </strong> 
-                                            <%= nonFollowedPosts[i].description %>
-                                        </h4>
+                                        <% if(nonFollowedPosts[i].img != ''){ %>
+                                            <h4>
+                                                <strong>
+                                                    <%= nonFollowedPosts[i].user.name %>
+                                                </strong> 
+                                                <%= nonFollowedPosts[i].description %>
+                                            </h4>
+                                        <% } %>
                                     </div>
                                 </div>
                             <% } %>

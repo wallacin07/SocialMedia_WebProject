@@ -11,7 +11,8 @@ const getSearch = async (req, res) => {
     const id_user = req.params.id_user;
 
     const allPosts = await Post.findAll({
-        order: database.literal('RAND()')
+        order: database.literal('RAND()'),
+        where: { [Op.not]: {img: ''} }
     })
     const users = await User.findAll()
 
@@ -38,7 +39,8 @@ const searchUser = async (req, res) => {
     });
 
     const allPosts = await Post.findAll({
-        order: database.literal('RAND()')
+        order: database.literal('RAND()'),
+        where: { [Op.not]: {img: ''} }
     })
 
 

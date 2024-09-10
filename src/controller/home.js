@@ -90,14 +90,14 @@ module.exports = {
             ],
             where: {
                 [Op.and]: [
-                    {
-                        createdAt: {
-                            [Op.between]: [
-                                literal("DATEADD(HOUR, -24, GETDATE())"), 
-                                literal("GETDATE()") 
-                            ]
-                        }
-                    },
+                    // {
+                    //     createdAt: {
+                    //         [Op.between]: [
+                    //             literal("DATEADD(HOUR, -24, GETDATE())"), 
+                    //             literal("GETDATE()") 
+                    //         ]
+                    //     }
+                    // },
                     {
                         [Op.or]: [
                             { idUser: { [Op.in]: followedIds } },
@@ -108,6 +108,8 @@ module.exports = {
             },
             order: [['createdAt', 'DESC']]
         });
+
+        console.log('\n\n\n\n\n\n\n-' + stories + '-\n\n\n\n\n\n\n')
         
 
         const notifications = await notification.findAll({

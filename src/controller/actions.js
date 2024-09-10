@@ -174,9 +174,29 @@ module.exports = {
             }
         });
 
+        const notifications = await notification.findAll({
+            raw: true,
+            attributes: ['idNotification', 'message', 'idTarget', 'idSended'],
+            include: [
+                {
+                    as: 'targetUser', 
+                    model: user,
+                    attributes: ['idUser', 'name'] 
+                },
+                {
+                    as: 'sendedUser', 
+                    model: user,
+                    attributes: ['idUser', 'name'] 
+                }
+            ],
+            where: {
+                idTarget: id_user
+            }
+        });
 
 
-        res.render('../views/home', {comments, currentPost, currentUser, followedPosts, nonFollowedPosts, stories});
+
+        res.render('../views/home', {comments, currentPost, currentUser, followedPosts, nonFollowedPosts, stories, notifications});
     },
 
 

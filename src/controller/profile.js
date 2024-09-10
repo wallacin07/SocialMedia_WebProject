@@ -18,7 +18,13 @@ module.exports =
     const posts = await post.findAll({
       raw: true,
       attributes: ['idPost', 'description', 'img', 'idUser'],
-      where: { idUser: id_user }
+      where: 
+      {
+        [Op.and]: [
+          { idUser: id_user },
+          { [Op.not]: {img: ''} }
+        ]
+      }
     })
 
     const following = await follow.count({
@@ -59,10 +65,12 @@ module.exports =
     })
 
 
-    if(check.length >= 1){
+    if(check.length > 0){
       res.redirect('back');
       return;
     }
+
+    console.log('\n\n\n\n\n\n\n' + check + '\n\n\n\n\n\n\n')
 
 
 

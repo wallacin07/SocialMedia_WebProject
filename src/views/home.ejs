@@ -126,11 +126,28 @@
                             <div class="post">
                                 <img src="/img/profile_pictures/<%= followedPosts[i].user.profilePhoto %>" alt="Imagem fofa da pessoa que postou" class="imgPessoa">
                                 
-                                <h3>
-                                    <b>
-                                        <%= followedPosts[i].user.name %>
-                                    </b>
-                                </h3>
+                                <% if (followedPosts[i].user.idUser === currentUser.idUser) { %>
+                                    <a href="/profilePag/<%= currentUser.idUser %>" class="searchYou" type="submit" style="text-decoration: none; color: var(--textColor)">
+                                        <h3>
+                                            <b>
+                                                <%= currentUser.name %>
+
+                                            </b>
+                                        </h3>
+                                    </a>
+                                    <% }else { %>
+
+                                        <a href="/searchUser/<%= currentUser.idUser %>/<%= followedPosts[i].user.idUser %>" class="searchYou" type="submit" style="text-decoration: none; color: var(--textColor)">
+                                            <h3>
+                                                <b>
+                                                    <%= followedPosts[i].user.name %>
+    
+                                                </b>
+                                            </h3>
+                                        </a>
+
+                                    <% } %>
+
                                 <% if(followedPosts[i].img != ''){ %>
                                     <img src="/img/img_posts/<%= followedPosts[i].img %>" alt="Publicação linda da pessoa" class="imgPublicacao">
                                 <% } else { %>
@@ -285,11 +302,16 @@
                                 <div class="post">
                                     <img src="/img/profile_pictures/<%= nonFollowedPosts[i].user.profilePhoto %>" alt="Imagem fofa da pessoa que postou" class="imgPessoa">
                                     
-                                    <h3>
-                                        <b>
-                                            <%= nonFollowedPosts[i].user.name %>
-                                        </b>
-                                    </h3>
+
+                                    <a href="/searchUser/<%= currentUser.idUser %>/<%= nonFollowedPosts[i].user.idUser %>" class="searchYou" type="submit" style="text-decoration: none; color: var(--textColor)">
+                                        <h3>
+                                            <b>
+                                                <%= nonFollowedPosts[i].user.name %>
+                                            </b>
+                                        </h3>
+                                    </a>
+
+
 
                                     <% if(nonFollowedPosts[i].img != ''){ %>
                                         <img src="/img/img_posts/<%= nonFollowedPosts[i].img %>" alt="Publicação linda da pessoa" class="imgPublicacao">

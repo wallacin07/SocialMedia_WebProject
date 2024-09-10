@@ -1,3 +1,4 @@
+
 let image = document.getElementById('pessoa');
 let file = document.getElementById('imagem');
 image.addEventListener('click', () => {
@@ -20,8 +21,6 @@ file.addEventListener('change', () =>
         }
     }
 )
-
-
 
 
 
@@ -55,49 +54,30 @@ window.onclick = function(event) {
 }
 
 
-let btns_openPost = document.querySelectorAll(".btn-open-post");
+const posts = document.querySelectorAll('.botaoPost');
+const modalList = document.querySelectorAll('.modal[data-modal]');
 
-// Obtém todos os modais
-let modals_post = document.querySelectorAll(".modal");
+modalList.forEach(m => {
+    const closeBtn = m.querySelector(".close-post");
 
-// Obtém todos os elementos <span> que fecham o modal
-let spans_post = document.querySelectorAll(".close-post");
-
-// Adiciona um event listener para cada botão
-btns_openPost.forEach((btn, index) => {
-    btn.onclick = function() {
-        modals_post[index].style.display = "block";
-    }
+    closeBtn.addEventListener("click", () => {
+        m.style.display = 'none';
+    })
 });
 
-// Adiciona um event listener para cada <span> (fechar)
-spans_post.forEach((span, index) => {
-    span.onclick = function() {
-        modals_post[index].style.display = "none";
-    }
-});
+posts.forEach(post => {
+    const id = post.getAttribute("data-for")
+    post.addEventListener('click', (e) => {
+        e.preventDefault();
 
-// Fechar o modal quando o usuário clica fora do modal
-window.onclick = function(event) {
-    modals_post.forEach((modal) => {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    });
-}
+        const element = e.target;
 
+        const targetModal = document.querySelector(`.modal[data-modal="${id}"]`)
 
-function validateForm(event) {
-    const name = document.getElementById('name').value.trim();
-    const bio = document.getElementById('bio').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const password = document.getElementById('password').value.trim();
+        targetModal.style.display = "block";
 
-    if (!name || !bio || !email || !password) 
-        event.preventDefault();
-}
-
-document.getElementById('formUpdate').addEventListener('submit', validateForm);
+    })
+})
 
 
 
@@ -114,7 +94,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-const formsMudanca = document.getElementById('confirmarSenha');
+const formsMudanca = document.getElementById('formUpdate');
+
 // Get button to close modal
 const modalPassword = document.getElementById('modalPassword');
 
@@ -129,8 +110,8 @@ formsMudanca.addEventListener('submit', function (e) {
     
     // Verifica se o campo de senha foi alterado
     if (currentPasswordInput.value !== localStorage.getItem('senhaAtual')) {
+        alert(currentPasswordInput.value)
         e.preventDefault(); // Impede o envio do formulário
-        
         
         // Abre o modal para confirmação
         modalPassword.style.display = 'flex';
@@ -151,10 +132,14 @@ confirmBtn.addEventListener('click', function () {
     const newPassword = document.getElementById('newPassword');
     const currentPassword = newPassword.value;
 
+    console.log(currentPassword)
+
     // Verificação simples da senha atual (você pode fazer uma verificação mais complexa no backend)
     if (currentPassword === localStorage.getItem('senhaAtual')) {
         modal.style.display = 'none'; // Fecha o modal
-        modalPassword.display = 'flex'
+
+        console.log("aaaaaaaaaa")
+        modalPassword.style.display = 'flex'
         const userId = formsMudanca.getAttribute('data-user-id');
 
         // Defina dinamicamente a ação e o método de envio do formulário
@@ -166,12 +151,6 @@ confirmBtn.addEventListener('click', function () {
         alert('Senha atual incorreta.');
     }
 });
-
-
-
-
-
-
 
 
 // Close modal by clicking the close button in the footer

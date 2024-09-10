@@ -64,13 +64,13 @@ module.exports =
       }
     })
 
+    console.log('\n\n\n\n\n\n\n-' + check + '-\n\n\n\n\n\n\n')
 
     if(check.length > 0){
       res.redirect('back');
       return;
     }
 
-    console.log('\n\n\n\n\n\n\n' + check + '\n\n\n\n\n\n\n')
 
 
 

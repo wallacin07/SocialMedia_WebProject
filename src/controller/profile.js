@@ -19,9 +19,9 @@ module.exports =
     const posts = await post.findAll({
       raw: true,
       attributes: ['idPost', 'description', 'img', 'idUser'],
-      // include: {
-      //   model: comment
-      // },
+      include: {
+        model: comment
+      },
       where: 
       {
         [Op.and]: [
@@ -32,12 +32,7 @@ module.exports =
     })
 
 
-    // console.log('\n\n\n\n\n\n\n-' + posts[0].comments + '-\n\n\n\n\n\n\n')
-    // posts.forEach((o) => {
-    //   console.log(o)
-      
-    // })
-
+    console.log('\n\n\n\n\n\n\n-' + '' + '-\n\n\n\n\n\n\n')
 
 
     const following = await follow.count({

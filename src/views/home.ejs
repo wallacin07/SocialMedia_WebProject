@@ -112,8 +112,6 @@
                             </div>
                         <% }) %>
 
-                        <!-- EXEMPLO -->
-                        <!-- <button class="storys"></button> -->
                     </div>
                 </section>
 
@@ -124,13 +122,15 @@
 
                         <% for(let i=0; i<followedPosts.length; i++){ %>
                             <div class="post">
-                                <img src="/img/profile_pictures/<%= followedPosts[i].user.profilePhoto %>" alt="Imagem fofa da pessoa que postou" class="imgPessoa">
-                                
-                                <h3>
-                                    <b>
-                                        <%= followedPosts[i].user.name %>
-                                    </b>
-                                </h3>
+                                <div class="headerPost">
+                                    <img src="/img/profile_pictures/<%= followedPosts[i].user.profilePhoto %>" alt="Imagem fofa da pessoa que postou" class="imgPessoa">
+                                    
+                                    <h3>
+                                        <b>
+                                            <%= followedPosts[i].user.name %>
+                                        </b>
+                                    </h3>
+                                </div>
                                 <% if(followedPosts[i].img != ''){ %>
                                     <img src="/img/img_posts/<%= followedPosts[i].img %>" alt="Publicação linda da pessoa" class="imgPublicacao">
                                 <% } else { %>
@@ -145,7 +145,7 @@
                                                 
                                                 <% if(followedPosts[i].reactions[0].active){ %>
                                                     
-                                                    <svg class="kangureOn" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                                                    <svg class="kangureOn botaoPost" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
                                                     viewBox="0 0 512 512"  xml:space="preserve">
                                                     <style type="text/css">
                                                         .st0{fill:currentcolor;}
@@ -169,7 +169,7 @@
                                                 <% } else { %>
                                                     
                                                     
-                                                    <svg class="kangureOff" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                                                    <svg class="kangureOff botaoPost" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
                                                     viewBox="0 0 512 512"  xml:space="preserve">
                                                     <style type="text/css">
                                                         .st0{fill:currentColor;}
@@ -200,14 +200,16 @@
                                             </svg>
                                         </button>
                                     </div>
-                                    <% if(followedPosts[i].img != ''){ %>
-                                        <h4>
-                                            <strong>
-                                                <%= followedPosts[i].user.name %>
-                                            </strong> 
-                                            <%= followedPosts[i].description %>
-                                        </h4>
-                                    <% } %>
+                                    <div class="comentarioFofo">
+                                        <% if(followedPosts[i].img != ''){ %>
+                                            <h4>
+                                                <strong>
+                                                    <%= followedPosts[i].user.name %>
+                                                </strong> 
+                                                <%= followedPosts[i].description %>
+                                            </h4>
+                                        <% } %>
+                                    </div>
                                 </div>
                             </div>
                         <% } %>

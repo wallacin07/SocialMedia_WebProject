@@ -28,7 +28,11 @@ label {
 
 a {
     text-decoration: none;
-    color: var(--textColor);
+    color: var(--PurpleDark);
+}
+
+a:hover {
+    color: var(--PurpleDarkHover);
 }
 
 input::placeholder {
@@ -126,7 +130,7 @@ input::placeholder {
         flex-direction: column;
         flex-wrap: wrap;
     }
-
+    
     .group {
         flex-direction: column;
         flex-wrap: wrap;

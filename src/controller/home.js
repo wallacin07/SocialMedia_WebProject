@@ -90,14 +90,14 @@ module.exports = {
             ],
             where: {
                 [Op.and]: [
-                    // {
-                    //     createdAt: {
-                    //         [Op.between]: [
-                    //             literal("DATEADD(HOUR, -24, GETDATE())"), 
-                    //             literal("GETDATE()") 
-                    //         ]
-                    //     }
-                    // },
+                    {
+                        createdAt: {
+                            [Op.between]: [
+                                literal("DATEADD(HOUR, -24, GETDATE())"), 
+                                literal("GETDATE()") 
+                            ]
+                        }
+                    },
                     {
                         [Op.or]: [
                             { idUser: { [Op.in]: followedIds } },

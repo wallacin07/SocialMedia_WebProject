@@ -215,7 +215,7 @@
             <h2>Editar Perfil</h2>
         </div>
         <div class="modal-body d-flex center">
-            <form id="formUpdate" action="/update/<%= users.idUser %>" method="post" class="forms-profile" id="confirmarSenha" enctype="multipart/form-data" data-user-id="<%= users.idUser %>">
+            <form id="formUpdate" class="forms-profile" id="confirmarSenha" enctype="multipart/form-data" data-user-id="<%= users.idUser %>">
                 <div class="center d-flex row">
                     <img id="pessoa" class="img" src="/img/profile_pictures/<%= users.profilePhoto %>" alt="Insira sua imagem" >
                     <input type="file" id="imagem" name="foto" accept="image/*">

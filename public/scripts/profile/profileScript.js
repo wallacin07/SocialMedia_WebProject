@@ -104,84 +104,68 @@ document.getElementById('formUpdate').addEventListener('submit', validateForm);
 // =============================================================================================
 
 
-// document.addEventListener("DOMContentLoaded", function() {
-//     // Somente exibe o alerta se erroDesativado estiver definido e não for vazio
-//     const senhaAtual = document.getElementById("password").value;
-//     localStorage.setItem('senhaAtual', senhaAtual );
-//     }
-// );
+document.addEventListener("DOMContentLoaded", function() {
+    // Somente exibe o alerta se erroDesativado estiver definido e não for vazio
+    const senhaAtual = document.getElementById("password").value;
+    localStorage.setItem('senhaAtual', senhaAtual );
+    }
+);
 
 
-// const modalPassword = document.getElementById('modalPassword');
-
-// const formsMudanca = document.getElementById('confirmarSenha');
-// // Get button to close modal
-// const closeModalBtn = document.getElementById('closeModalBtn');
 
 
-// const confirmBtn = document.getElementById('confirmBtn');
+const formsMudanca = document.getElementById('confirmarSenha');
+// Get button to close modal
+const modalPassword = document.getElementById('modalPassword');
 
-// const currentPasswordInput = document.getElementById('password');
+const confirmBtn = document.getElementById('confirmBtn');
 
-// const newPassword = document.getElementById('newPassword');
+const closeModalBtn = document.getElementById('closeModalBtn');
+console.log(formsMudanca)
 
-// const userId = formsMudanca.getAttribute('data-user-id');
 
-// formsMudanca.addEventListener('submit', function (e) {
-//     // Verifica se o campo de senha foi alterado
-//     if (currentPasswordInput.value !== localStorage.getItem('senhaAtual')) {
-//         e.preventDefault(); // Impede o envio do formulário
-
-//         // Abre o modal para confirmação
-//         modalPassword.style.display = 'block';
-//     }else
-//     {
-//                 // Defina dinamicamente a ação e o método de envio do formulário
-//                 formsMudanca.setAttribute('action', `/update/${userId}`);
-//                 formsMudanca.setAttribute('method', 'POST');
+formsMudanca.addEventListener('submit', function (e) {
+    const currentPasswordInput = document.getElementById('password');
+    
+    // Verifica se o campo de senha foi alterado
+    if (currentPasswordInput.value !== localStorage.getItem('senhaAtual')) {
+        e.preventDefault(); // Impede o envio do formulário
         
-//                 formsMudanca.submit(); 
-//     }
-// });
+        
+        // Abre o modal para confirmação
+        modalPassword.style.display = 'flex';
+    }else
+    {
+        const userId = formsMudanca.getAttribute('data-user-id');
+        // Defina dinamicamente a ação e o método de envio do formulário
+        formsMudanca.setAttribute('action', `/update/${userId}`);
+        formsMudanca.setAttribute('method', 'POST');
+        formsMudanca.submit(); 
+    }
+});
 
 
 
 
-// confirmBtn.addEventListener('click', function () {
-//     const currentPassword = newPassword.value;
+confirmBtn.addEventListener('click', function () {
+    const newPassword = document.getElementById('newPassword');
+    const currentPassword = newPassword.value;
 
-//     // Verificação simples da senha atual (você pode fazer uma verificação mais complexa no backend)
-//     if (currentPassword === localStorage.getItem('senhaAtual')) {
-//         modal.style.display = 'none'; // Fecha o modal
+    // Verificação simples da senha atual (você pode fazer uma verificação mais complexa no backend)
+    if (currentPassword === localStorage.getItem('senhaAtual')) {
+        modal.style.display = 'none'; // Fecha o modal
+        modalPassword.display = 'flex'
+        const userId = formsMudanca.getAttribute('data-user-id');
 
-//         // Defina dinamicamente a ação e o método de envio do formulário
-//         formsMudanca.setAttribute('action',  `/update/${userId}`);
-//         formsMudanca.setAttribute('method', 'POST');
+        // Defina dinamicamente a ação e o método de envio do formulário
+        formsMudanca.setAttribute('action',  `/update/${userId}`);
+        formsMudanca.setAttribute('method', 'POST');
 
-//         formsMudanca.submit(); // Envia o formulário
-//     } else {
-//         alert('Senha atual incorreta.');
-//     }
-// });
-
-
-
-
-
-
-
-
-// // Close modal by clicking the close button in the footer
-// closeModalBtn.addEventListener('click', function () {
-//     modalPassword.style.display = 'none';
-// });
-
-// // Close modal by clicking outside of the modal content
-// window.addEventListener('click', function (e) {
-//   if (e.target === modalPassword) {
-//     modalPassword.style.display = 'none';
-//   }
-// });
+        formsMudanca.submit(); // Envia o formulário
+    } else {
+        alert('Senha atual incorreta.');
+    }
+});
 
 
 
@@ -190,27 +174,14 @@ document.getElementById('formUpdate').addEventListener('submit', validateForm);
 
 
 
+// Close modal by clicking the close button in the footer
+closeModalBtn.addEventListener('click', function () {
+    modalPassword.style.display = 'none';
+});
 
-
-
-
-
-
-
-
-
-
-// const modalComentarios = document.getElementById('modalComentarios');
-// const botaoFecharComentarios = document.getElementById('botaoFecharComentarios');
-// const botoesAbrir = document.querySelectorAll(".abrirComentarios");
-
-// botoesAbrir.forEach(botao => {
-//     botao.addEventListener("click", (e) => {
-//         e.preventDefault();
-//         modalComentarios.style.display = 'flex';
-//     });
-// })
-
-// botaoFecharComentarios.addEventListener('click', () => {
-//     modalComentarios.style.display = `none`;
-// });
+// Close modal by clicking outside of the modal content
+window.addEventListener('click', function (e) {
+  if (e.target === modalPassword) {
+    modalPassword.style.display = 'none';
+  }
+});

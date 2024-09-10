@@ -8,7 +8,6 @@ function Imagem() {
 }
 
 function validateForm(event) {
-    // Get form elements
     const name = document.getElementById('name').value.trim();
     const birth = document.getElementById('birth').value.trim();
     const bio = document.getElementById('bio').value.trim();

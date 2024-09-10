@@ -213,15 +213,15 @@
         <div class="centralize">
             <h2>Editar Perfil</h2>
         </div>
-        <div class="center d-flex row">
-            <label for="imagem">
-                <img id="pessoa" class="img" src="/img/profile_pictures/<%= users.profilePhoto %>" alt="Insira sua imagem" >
-            </label>
-            <input type="file" id="imagem" name="foto" onchange="Imagem()" accept="image/*">
-        </div>
-
+        
         <div class="modal-body d-flex center">
-            <form class="forms-profile" action="/update/<%= users.idUser %>" method="post" enctype="multipart/form-data" >
+            <form id="formUpdate" class="forms-profile" action="/update/<%= users.idUser %>" method="post" enctype="multipart/form-data" data-user-id="<%= users.idUser %>">
+
+                <div class="center d-flex row">
+                    <img id="pessoa" class="img" src="/img/profile_pictures/<%= users.profilePhoto %>" alt="Insira sua imagem" >
+                    <input type="file" id="imagem" name="foto" accept="image/*">
+                </div>
+
                 <div class="input-field">
                     <label for="name">Nome:</label>
                     <input type="text" class="input" id="name" name="name" value="<%= users.name %>">
@@ -257,7 +257,7 @@
 
 
 
-<script src="/scripts/profileScript.js"></script>
+<script src="/scripts/profile/profileScript.js"></script>
 </body>
 
 </html>

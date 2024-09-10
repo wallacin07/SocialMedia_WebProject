@@ -44,9 +44,16 @@ module.exports =
 
     const check = await user.findAll({
       where:{
-        [Op.or]: [
-          {name: dados.name},
-          {email: dados.email}
+        [Op.and]:[
+          {
+            [Op.or]: [
+                {name: dados.name},
+                {email: dados.email}
+            ]
+          },
+          {
+            [Op.not]: {idUser: id_user}
+          }
         ]
       }
     })
@@ -56,6 +63,8 @@ module.exports =
       res.redirect('back');
       return;
     }
+
+
 
     if (req.file) {
       // Recebendo a antiga foto do aluno
@@ -73,8 +82,6 @@ module.exports =
       );
     }
 
-
-    console.log(req.body.olaa); // For debugging purposes (remove if not needed)
 
     try {
       await user.update({

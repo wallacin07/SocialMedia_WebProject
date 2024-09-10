@@ -61,21 +61,19 @@
         <main class="centralize">
             <div class="chatList">
                 <h1 class="centralize"><b>Chats</b></h1>
-                <div class="centralize">
-                        <!-- Chats que a pessoa tem, conferindo qual usuário está logado no momento pra exibir o nome e a foto certa -->
-                        <% chats.forEach(chat => { %>
-                            <a href="/chats/<%= id %>/<%= chat.idChat %>" class="chatBox">
-                                <% if (id == chat.UserA.idUser) { %>
-                                    <img src="/profile_pictures/<%= chat.UserB.profilePhoto %>" alt="<%= chat.UserB.name %>" class="imgPessoa">
-                                    <h3><%= chat.UserB.name %></h3>
-                                <% } else { %>
-                                    <img src="/profile_pictures/<%= chat.UserA.profilePhoto %>" alt="<%= chat.UserA.name %>" class="imgPessoa">
-                                    <h3><%= chat.UserA.name %></h3>
-                                <% } %>
-                            </a>
-                        <% }) %>
+                <!-- Chats que a pessoa tem, conferindo qual usuário está logado no momento pra exibir o nome e a foto certa -->
+                <% chats.forEach(chat => { %>
+                    <a href="/chats/<%= id %>/<%= chat.idChat %>" class="chatBox">
+                        <% if (id == chat.UserA.idUser) { %>
+                            <img src="/profile_pictures/<%= chat.UserB.profilePhoto %>" alt="<%= chat.UserB.name %>" class="imgPessoa">
+                            <h3><%= chat.UserB.name %></h3>
+                        <% } else { %>
+                            <img src="/profile_pictures/<%= chat.UserA.profilePhoto %>" alt="<%= chat.UserA.name %>" class="imgPessoa">
+                            <h3><%= chat.UserA.name %></h3>
+                        <% } %>
+                    </a>
+                <% }) %>
 
-                </div>
             </div>
     
         </main>

@@ -334,6 +334,16 @@ nav {
       text-wrap: wrap;
       word-break: break-all;
     }
+
+    .search {
+      min-width: 0px;
+      width: 80vw;
+    }
+
+    .searchYou {
+      min-width: 0px;
+      width: 78vw;
+    }
   
     .quadrado {
       width: 80vw;
@@ -350,7 +360,7 @@ nav {
       z-index: 999;
       gap: 20px;
       bottom: 0;
-      background-color: var(--BlueDark);
+      background-color: var(--PurpleLight);
       width: 100vw;
       height: 35px;
     }

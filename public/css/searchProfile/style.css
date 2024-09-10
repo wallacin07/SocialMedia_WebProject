@@ -43,10 +43,9 @@ body {
   }
   
   nav {
-    max-width: 220px;
-    width: 90%;
+    width: 220px;
     background-color: var(--BlueDark);
-    padding: 8px;
+    padding: 12px;
     border-radius: 10px;
     max-height: 300px;
   }
@@ -63,11 +62,9 @@ body {
   
   .quadrado {
     background-color: var(--BlueDark);
-    max-width: 1000px;
-    width: 90%;
+    width: 48vw;
     padding: 10px;
     border-radius: 10px;
-    min-width: 900px;
     margin-left: 10px;
     margin-right: 10px;
   }
@@ -374,4 +371,105 @@ body {
     max-width: 25px;
     width: 90%;
     color: var(--white);
+  }
+
+  @media (max-width: 1600px) {
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .logo {
+      display: none;
+    }
+  
+    .topo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 100vw;
+      padding: 20px;
+    }
+  
+    .comentarioFofo {
+      display: flex;
+      flex-direction: column;
+      width: 42vw;
+      text-wrap: wrap;
+      word-break: break-all;
+    }
+  
+    .quadrado {
+      width: 80vw;
+      padding: 10px;
+      border-radius: 10px;
+      padding-bottom: 60px;
+    }
+  
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      z-index: 999;
+      gap: 20px;
+      bottom: 0;
+      background-color: var(--PurpleLight);
+      width: 100vw;
+      height: 35px;
+    }
+  
+    nav h1 {
+      display: none;
+    }
+  
+    .iconeNav {
+      max-width: 55px;
+      width: 90%;
+      min-width: 55px;
+      margin: 0;
+    }
+    
+    .aNav {
+      display: flex;
+      text-decoration: none;
+      color: var(--textColor);
+    }
+  
+  }
+  
+  @media (max-width: 800px) {
+    .quadradinho {
+      min-width: 0px;
+      padding: 10px;
+    }
+  
+    .imgPerfil {
+      width: 80px;
+      min-height: 0px;
+      aspect-ratio: 1/1;
+    }
+  }
+  
+  @media (max-width: 550px) {
+    h3 {
+      margin-block-start: 0em;
+      margin-block-end: 0em;
+      font-size: 13.5px;
+    }
+    h4 {
+      margin-block-start: 0em;
+      margin-block-end: 0em
+    }
+  
+    .quadradinho {
+      min-width: 0px;
+      padding: 5px;
+      height: 60px;
+      margin: 2px;
+    }
+    .imgPerfil {
+      width: 60px;
+      min-width: 0;
+      aspect-ratio: 1/1;
+    }
   }

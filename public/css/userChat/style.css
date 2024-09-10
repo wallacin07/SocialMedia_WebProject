@@ -46,13 +46,11 @@ h4 {
 }
 
 nav {
-    max-width: 220px;
-    width: 90%;
+    width: 220px;
     background-color: var(--BlueDark);
-    padding: 8px;
+    padding: 12px;
     border-radius: 10px;
     max-height: 300px;
-    gap: 2rem;
 }
 
 input[type="file"] {
@@ -232,3 +230,85 @@ input[type="file"] {
     padding-left: 8px;
     padding-right: 8px;
 }
+
+@media (max-width: 1600px) {
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .logo {
+      display: none;
+    }
+  
+    .topo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 100vw;
+      padding: 20px;
+    }
+  
+    .chat {
+      width: 80vw;
+      padding: 10px;
+      border-radius: 10px;
+      min-width: 600px;
+      max-height: 85vh;
+    }
+    
+
+    .mensagens {
+        min-width: 700px;
+        max-width: 1500px;
+        width: 60vw;
+    }
+  
+    nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        z-index: 999;
+        gap: 20px;
+        bottom: 0;
+        background-color: var(--PurpleLight);
+        width: 100vw;
+        height: 35px;
+    }
+  
+    nav h1 {
+      display: none;
+    }
+  
+    .iconeNav {
+      max-width: 55px;
+      width: 90%;
+      min-width: 55px;
+      margin: 0;
+    }
+    
+    .aNav {
+      display: flex;
+      text-decoration: none;
+      color: var(--textColor);
+    }
+  
+  }
+
+  @media (max-width: 950px) {
+    .chat {
+        width: 80vw;
+        padding: 10px;
+        border-radius: 10px;
+        min-width: 300px;
+        max-height: 85vh;
+      }
+      
+  
+      .mensagens {
+          min-width: 0px;
+          max-width: 1500px;
+          width: 60vw;
+      }
+  }
+

@@ -131,8 +131,11 @@
                                         <%= followedPosts[i].user.name %>
                                     </b>
                                 </h3>
-                                
-                                <img src="/img/img_posts/<%= followedPosts[i].img %>" alt="Publicação linda da pessoa" class="imgPublicacao">
+                                <% if(followedPosts[i].img != ''){ %>
+                                    <img src="/img/img_posts/<%= followedPosts[i].img %>" alt="Publicação linda da pessoa" class="imgPublicacao">
+                                <% } else { %>
+                                    <%= followedPosts[i].description %>
+                                <% } %>
                                 
                                 <div class="botoes">
                                     <div class="botoesAcoes">
@@ -197,13 +200,14 @@
                                             </svg>
                                         </button>
                                     </div>
-
-                                    <h4>
-                                        <strong>
-                                            <%= followedPosts[i].user.name %>
-                                        </strong> 
-                                        <%= followedPosts[i].description %>
-                                    </h4>
+                                    <% if(followedPosts[i].img != ''){ %>
+                                        <h4>
+                                            <strong>
+                                                <%= followedPosts[i].user.name %>
+                                            </strong> 
+                                            <%= followedPosts[i].description %>
+                                        </h4>
+                                    <% } %>
                                 </div>
                             </div>
                         <% } %>

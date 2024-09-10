@@ -3,21 +3,26 @@ const Post = require('../model/post');
 const Follow = require('../model/follow');
 const Chat = require('../model/chat');
 const { Op } = require("sequelize");
+const sequelize = require("sequelize");
+const database = require('../config/db');
 const notification = require('../model/notification');
 
 const getSearch = async (req, res) => {
     const id_user = req.params.id_user;
+
+    const allPosts = await Post.findAll({
+        order: database.literal('RAND()')
+    })
+    const users = await User.findAll()
+
     
-    res.render('../views/search', { id_user});
+    res.render('../views/search', { id_user, allPosts, users });
 }
 
 const searchUser = async (req, res) => {
     const id_user = req.params.id_user;
     const dados = req.body.text;
 
-
-
-    console.log('IDUSERS: ' + id_user);
     
     const users = await User.findAll({
         where: {
@@ -32,9 +37,12 @@ const searchUser = async (req, res) => {
         attributes: ['idUser','name', 'profilePhoto', 'admin']
     });
 
-    console.log(users.map(user => user.name)); // Imprime os nomes
+    const allPosts = await Post.findAll({
+        order: database.literal('RAND()')
+    })
 
-    res.render('../views/search', { id_user, users });
+
+    res.render('../views/search', { id_user, users, allPosts });
 }
 
 const profile = async (req, res) => {
@@ -51,26 +59,37 @@ const profile = async (req, res) => {
             idUser: id_user
         }
     });
+
+
+    const following = await Follow.count({
+        where:{[Op.and]: [{idFollower: id_user}, {active: 1}]}
+      })
+  
+    const followers = await Follow.count({
+        where:{
+            [Op.and]: [{idFollowed: id_user}, {active: 1}]}
+    })
+
+
+
     const posts = await Post.findAll({
         raw: true,
         attributes: ['idPost', 'description', 'img', 'idUser'],
         where: {idUser: id_user}
     })
 
-    
-    existingFollow = await Follow.findOne({
+    let existingFollow = await Follow.findOne({
         where: {
             idFollower: id_currentUser,
             idFollowed: id_user
         }
     });
-
     
     if(existingFollow == null)
         existingFollow = {'active' : false};
     
 
-    res.render('../views/searchProfile.ejs', { id_currentUser, user, posts, existingFollow });
+    res.render('../views/searchProfile', { id_currentUser, user, posts, existingFollow, followers, following });
 }
 
 const follow = async (req, res) => {
@@ -93,7 +112,7 @@ const follow = async (req, res) => {
             idUser: id_currentUser
         }
     });
-    const newNotification = await notification.create({
+    await notification.create({
         message : `O usuario ${actualUser.name} começou a te seguir.`,
         idTarget: id_user,
         idSended: id_currentUser
@@ -135,22 +154,23 @@ const follow = async (req, res) => {
                 }
             });
 
-            if (!chatExists) {
-                // Se o chat não existir, criar um novo chat
-                await Chat.create({
-                    idUserA: id_currentUser,
-                    idUserB: id_user
-                });
-            }
-        } else {
-            // Se já existir, atualizar o campo 'active' para 0
-            await Follow.update(
-                { active: existingFollow.active == true ? 0 : 1 }, // Alternar o estado
-                { where: { idFollower: id_currentUser, idFollowed: id_user } }
-            );
+        if (!chatExists) {
+            // Se o chat não existir, criar um novo chat
+            await Chat.create({
+                idUserA: id_currentUser,
+                idUserB: id_user
+            });
         }
+
+    } else {
+        // Se já existir, atualizar o campo 'active' para 0
+        await Follow.update(
+            { active: sequelize.literal('active ^ 1')}, // Alternar o estado
+            { where: { idFollower: id_currentUser, idFollowed: id_user } }
+        );
+    }
   
-    res.render('../views/searchProfile.ejs', { id_currentUser, user, posts, existingFollow,newNotification });
+    res.redirect(`/searchUser/${id_currentUser}/${id_user}`);
 
 }
 module.exports = { getSearch, searchUser, profile, follow }

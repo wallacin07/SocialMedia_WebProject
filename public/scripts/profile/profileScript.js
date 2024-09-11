@@ -116,7 +116,7 @@ formsMudanca.addEventListener('submit', function (e) {
     {
         const userId = formsMudanca.getAttribute('data-user-id');
         // Defina dinamicamente a ação e o método de envio do formulário
-        formsMudanca.setAttribute('action', `/update/${userId}`);
+        formsMudanca.setAttribute('action', `/update/${userId}/${currentPasswordInput}`);
         formsMudanca.setAttribute('method', 'POST');
         formsMudanca.submit(); 
     }
@@ -125,25 +125,24 @@ formsMudanca.addEventListener('submit', function (e) {
 
 
 
+
+
+
 confirmBtn.addEventListener('click', function () {
     const newPassword = document.getElementById('newPassword');
     const currentPassword = newPassword.value;
 
-    // Verificação simples da senha atual (você pode fazer uma verificação mais complexa no backend)
-    if (currentPassword === localStorage.getItem('senhaAtual')) {
-        modal.style.display = 'none'; // Fecha o modal
+    
+    modal.style.display = 'none'; // Fecha o modal
 
-        modalPassword.style.display = 'flex'
-        const userId = formsMudanca.getAttribute('data-user-id');
+    modalPassword.style.display = 'flex'
+    const userId = formsMudanca.getAttribute('data-user-id');
 
-        // Defina dinamicamente a ação e o método de envio do formulário
-        formsMudanca.setAttribute('action',  `/update/${userId}`);
-        formsMudanca.setAttribute('method', 'POST');
+    // Defina dinamicamente a ação e o método de envio do formulário
+    formsMudanca.setAttribute('action',  `/update/${userId}/${currentPassword}`);
+    formsMudanca.setAttribute('method', 'POST');
 
-        formsMudanca.submit(); // Envia o formulário
-    } else {
-        alert('Senha atual incorreta.');
-    }
+    formsMudanca.submit(); // Envia o formulário
 });
 
 

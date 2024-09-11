@@ -1,6 +1,12 @@
 const { Sequelize } = require('sequelize')
+const crypto = require('crypto');
 const users = require('../model/user')
 
+function encript(password) {
+    const hash = crypto.createHash('sha256');
+    hash.update(password);
+    return hash.digest('hex'); 
+}
 
 module.exports = {
     async pagInitGet(req, res){
@@ -9,7 +15,7 @@ module.exports = {
 
     async login(req,res){
         const name = req.body.name;
-        const password = req.body.password;
+        const password = encript(req.body.password);
         try{
             const user = await users.findOne(
                 {

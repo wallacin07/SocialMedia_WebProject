@@ -4,6 +4,13 @@ const comment = require('../model/comment');
 const follow = require('../model/follow');
 const { Op } = require("sequelize");
 const fs = require('fs');
+const crypto = require('crypto');
+
+function encript(password) {
+    const hash = crypto.createHash('sha256');
+    hash.update(password);
+    return hash.digest('hex'); 
+}
 
 module.exports =
 {
@@ -54,9 +61,10 @@ module.exports =
   async updateProfile(req, res) {
 
     const id_user = req.params.id_user;
+    const password = req.params.password;
     const dados = req.body;
 
-
+    const currentUser = await user.findByPk(id_user);
 
     const check = await user.findAll({
       where:{
@@ -80,7 +88,7 @@ module.exports =
       return;
     }
 
-
+    // if(password != )
 
 
     if (req.file) {
@@ -103,7 +111,7 @@ module.exports =
     try {
       await user.update({
         name: dados.name,
-        password: dados.password,
+        password: encript(dados.password),
         birthDate: dados.birth,
         description: dados.bio,
         email: dados.email,

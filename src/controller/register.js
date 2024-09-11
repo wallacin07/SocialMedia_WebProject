@@ -1,5 +1,12 @@
 const {where,Op} = require('sequelize');
 const user = require('../model/user')
+const crypto = require('crypto');
+
+function encript(password) {
+    const hash = crypto.createHash('sha256');
+    hash.update(password);
+    return hash.digest('hex'); 
+}
 
 
 module.exports = {
@@ -38,7 +45,7 @@ module.exports = {
         
                 await user.create({
                     name: dados.name,
-                    password: dados.password,
+                    password: encript(dados.password),
                     birthDate: dados.birth,
                     description: dados.bio,
                     email: dados.email,

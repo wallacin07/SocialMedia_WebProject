@@ -107,6 +107,7 @@ input[type="file"] {
     justify-content: center;
     flex-direction: column;
     width: 48vw;
+    gap: 5px;
     padding: 10px;
     border-radius: 10px;
     margin-left: 10px;

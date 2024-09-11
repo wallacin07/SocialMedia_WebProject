@@ -553,6 +553,7 @@ h5 {
   z-index: 999;
   position: fixed;
   height: 75vh;
+  width: 45vw;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -560,13 +561,14 @@ h5 {
   display: none;
   background-color: var(--PurpleMid);
   border-radius: 10px;
-  padding: 50px;
+  padding: 20px;
 }
 
 .storyModalImg{
   object-fit: cover;
-  max-width: 95%;
-  max-height: 95%;
+  max-width: 650px;
+  max-height: 650px;
+  width: 95%;
   height: 90%;
   border-radius: 10px;
 }
@@ -758,6 +760,13 @@ h5 {
 
 }
 
+@media (max-height: 800px) {
+  #modalComentarios {
+    min-height: 0px;
+    height: 75vh;
+  }
+}
+
 @media (max-width: 1550px) {
   .comentarioFofo {
     display: flex;
@@ -937,5 +946,21 @@ h5 {
 
   .botaoCima {
     height: 55px;
+  }
+
+  .storyModal {
+    position: fixed;
+    height: 75vh;
+    width: 75vw;
+    padding: 20px;
+  }
+  
+  .storyModalImg{
+    object-fit: cover;
+    max-width: 600px;
+    max-height: 600px;
+    width: 95%;
+    height: 90%;
+    border-radius: 10px;
   }
 }

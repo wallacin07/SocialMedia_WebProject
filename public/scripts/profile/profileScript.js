@@ -84,12 +84,12 @@ posts.forEach(post => {
 // =============================================================================================
 
 
-document.addEventListener("DOMContentLoaded", function() {
-    // Somente exibe o alerta se erroDesativado estiver definido e não for vazio
-    const senhaAtual = document.getElementById("password").value;
-    localStorage.setItem('senhaAtual', senhaAtual );
-    }
-);
+// document.addEventListener("DOMContentLoaded", function() {
+//     // Somente exibe o alerta se erroDesativado estiver definido e não for vazio
+//     const senhaAtual = document.getElementById("password").value;
+//     localStorage.setItem('senhaAtual', senhaAtual );
+//     }
+// );
 
 
 
@@ -104,10 +104,11 @@ const confirmBtn = document.getElementById('confirmBtn');
 const closeModalBtn = document.getElementById('closeModalBtn');
 
 formsMudanca.addEventListener('submit', function (e) {
-    const currentPasswordInput = document.getElementById('password');
+    const currentPasswordInput = document.getElementById("password").value
     
     // Verifica se o campo de senha foi alterado
-    if (currentPasswordInput.value !== localStorage.getItem('senhaAtual')) {
+    console.log(currentPasswordInput)
+    if (currentPasswordInput != '') {
         e.preventDefault(); // Impede o envio do formulário
         
         // Abre o modal para confirmação
@@ -116,7 +117,7 @@ formsMudanca.addEventListener('submit', function (e) {
     {
         const userId = formsMudanca.getAttribute('data-user-id');
         // Defina dinamicamente a ação e o método de envio do formulário
-        formsMudanca.setAttribute('action', `/update/${userId}/${currentPasswordInput}`);
+        formsMudanca.setAttribute('action', `/update/${userId}`);
         formsMudanca.setAttribute('method', 'POST');
         formsMudanca.submit(); 
     }
@@ -139,7 +140,7 @@ confirmBtn.addEventListener('click', function () {
     const userId = formsMudanca.getAttribute('data-user-id');
 
     // Defina dinamicamente a ação e o método de envio do formulário
-    formsMudanca.setAttribute('action',  `/update/${userId}/${currentPassword}`);
+    formsMudanca.setAttribute('action',  `/updateWithPassword/${userId}/${currentPassword}`);
     formsMudanca.setAttribute('method', 'POST');
 
     formsMudanca.submit(); // Envia o formulário

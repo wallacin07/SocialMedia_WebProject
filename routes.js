@@ -33,7 +33,8 @@ route.post('/postStory/:id_user', multer(postConfig).single('new_post_image'), p
 
 const profile = require('./src/controller/profile');
 route.get('/profilePag/:id_user', profile.PagProfileGet);
-route.post('/update/:id_user/:password',multer(profileConfig).single('foto'), profile.updateProfile);
+route.post('/updateWithPassword/:id_user/:password',multer(profileConfig).single('foto'), profile.updateProfileWithPassword);
+route.post('/update/:id_user',multer(profileConfig).single('foto'), profile.updateProfile);
 
 
 const chats = require('./src/controller/chats')

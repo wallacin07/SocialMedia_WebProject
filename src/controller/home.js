@@ -23,7 +23,7 @@ module.exports = {
             where: {
                 [sequelize.Op.and]: [
                     {idFollower: id_user},
-                    {active: 1}
+                    {active: true}
                 ]
             }
         });
@@ -34,7 +34,10 @@ module.exports = {
             include: [
                 {
                     as: 'user',
-                    model: user
+                    model: user,
+                    where: {
+                        active: true
+                    }
                 },
                 {
                     model: reaction,
@@ -88,7 +91,10 @@ module.exports = {
                 {
                     as: 'user',
                     model: user,
-                    attributes: ["profilePhoto"]
+                    attributes: ["profilePhoto"],
+                    where: {
+                        active: true
+                    }
                 }
             ],
             where: {
@@ -138,7 +144,10 @@ module.exports = {
             include: [
                 {
                     as: 'user',
-                    model: user
+                    model: user,
+                    where: {
+                        active: true
+                    }
                 },
                 {
                     model: reaction,

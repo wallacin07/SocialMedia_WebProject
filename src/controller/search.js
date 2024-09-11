@@ -33,7 +33,7 @@ const searchUser = async (req, res) => {
                     name: { [Op.like]: `%${dados}%` }
                 },
                 {
-                    active:'1'
+                    active: true
                 }
             ],
         },

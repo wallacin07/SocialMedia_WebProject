@@ -1,6 +1,12 @@
 const Sequelize = require('sequelize')
 const database = require('../config/db');
-const { defaultValueSchemable, toDefaultValue } = require('sequelize/lib/utils');
+const crypto = require('crypto');
+
+function encript(password) {
+    const hash = crypto.createHash('sha256');
+    hash.update(password);
+    return hash.digest('hex'); 
+}
 
 const user = database.define('user',
     {
@@ -55,7 +61,7 @@ const user = database.define('user',
                     if (!existingAdmin) {
                         await user.create({
                             name: 'admin',
-                            password: 'admin',
+                            password: encript('admin'),
                             birthDate: '0001-01-01', // Ajuste o formato da data para ISO 8601
                             description: 'chefe é chefe né pae',
                             email: 'admin@admin.com',

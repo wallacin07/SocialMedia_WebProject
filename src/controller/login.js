@@ -20,7 +20,7 @@ module.exports = {
             const user = await users.findOne(
                 {
                     raw: true,
-                    attributes: ['idUser', 'admin', 'active'],
+                    attributes: ['idUser', 'admin', 'active', 'password'],
                     where: {
                         [Sequelize.Op.and]: [
                             { name: name },
@@ -29,7 +29,8 @@ module.exports = {
                     }
                 }
             );
-                
+
+
             if(user.length == 0){
                 res.render('../views/index', {erroDesativado : 0, erroConta: 0});
             }

@@ -14,6 +14,13 @@ const getSearch = async (req, res) => {
 
     const allPosts = await Post.findAll({
         order: database.literal('RAND()'),
+        include: [{
+            as: 'user',
+            model: User,
+            where: {
+                active: true
+            }
+            }],
         where: { [Op.not]: {img: ''} }
     })
     const users = await User.findAll()
@@ -42,7 +49,14 @@ const searchUser = async (req, res) => {
 
     const allPosts = await Post.findAll({
         order: database.literal('RAND()'),
-        where: { [Op.not]: {img: ''} }
+        where: { [Op.not]: {img: ''} },
+        include: [{
+            as: 'user',
+            model: user,
+            where: {
+                active: true
+            }
+        }],
     })
 
 

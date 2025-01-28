@@ -1,21 +1,13 @@
-const sequelize = require('sequelize');
+const Sequelize = require('sequelize');
 
-const database = new sequelize (
-
-    'Kangoroo',         //DATABASE
-    'Admin',            //USER
-    'admin',            //PASSWORDD
-
-    // 'root',            //USER
-    // '123321',            //PASSWORDD
+const database = new Sequelize(
+    'railway',         // Nome do banco de dados
+    'postgres',        // Usuário
+    'ZiWAARLsXuTystOmsXbDxykyDNNcyYIK', // Senha
     {
-    host: 'localhost',
-    // port: 1433, // Porta padrão sala perfeita
-    // port: 56604,
-    // port: 58868,    //cr
-    port: 54317, // Porta Sabrina sala fedida
-    // port: 3306, // Porta Sabrina casa
-    dialect: 'mssql' 
+        host: 'autorack.proxy.rlwy.net',  // Host
+        port: 55338,                      // Porta
+        dialect: 'postgres'               // Dialeto
     }
 );
 

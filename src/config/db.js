@@ -14,6 +14,6 @@ const database = new Sequelize(
 database.sync();
 
 
- 
+//  foi aqui
 
 module.exports = database;
